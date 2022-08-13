@@ -1,0 +1,6 @@
+---
+title: "Deep Learning"
+---
+
+
+[Part 2](p2.qmd)
