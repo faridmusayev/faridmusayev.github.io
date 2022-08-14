@@ -11,4 +11,4 @@ about:
       text: Github
       href: https://github.com
 ---
-About this woooooooooooooooonderful site
+About this wonderful site
