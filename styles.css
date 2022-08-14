@@ -1,5 +1,17 @@
 /* css styles */
 
+
+/* remove categories sidebar in blog page*/
 #quarto-margin-sidebar{
   display: none;
+}
+
+/* remove text shadow in left title*/
+span.navbar-title{
+  text-shadow: 0px 0px;
+}
+
+/* remove text shadow in right menu*/
+.navbar .nav-link{
+  text-shadow: 0px 0px;
 }
