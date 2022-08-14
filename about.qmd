@@ -5,8 +5,8 @@ about:
   #image: profile.jpg
   links:
     - icon: twitter
-      text: twitter
-      href: https://twitter.com
+      text: Projects
+      href: p1.qmd
     - icon: github
       text: Github
       href: https://github.com
