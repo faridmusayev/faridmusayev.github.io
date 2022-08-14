@@ -3,15 +3,15 @@ project:
 
 website:
   title: "Farid Musayev"
+  site-url: https://faridmusayev.github.io
   navbar:
-    #background: "#2a4073"
-  #  foreground: "white"
-    pinned: true
+    pinned: false
     search: false
 
     right:
       - text: "Home"
         file: index.qmd
+      - href: blog.qmd
       - text: "Projects"
         menu:
           - p1.qmd

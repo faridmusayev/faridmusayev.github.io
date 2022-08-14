@@ -1,0 +1,16 @@
+---
+title: "First Post"
+description: |
+    how to understand this life ?
+date: "2022-08-14"
+categories:
+  - python
+  - pandas
+engine: markdown
+image: /posts/first-post/viz.jpg
+---
+This is a Quarto website. Would you like to come here ?
+
+To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+I would like to tell my story but where should I start ? This is important for me
+to understand how to communicate several problems ?
