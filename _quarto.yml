@@ -9,9 +9,8 @@ website:
     search: false
 
     right:
-      - text: "Home"
-        file: index.qmd
-      - href: blog.qmd
+      - text: "Blog"
+        file: blog.qmd
       - text: "Projects"
         menu:
           - p1.qmd
