@@ -1,17 +1,17 @@
 [
   {
-    "objectID": "posts/first-post/index.html",
-    "href": "posts/first-post/index.html",
-    "title": "First Post",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Farid Musayev",
     "section": "",
-    "text": "To learn more about Quarto websites visit https://quarto.org/docs/websites. I would like to tell my story but where should I start ? This is important for me to understand how to communicate several problems ?"
+    "text": "About this wonderful site"
   },
   {
-    "objectID": "p1.html",
-    "href": "p1.html",
-    "title": "Deep Learning",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Farid Musayev",
     "section": "",
-    "text": "Part 2"
+    "text": "Welcome"
   },
   {
     "objectID": "blog.html",
@@ -21,11 +21,18 @@
     "text": "python\n\n\npandas\n\n\n\n\nhow to understand this life ?\n\n\n\n\n\n\nAug 14, 2022\n\n\n\n\n\n\nNo matching items"
   },
   {
+    "objectID": "p1.html",
+    "href": "p1.html",
+    "title": "Deep Learning",
+    "section": "",
+    "text": "Part 2"
+  },
+  {
     "objectID": "computations.html",
     "href": "computations.html",
     "title": "Quarto Computations",
     "section": "",
-    "text": "import numpy as np\na = np.arange(15).reshape(3, 5)\na\n\narray([[ 0,  1,  2,  3,  4],\n       [ 5,  6,  7,  8,  9],\n       [10, 11, 12, 13, 14]])"
+    "text": "This is an implementation of np.arange function in such a fundamental course. Theoretically we can talk about many hours, however, we have to realize that this is more than just a talk. Numpy is everything for us and have embrace it.\n\nimport numpy as np\na = np.arange(15).reshape(3, 5)\na\n\narray([[ 0,  1,  2,  3,  4],\n       [ 5,  6,  7,  8,  9],\n       [10, 11, 12, 13, 14]])"
   },
   {
     "objectID": "computations.html#matplotlib",
@@ -42,17 +49,10 @@
     "text": "Plotly\n\nimport plotly.express as px\nimport plotly.io as pio\ngapminder = px.data.gapminder()\ngapminder2007 = gapminder.query(\"year == 2007\")\nfig = px.scatter(gapminder2007, \n                 x=\"gdpPercap\", y=\"lifeExp\", color=\"continent\", \n                 size=\"pop\", size_max=60,\n                 hover_name=\"country\")\n#fig.show()"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "Farid Musayev",
+    "objectID": "posts/first-post/index.html",
+    "href": "posts/first-post/index.html",
+    "title": "First Post",
     "section": "",
-    "text": "About this wonderful site"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Farid Musayev",
-    "section": "",
-    "text": "Welcome"
+    "text": "To learn more about Quarto websites visit https://quarto.org/docs/websites. I would like to tell my story but where should I start ? This is important for me to understand how to communicate several problems ?"
   }
 ]

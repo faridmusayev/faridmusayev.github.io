@@ -9,9 +9,35 @@
 /* remove text shadow in left title*/
 span.navbar-title{
   text-shadow: 0px 0px;
+
 }
 
 /* remove text shadow in right menu*/
 .navbar .nav-link{
   text-shadow: 0px 0px;
+}
+
+/*main text font color */
+.nav-fixed.quarto-light{
+  color: #3F3D3D;
+}
+
+/*font description color in notebooks*/
+.quarto-title-block.default .description{
+  color: #6c757d;
+}
+
+/*font description color in blog */
+.subtitle.lead{
+  color: #6c757d;
+}
+
+/*meta heading such as published, author color*/
+.quarto-title-meta-heading{
+  color: #6c757d;
+}
+
+/*meta heading contents color*/
+.quarto-title-meta-contents{
+  color: #6c757d;
 }
