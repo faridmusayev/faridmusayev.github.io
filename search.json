@@ -18,7 +18,7 @@
     "href": "blog.html",
     "title": "Farid Musayev",
     "section": "",
-    "text": "python\n\n\npandas\n\n\n\n\nhow to understand this life ?\n\n\n\n\n\n\nAug 14, 2022\n\n\n\n\n\n\nNo matching items"
+    "text": "python\n\n\npandas\n\n\n\n\nhow to understand this life ?\n\n\n\n\n\n\nAug 14, 2022\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nmatplotlib\n\n\nsklearn\n\n\n\n\nhow to understand this life ?\n\n\n\n\n\n\nAug 14, 2022\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "p1.html",
@@ -52,6 +52,13 @@
     "objectID": "posts/first-post/index.html",
     "href": "posts/first-post/index.html",
     "title": "First Post",
+    "section": "",
+    "text": "To learn more about Quarto websites visit https://quarto.org/docs/websites. I would like to tell my story but where should I start ? This is important for me to understand how to communicate several problems ?"
+  },
+  {
+    "objectID": "posts/second-post/index.html",
+    "href": "posts/second-post/index.html",
+    "title": "Second Post",
     "section": "",
     "text": "To learn more about Quarto websites visit https://quarto.org/docs/websites. I would like to tell my story but where should I start ? This is important for me to understand how to communicate several problems ?"
   }

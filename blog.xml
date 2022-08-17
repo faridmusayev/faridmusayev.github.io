@@ -30,5 +30,24 @@
   <pubDate>Sun, 14 Aug 2022 00:00:00 GMT</pubDate>
   <media:content url="https://github.com/faridmusayev/faridmusayev.github.io/posts/first-post/viz.jpg" medium="image" type="image/jpeg"/>
 </item>
+<item>
+  <title>Second Post</title>
+  <link>https://github.com/faridmusayev/faridmusayev.github.io/posts/second-post/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<p>This is a Quarto website. Would you like to come here ?</p>
+<p>To learn more about Quarto websites visit <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>. I would like to tell my story but where should I start ? This is important for me to understand how to communicate several problems ?</p>
+
+
+
+ ]]></description>
+  <category>matplotlib</category>
+  <category>sklearn</category>
+  <guid>https://github.com/faridmusayev/faridmusayev.github.io/posts/second-post/index.html</guid>
+  <pubDate>Sun, 14 Aug 2022 00:00:00 GMT</pubDate>
+  <media:content url="https://github.com/faridmusayev/faridmusayev.github.io/posts/second-post/viz.jpg" medium="image" type="image/jpeg"/>
+</item>
 </channel>
 </rss>
