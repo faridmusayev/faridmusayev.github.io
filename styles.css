@@ -41,3 +41,20 @@ span.navbar-title{
 .quarto-title-meta-contents{
   color: #6c757d;
 }
+
+/*each blog page tags color and letter case*/
+.quarto-title .quarto-categories .quarto-category {
+  color: black;
+  border: solid 1px #dee2e6;
+  text-transform: lowercase;
+  opacity: 0.8;
+
+}
+
+/* main blog page tags color and letter case*/
+div.quarto-post .listing-categories .listing-category{
+
+  color: black;
+  opacity: 0.8;
+  text-transform: lowercase;
+}
