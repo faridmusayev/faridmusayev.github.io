@@ -13,6 +13,7 @@ of being scored. These probabilities may depend on many different parameters. In
 project, I would to implement Expected Goals Model that computes how likely is a given shot
 to result into a goal.
 
+Project repository is available [here](https://github.com/faridmusayev/Expected_Goals_Model/tree/main/statsbomb).
 
 ## Implementation
 

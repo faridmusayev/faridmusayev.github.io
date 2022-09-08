@@ -26,7 +26,7 @@ were simulated from their respective conditional posterior distributions until c
 plots show the trajectories of sampled Markov Chains. The lower plots show the number of iterations
 required to reach convergence for each parameter. This plot was designed using [`ggplot2`](https://ggplot2.tidyverse.org/).
 
-Code is available [here.](gibbs_plot.qmd)
+Code is available [here.](https://github.com/faridmusayev/data_visualization/blob/main/gibbs/gibb_sampling.R)
 
 
 ![](./gibbs_sampling.svg)
@@ -36,7 +36,7 @@ In this visualization, MCMC algorithm is used to draw parameters of Poisson regr
 from multivariate posterior distribution. After approximately 250 iterations, parameters
 start to converge. This plot was designed using [`ggplot2`](https://ggplot2.tidyverse.org/).
 
-Code is available [here.](mcmc_plot.qmd)
+Code is available [here.](https://github.com/faridmusayev/data_visualization/blob/main/mcmc/MCMC.R)
 
 
 ![](./mcmc.svg)
