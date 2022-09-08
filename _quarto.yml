@@ -3,7 +3,6 @@ project:
 
 website:
   title: "Farid Musayev"
-  background: white
   site-url: https://faridmusayev.github.io
   navbar:
     pinned: false
