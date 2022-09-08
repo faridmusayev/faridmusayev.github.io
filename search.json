@@ -1,10 +1,24 @@
 [
   {
-    "objectID": "p2.html#swedish-football-analytics",
-    "href": "p2.html#swedish-football-analytics",
+    "objectID": "p2.html#allsvenskan-2021",
+    "href": "p2.html#allsvenskan-2021",
     "title": "Data Visualization",
-    "section": "Swedish Football Analytics",
-    "text": "Swedish Football Analytics\nIn this visualization, I make a gridplot of xG values conceded and scored by each team against all other teams in Allsvenskan (Swedish Top Football League) during season 2021. Since this is a gridplot, one can obtain only a general performance overview for each of the teams without going into details. This gridplot was designed using object-oriented plotting in matplotlib."
+    "section": "Allsvenskan 2021",
+    "text": "Allsvenskan 2021\nIn this visualization, I make a gridplot of xG values conceded and scored by each team against all other teams in Allsvenskan (Swedish Top Football League) during season 2021. Since this is a gridplot, one can obtain only a general performance overview for each of the teams. This gridplot was designed using object-oriented plotting in matplotlib.\nCode is available here.\n\nTo view this plot in a high resolution, please follow this link."
+  },
+  {
+    "objectID": "p2.html#gibbs-sampling-convergence",
+    "href": "p2.html#gibbs-sampling-convergence",
+    "title": "Data Visualization",
+    "section": "Gibbs Sampling Convergence",
+    "text": "Gibbs Sampling Convergence\nThis is a visualization of two parameters, variance and mean, which were simulated from their respective conditional posterior distributions until convergence. The upper plots show the trajectories of sampled Markov Chains. The lower plots show the number of iterations required to reach convergence for each parameter. This plot was designed using ggplot2.\nCode is available here."
+  },
+  {
+    "objectID": "p2.html#mcmc-convergence-of-parameters",
+    "href": "p2.html#mcmc-convergence-of-parameters",
+    "title": "Data Visualization",
+    "section": "MCMC Convergence of Parameters",
+    "text": "MCMC Convergence of Parameters\nIn this visualization, MCMC algorithm is used to draw parameters of Poisson regression from multivariate posterior distribution. After approximately 250 iterations, parameters start to converge. This plot was designed using ggplot2.\nCode is available here.\n This plot was created in collaboration with Kristina Levina."
   },
   {
     "objectID": "about.html",
@@ -109,7 +123,7 @@
     "href": "p1.html#summary",
     "title": "Expected Goals Model",
     "section": "Summary",
-    "text": "Summary\nSoccer is a low scoring game. Thus, it appears hard to evaluate performance of teams looking only at the number of scored and conceded goals. In comparison to goals, teams usually execute a much higher number of shots. However, not all of those shots are of the same quality. In other words, different shots may have different probabilities of being scored. These probabilities may depend on many different parameters. In this project, I would to implement Expected Goals Model that computes how likely is a given shot to result into a goal."
+    "text": "Summary\nSoccer is a low scoring game. Thus, it appears hard to evaluate performance of teams looking only at the number of scored and conceded goals. In comparison to goals, teams usually execute a much higher number of shots. However, not all of those shots are of the same quality. In other words, different shots may have different probabilities of being scored. These probabilities may depend on many different parameters. In this project, I would to implement Expected Goals Model that computes how likely is a given shot to result into a goal.\nProject repository is available here."
   },
   {
     "objectID": "p1.html#implementation",
