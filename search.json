@@ -11,7 +11,7 @@
     "href": "p2.html#gibbs-sampling-convergence",
     "title": "Data Visualization",
     "section": "Gibbs Sampling Convergence",
-    "text": "Gibbs Sampling Convergence\nThis is a visualization of two parameters, variance and mean, which were simulated from their respective conditional posterior distributions until convergence. The upper plots show the trajectories of sampled Markov Chains. The lower plots show the number of iterations required to reach convergence for each parameter. This plot was designed using ggplot2.\nCode is available here."
+    "text": "Gibbs Sampling Convergence\nThis is a visualization of two parameters, variance and mean, which were simulated from their respective conditional posterior distributions until convergence. The upper plots show the trajectories of sampled Markov Chains. The lower plots show the number of iterations required to reach convergence for each parameter. This plot was designed using ggplot2.\nCode is available here.\nThis plot was created in collaboration with Kristina Levina."
   },
   {
     "objectID": "p2.html#mcmc-convergence-of-parameters",
