@@ -1,7 +1,8 @@
 ---
-title: ""
+title: "Projects"
 about:
   template: jolla
   #image: profile.jpg
 ---
-Welcome
+
+[Expected Goals Model](p1.qmd)  |  [Data Visualization](p2.qmd)

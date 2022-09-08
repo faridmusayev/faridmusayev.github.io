@@ -10,12 +10,12 @@ website:
     search: false
 
     right:
-      - text: "Blog"
-        file: blog.qmd
+#      - text: "Blog"
+#        file: blog.qmd
       - text: "Projects"
         menu:
           - p1.qmd
-          - computations.ipynb
+          - p2.qmd
       - text: "About"
         file: about.qmd
 format:

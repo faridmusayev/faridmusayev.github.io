@@ -1,3 +1,14 @@
 ---
-title: "New World"
+title: "Data Visualization"
 ---
+<style> body {text-align: justify} </style> <!-- Justify text. -->
+
+
+## Swedish Football Analytics
+
+In this [visualization](xG_for_against_subplots.ipynb),
+ I make a gridplot of xG values conceded and scored by each team against all other teams
+ in Allsvenskan (Swedish Top Football League)
+during season 2021. Since this is a gridplot, one can obtain only a general
+performance overview for each of the teams without going into details. This gridplot was
+designed using object-oriented plotting in `matplotlib`.

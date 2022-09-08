@@ -1,6 +1,31 @@
 ---
-title: "Deep Learning"
+title: "Expected Goals Model"
 ---
+<style> body {text-align: justify} </style> <!-- Justify text. -->
+
+## Summary
+
+Soccer is a low scoring game. Thus, it appears hard to evaluate performance of teams
+looking only at the number of scored and conceded goals. In comparison to goals,
+teams usually execute a much higher number of shots. However, not all of those shots
+are of the same quality. In other words, different shots may have different probabilities
+of being scored. These probabilities may depend on many different parameters. In this
+project, I would to implement Expected Goals Model that computes how likely is a given shot
+to result into a goal.
 
 
-[Part 2](p2.qmd)
+## Implementation
+
+The project consists of the following parts:
+
+* [Part 1 | Data Preprocessing](data_preprocessing.ipynb)
+
+  In this section, I demonstrate how to extract data from external resource,
+  filter out only required competitions, specify the columns of interest and
+  bring them into desirable format.
+
+* [Part 2 | Building Model](building_model.ipynb)
+
+  This part mainly focuses on the exploratory data analysis, design of new
+  features and statistical analysis of existing ones, splitting and transforming
+  data, hyperparameter tuning and model selection.
