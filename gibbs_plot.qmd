@@ -9,12 +9,12 @@ execute:
   eval: false
 ---
 
+## Libraries
+
 ```{r}
 #| eval: false
-#| label: load-packages
-#| include: false
 
-library(tidyverse)
-library(palmerpenguins)
-library(jsonlite)
+library(ggplot2)
+library(gridExtra)
+library(grid)
 ```
