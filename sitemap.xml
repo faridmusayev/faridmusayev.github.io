@@ -1,35 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://github.com/faridmusayev/faridmusayev.github.io/p2.html</loc>
-    <lastmod>2022-08-17T21:21:36.192Z</lastmod>
+    <loc>https://faridmusayev.github.io/p2.html</loc>
+    <lastmod>2022-09-08T14:05:14.124Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/faridmusayev/faridmusayev.github.io/about.html</loc>
-    <lastmod>2022-08-17T21:21:36.892Z</lastmod>
+    <loc>https://faridmusayev.github.io/about.html</loc>
+    <lastmod>2022-09-08T14:05:14.772Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/faridmusayev/faridmusayev.github.io/index.html</loc>
-    <lastmod>2022-08-17T21:21:37.232Z</lastmod>
+    <loc>https://faridmusayev.github.io/xG_for_against_subplots.html</loc>
+    <lastmod>2022-09-08T14:05:15.256Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/faridmusayev/faridmusayev.github.io/blog.html</loc>
-    <lastmod>2022-08-17T21:21:37.652Z</lastmod>
+    <loc>https://faridmusayev.github.io/index.html</loc>
+    <lastmod>2022-09-08T14:05:15.552Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/faridmusayev/faridmusayev.github.io/p1.html</loc>
-    <lastmod>2022-08-17T21:21:37.944Z</lastmod>
+    <loc>https://faridmusayev.github.io/blog.html</loc>
+    <lastmod>2022-09-08T14:05:15.880Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/faridmusayev/faridmusayev.github.io/computations.html</loc>
-    <lastmod>2022-08-17T21:21:38.296Z</lastmod>
+    <loc>https://faridmusayev.github.io/building_model.html</loc>
+    <lastmod>2022-09-08T14:05:16.664Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/faridmusayev/faridmusayev.github.io/posts/first-post/index.html</loc>
-    <lastmod>2022-08-17T21:21:38.580Z</lastmod>
+    <loc>https://faridmusayev.github.io/p1.html</loc>
+    <lastmod>2022-09-08T14:05:16.928Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/faridmusayev/faridmusayev.github.io/posts/second-post/index.html</loc>
-    <lastmod>2022-08-17T21:21:38.860Z</lastmod>
+    <loc>https://faridmusayev.github.io/data_preprocessing.html</loc>
+    <lastmod>2022-09-08T14:05:17.344Z</lastmod>
+  </url>
+  <url>
+    <loc>https://faridmusayev.github.io/posts/first-post/index.html</loc>
+    <lastmod>2022-09-08T14:05:17.616Z</lastmod>
+  </url>
+  <url>
+    <loc>https://faridmusayev.github.io/posts/second-post/index.html</loc>
+    <lastmod>2022-09-08T14:05:17.896Z</lastmod>
   </url>
 </urlset>
