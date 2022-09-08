@@ -28,6 +28,8 @@ required to reach convergence for each parameter. This plot was designed using [
 
 Code is available [here.](https://github.com/faridmusayev/data_visualization/blob/main/gibbs/gibb_sampling.R)
 
+This plot was created in collaboration with [Kristina Levina](https://github.com/Ada-Lev/Data-Visualisation).
+
 
 ![](./gibbs_sampling.svg)
 
@@ -40,4 +42,4 @@ Code is available [here.](https://github.com/faridmusayev/data_visualization/blo
 
 
 ![](./mcmc.svg)
-This plot was created in collaboration with [Kristina Levina](https://github.com/Ada-Lev).
+This plot was created in collaboration with [Kristina Levina](https://github.com/Ada-Lev/Data-Visualisation).
