@@ -40,4 +40,4 @@ Code is available [here.](https://github.com/faridmusayev/data_visualization/blo
 
 
 ![](./mcmc.svg)
-This plot was created in collaboration with Kristina Levina.
+This plot was created in collaboration with [Kristina Levina](https://github.com/Ada-Lev).
