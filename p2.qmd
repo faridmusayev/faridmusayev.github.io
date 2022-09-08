@@ -4,11 +4,40 @@ title: "Data Visualization"
 <style> body {text-align: justify} </style> <!-- Justify text. -->
 
 
-## Swedish Football Analytics
+## Allsvenskan 2021
 
-In this [visualization](xG_for_against_subplots.ipynb),
+In this visualization,
  I make a gridplot of xG values conceded and scored by each team against all other teams
  in Allsvenskan (Swedish Top Football League)
 during season 2021. Since this is a gridplot, one can obtain only a general
-performance overview for each of the teams without going into details. This gridplot was
-designed using object-oriented plotting in `matplotlib`.
+performance overview for each of the teams. This gridplot was
+designed using object-oriented plotting in [`matplotlib`](https://matplotlib.org/).
+
+Code is available [here.](xG_for_against_subplots.ipynb)
+
+![](./xg_subplots.png)
+
+To view this plot in a high resolution,
+please follow this [link.](https://raw.githubusercontent.com/faridmusayev/Swedish_Football_Analytics/main/allsvenskan/plots/xg_subplots.png)
+
+## Gibbs Sampling Convergence
+This is a visualization of two parameters, variance and mean, which
+were simulated from their respective conditional posterior distributions until convergence. The upper
+plots show the trajectories of sampled Markov Chains. The lower plots show the number of iterations
+required to reach convergence for each parameter. This plot was designed using [`ggplot2`](https://ggplot2.tidyverse.org/).
+
+Code is available [here.](gibbs_plot.qmd)
+
+
+![](./gibbs_sampling.svg)
+
+## MCMC Convergence of Parameters
+In this visualization, MCMC algorithm is used to draw parameters of Poisson regression
+from multivariate posterior distribution. After approximately 250 iterations, parameters
+start to converge. This plot was designed using [`ggplot2`](https://ggplot2.tidyverse.org/).
+
+Code is available [here.](mcmc_plot.qmd)
+
+
+![](./mcmc.svg)
+This plot was created in collaboration with Kristina Levina.
