@@ -16,6 +16,8 @@ toc: true
 
 library(tidyverse)
 library(palmerpenguins)
+library(jsonlite)
+
 ```
 
 ## Libraries
