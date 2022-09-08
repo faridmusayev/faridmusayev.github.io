@@ -11,7 +11,7 @@ about:
       text: Github
       href: https://github.com/faridmusayev
 ---
-I am the 2nd Year Master's Student in Statistics and Machine Learning
+I am a 2nd Year Master's Student in Statistics and Machine Learning
 at Linköping University.
 
 I am interested in:
