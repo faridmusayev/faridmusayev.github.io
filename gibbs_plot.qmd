@@ -13,8 +13,6 @@ execute:
 
 ```{r}
 #| eval: false
+#| echo: true
 
-library(ggplot2)
-library(gridExtra)
-library(grid)
 ```
