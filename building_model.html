@@ -182,7 +182,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis" class="nav-link" data-scroll-target="#exploratory-data-analysis">Exploratory Data Analysis</a></li>
   <li><a href="#feature-engineering" id="toc-feature-engineering" class="nav-link" data-scroll-target="#feature-engineering">Feature Engineering</a>
   <ul class="collapse">
-  <li><a href="#distance-angle-features" id="toc-distance-angle-features" class="nav-link" data-scroll-target="#distance-angle-features">Distance &amp; Angle Features</a></li>
+  <li><a href="#distance-and-angle-features" id="toc-distance-and-angle-features" class="nav-link" data-scroll-target="#distance-and-angle-features">Distance and Angle Features</a></li>
   </ul></li>
   <li><a href="#statistical-analysis" id="toc-statistical-analysis" class="nav-link" data-scroll-target="#statistical-analysis">Statistical Analysis</a></li>
   <li><a href="#transforming-and-splitting-data" id="toc-transforming-and-splitting-data" class="nav-link" data-scroll-target="#transforming-and-splitting-data">Transforming and Splitting Data</a></li>
@@ -228,12 +228,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<style> body {text-align: justify} </style>
-<p><!-- Justify text. --></p>
 <section id="package-prerequisites" class="level2">
 <h2 class="anchored" data-anchor-id="package-prerequisites">Package prerequisites</h2>
 <p>In this part, the following packages need to be imported:</p>
-<div class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="2">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
@@ -252,7 +250,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="exploratory-data-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="exploratory-data-analysis">Exploratory Data Analysis</h2>
 <p>Firstly, I read the preprocessed <code>.csv</code> data file and convert all required columns to python readable object types.</p>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="3">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read shots.csv file </span></span>
@@ -264,17 +262,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Prediction of a goal outcome in soccer is a binary classification task { 0 - No goal ; 1 - Goal }. However, the key point is that, in xG model, we are not dealing with hard classes but rather trying to make a probabilistic prediction for a shot outcome. In comparison with hard classes, probabilistic outputs allow to describe the quality of a shot since not all shots are equally probable to be scored. In other words, given a shot, how likely it is to result in a goal. This is what the xG value estimates for a given shot.</p>
 <p>The code snippet below shows that there are different outcome types for a given shot such as <em>Saved</em>, <em>Off target</em>, shot that hit <em>Post</em>, <em>Blocked</em>, way off target <em>Wayward</em> shot, etc. To build a binary probabilistic classifier, it is necessary to define predictions as hard classes. Here, I convert each value of <code>outcome_type</code> column to 1 for <em>Goal</em> scenario or 0 for the rest of scenarios.</p>
-<div class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="4">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>shots.loc[:, <span class="st">'outcome'</span>].unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>array(['Saved', 'Off T', 'Post', 'Goal', 'Blocked', 'Wayward',
        'Saved Off Target', 'Saved to Post'], dtype=object)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="5">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rename existing 'outcome' column to 'outcome_type' </span></span>
@@ -283,7 +281,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>shots.loc[:, <span class="st">'outcome'</span>] <span class="op">=</span> shots.loc[:, <span class="st">'outcome_type'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="dv">1</span> <span class="cf">if</span> x <span class="op">==</span> <span class="st">'Goal'</span> <span class="cf">else</span> <span class="dv">0</span>)</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>shots.loc[:, <span class="st">'outcome'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>0        0
 1        0
 2        0
@@ -299,7 +297,7 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 </div>
 </div>
 <p>Now, let us analyze the types of available shots and their frequencies. From <a href="#fig-1">Figure&nbsp;1</a>, it can be seen that our dataframe contains data on 11043 shots. Below you can see that 1165 of them resulted in a goal.</p>
-<div class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="6">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data preparation</span></span>
@@ -339,7 +337,7 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 </div>
 <p>To sum up, we can see that a majority of shots are off target, blocked or saved. Since only 1165 out of 11043 shots are goals, we can conclude that our data is imbalanced. This will affect our choice of model evaluation metric in the model selection phase.</p>
 <p>Next, we can visualize the location of all shots.</p>
-<div class="cell" data-execution_count="6">
+<div class="cell" data-execution_count="7">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Canvas</span></span>
@@ -383,7 +381,7 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 <section id="feature-engineering" class="level2">
 <h2 class="anchored" data-anchor-id="feature-engineering">Feature Engineering</h2>
 <p>When it comes to the analysis of a shot made by a player, one can even intuitively predict whether that shot will have a decent outcome or not. In practice, two major factors drive this intuition and can be actually quantified. These are <strong>distance</strong> to a goal and <strong>angle</strong> under which a shot is taken.</p>
-<div class="cell" data-execution_count="18">
+<div class="cell" data-execution_count="8">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pitch design</span></span>
@@ -413,12 +411,12 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 </div>
 </div>
 </div>
-<section id="distance-angle-features" class="level3">
-<h3 class="anchored" data-anchor-id="distance-angle-features">Distance &amp; Angle Features</h3>
+<section id="distance-and-angle-features" class="level3">
+<h3 class="anchored" data-anchor-id="distance-and-angle-features">Distance and Angle Features</h3>
 <p>To demonstrate an impact of <strong>distance</strong> and <strong>angle</strong> features on the probability of a shot to result in a goal, I evaluate these features from a given (x, y) coordinate of each shot and build a simple logistic regression that makes probabilitistic predictions.</p>
 <p>To evaluate the distance to a goal, I calculate the Euclidean distance between (x, y) coordinate of a shot and the goal centerline. Since I work with Statsbomb data, I use their pitch dimensions, which are [0, 120] on the x axis and [0, 80] on the y axis. Thus, the goal centerline coordinates are (120, 40).</p>
 <p>Below you can see my implementation:</p>
-<div class="cell" data-execution_count="7">
+<div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Distance Feature calculation</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># define goal center for 'statsbomb'</span></span>
@@ -430,7 +428,7 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 </div>
 <p>Next, I calculate the angle of a shot. The task breaks down to finding the angle between two sides of a triangle given that all lengths (a, b, c) of the triangle are known.</p>
 <p>Below you can see my implementation:</p>
-<div class="cell" data-execution_count="8">
+<div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Angle Feature calculation</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># transform (x, y) coordinates from percentiles to field length coordinates (105 meters x 68 meters)</span></span>
@@ -450,7 +448,7 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 </div>
 <p>Now, I would like to demonstrate how both of these features impact the probability of scoring.</p>
 <p>I run a simple logistic regression that includes only these features (distance, angle) and obtain probabilisitc predictions for each shot. Then, I plot both of these features against the probabilistic predictions to visualize the relationship. The objective is to illustrate the relationship between the features and the probability of scoring.</p>
-<div class="cell" data-execution_count="9">
+<div class="cell" data-execution_count="11">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
@@ -522,7 +520,7 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 </div>
 <p>As can be seen from a) part of <a href="#fig-4">Figure&nbsp;4</a>, the inprobability of scoring (or you can also call it xG value) decreases exponentially with increasing distance. On the contrast, the probability of scoring increases linearly with angle.</p>
 <p>In both plots of <a href="#fig-4">Figure&nbsp;4</a>, there are densely populated parts that can be analyzed in a slightly different way. From these areas a majority of shots is executed. When analyzing <a href="#fig-5">Figure&nbsp;5</a>, we can observe that most of the shots are executed within the distance range from 5 to 30 m. Most of the angles of the executed shots are distributed within the angle range from 0 to 60 degrees (or from 0 to 1 radians, respectively).</p>
-<div class="cell" data-execution_count="10">
+<div class="cell" data-execution_count="12">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Canvas</span></span>
@@ -691,7 +689,7 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
        'Other'], dtype=object)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="19">
+<div class="cell" data-execution_count="13">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data preparation for barplot 1</span></span>
