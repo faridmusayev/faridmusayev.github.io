@@ -211,7 +211,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <style> body {text-align: justify} </style>
 <p><!-- Justify text. --></p>
 <p>In this section, I will demonstrate several steps that are required to preprocess data that will be used for building Expected Goals (xG) Model. Most of preprocessing steps will be implemented using <code>pandas</code>.</p>
-<p>In addition to pandas, the following packages need to be imported.</p>
+<p>In addition to pandas, the following packages need to be imported:</p>
 <div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ast</span>
@@ -219,7 +219,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>There are different publicly available soccer match event datasets. For this model, I decided to work with female soccer match event data due to a high granularity of event descriptions provided by the vendor, Statsbomb. This granularity can help me in building a sophisticated model and design features that can increase its accuracy. To learn more about other available datasets released by Statsbomb, feel free to visit <a href="https://github.com/statsbomb/open-data">this link</a>.</p>
-<p>To extract data from Statsbomb API, different methodologies are present. I prefer to work with <a href="https://socceraction.readthedocs.io/en/latest/#"><code>socceraction</code></a> library that allows me to extract data in a convenient <code>pandas.DataFrame</code> format.</p>
+<p>To extract data from Statsbomb API, different methodologies are available. I prefer to work with <a href="https://socceraction.readthedocs.io/en/latest/#"><code>socceraction</code></a> library that allows me to extract data in a convenient <code>pandas.DataFrame</code> format.</p>
 <div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import wyscout public match event data loader from socceraction library</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> socceraction.data.statsbomb <span class="im">import</span> StatsBombLoader </span>
@@ -311,8 +311,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<p>As it can be seen, data is available for four different female soccer competitions. Three seasons of <strong>FA Women’s Super League</strong>, one season of <strong>NWSL</strong> and two competitions involving national teams, <strong>UEFA Women’s Euro 2022</strong> and <strong>Women’s World Cup 2019</strong>.</p>
-<p>Below code illustrates steps required to read each game from aforementioned competitions and save them as <code>.csv</code> files. I also save all <code>.csv</code> files into a single <code>all_events</code> dataframe. Later, this will allow me to extract an event of interest from all games at once.</p>
+<p>As can be seen, data is available for four different female soccer competitions. Three seasons of <strong>FA Women’s Super League</strong>, one season of <strong>NWSL</strong> and two competitions involving national teams, <strong>UEFA Women’s Euro 2022</strong> and <strong>Women’s World Cup 2019</strong>.</p>
+<p>Below code illustrates steps required to read event data on each game from the aforementioned competitions and save it as <code>.csv</code> file. I also save all <code>.csv</code> files into a single <code>all_events</code> dataframe. Later, this will allow me to extract an event of interest from all games at once.</p>
 <div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># names of folders to save files</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>dir_names <span class="op">=</span> [<span class="st">'FAWSL_2021'</span>, <span class="st">'FAWSL_1920'</span>, <span class="st">'FAWSL_1819'</span>, <span class="st">'NWSL'</span>, <span class="st">'EURO_2022'</span>, <span class="st">'WC_2019'</span>]</span>
@@ -337,7 +337,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>all_events <span class="op">=</span> all_events.reset_index(drop <span class="op">=</span> <span class="va">True</span>)</span>
 <span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>all_events.to_csv(<span class="st">'.data/all_events.csv'</span>, index <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="5">
+<div class="cell" data-scrolled="true" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>all_events.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 
@@ -449,7 +449,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<p>There is a wide range of data describing each event. Since xG model evaluates probability of a shot resulting into a goal, I can filter only <code>shot</code> events, extract columns of interest to this event and test those columns after preprocessing in the model building phase.</p>
+<p>There is a wide range of data describing each event. Since xG model evaluates the probability of a shot to result in a goal, I can filter only <code>shot</code> events, extract columns of interest to this event and test these columns after preprocessing in the model building phase.</p>
 <div class="cell" data-scrolled="true" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># list all features to select ones required for xG model</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>all_events.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -469,10 +469,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                       [<span class="st">'minute'</span>, <span class="st">'player_name'</span>, <span class="st">'team_name'</span>, <span class="st">'type_name'</span>, <span class="st">'play_pattern_name'</span>, </span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'position_name'</span>, <span class="st">'location'</span>, <span class="st">'under_pressure'</span>, <span class="st">'extra'</span>]].reset_index(drop <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The following features are left out due to their irrelevance with the context of the model: <em>‘game_id’, ‘event_id’, ‘period_id’, ‘team_id’, ‘player_id’, ‘type_id’, ‘index’, ‘timestamp’, ‘minute’, ‘second’, ‘possession’, ‘possession_team_id’, ‘possession_team_name’, ‘play_pattern_id’, ‘duration’, ‘related_events’, ‘position_id’</em>.</p>
-<p>As you can see the majority of these events are <code>id</code> identifiers. For example, <code>play_pattern_id</code> is ommited while <code>play_pattern</code> is left in the dataframe. The rest of columns include time or possession related information which will not make any use in our case.</p>
-<p>One of the most important columns, as we will later see, is the <code>location</code> of the shot. I extract required (x, y) coordinates from a given list and save them as separate columns for a simpler use case during featuring engineering phase.</p>
-<p>It is important to note that when dataframes are saved as <code>.csv</code> files, all of them are converted into a raw string format. Thus, when reading those dataframes, one needs to convert columns containing specific datatypes into python readable format. For that, I use <code>ast</code> package and, specifically, <code>ast.literal_eval()</code> function. This allows me to convert a string of a list into python readable list object.</p>
+<p>The following columns are dropped due to their irrelevance to the context of the model: <em>‘game_id’, ‘event_id’, ‘period_id’, ‘team_id’, ‘player_id’, ‘type_id’, ‘index’, ‘timestamp’, ‘minute’, ‘second’, ‘possession’, ‘possession_team_id’, ‘possession_team_name’, ‘play_pattern_id’, ‘duration’, ‘related_events’, ‘position_id’</em>.</p>
+<p>As you can see, a majority of these events are <code>id</code> identifiers. For example, <code>play_pattern_id</code> is ommited while <code>play_pattern</code> is left in the dataframe. The rest of the columns include time- or possession-related information which will not make any use in our case.</p>
+<p>One of the most important columns, as we will see later, is <code>location</code> of the shot. I extract required (x, y) coordinates from a given list and save them as separate columns for a simpler use case during feature engineering phase.</p>
+<p>It is important to note that when dataframes are saved as <code>.csv</code> files, all of them are converted into a raw string format. Thus, when reading these dataframes, one needs to convert columns containing specific datatypes into a python readable format. For that, I use <code>ast</code> package and, specifically, <code>ast.literal_eval()</code> function. This allows me to convert a string of a list into a python readable list object.</p>
 <div class="cell" data-execution_count="105">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># unlist location column into (x, y) and remove it</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>shots.loc[:, <span class="st">'location'</span>] <span class="op">=</span> shots.loc[:, <span class="st">'location'</span>].<span class="bu">apply</span>(ast.literal_eval)</span>
@@ -573,7 +573,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<p>There is <code>extra</code> named column that contains additional information describing <code>shot</code> event. This is where we can observe that Statsbomb provides a high level of event data granularity. For example, below you can see that for each shot, the location of all players, specifically opposing team’s goalkeeper, within a visible video frame is recorded. In addition, there is data about <code>body_part</code> with which shot was implemented, available <code>technique</code> (which as per event data description guide is “name of the technique used for this shot”), <code>open_goal</code> variable which is a boolean that describes if a shot was taken with an open goal, and <code>follows_dribble</code> boolean variable that describes if a taken shot was followed by dribble or not, <code>first_time</code> boolean variable that describes if a shot was taken with the first touch or not. Due to vendor specifications, only boolean variables with <code>True</code> state appear in <code>extra</code> column, thus, I have to specify <code>False</code> state for all other cases explicitly.</p>
+<p>The column named <code>extra</code> contains additional information describing <code>shot</code> event. This is where we can observe that Statsbomb provides a high level of event data granularity. For example, below you can see that for each shot, the location of all players, specifically opposing team’s goalkeeper, within a visible video frame is recorded. In addition, there is data about <code>body_part</code> with which a shot was implemented, <code>technique</code> (which as per event data description guide is “name of the technique used for this shot”), <code>open_goal</code> which is a boolean variable that describes if a shot was taken with an open goal, <code>follows_dribble</code> which is a boolean variable that describes if a taken shot was followed by dribble or not and <code>first_time</code> which is a boolean variable that describes if a shot was taken with the first touch or not. Due to vendor specifications, only boolean variables with <code>True</code> state appear in <code>extra</code> column; thus, I have to specify <code>False</code> state for all other cases explicitly.</p>
 <p>As you can see, variables <code>follows_dribble</code> and <code>open_goal</code> are missing from below instance of <code>extra</code> column due to <code>False</code> state.</p>
 <div class="cell" data-execution_count="150">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>shots.loc[:, <span class="st">'extra'</span>][<span class="dv">148</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -632,7 +632,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     'teammate': False}]}}</code></pre>
 </div>
 </div>
-<p>In addition to above mentioned data, I also extract contenxtual information from <code>extra</code> column. These are <code>type</code>, <code>statsbomb_xg</code> and <code>outcome</code> variables. The last one is important for knowing if a taken shot results into a goal or not. <code>type</code> will help me to filter out only open play situations, and discard outlying conditions where a shot is taken directly from corner, free-kick, penalty or kick-off. These are situations which can largely skew performance of existent xG Model, and it is better to build a separate model that focuses only on those conditions.</p>
+<p>In addition to above-mentioned data, I also extract contenxtual information from <code>extra</code> column. These are <code>type</code>, <code>statsbomb_xg</code> and <code>outcome</code> variables. The last one is important for knowing if a taken shot results in a goal or not. The variable <code>type</code> will help me to filter out only open play situations and discard outlying conditions where a shot is taken directly from corner, free-kick, penalty or kick-off. These are situations that can largely skew performance of the proposed xG model, and it is better to build a separate model that focuses only on them.</p>
 <p>I unpack <code>extra</code> column that consists of dictionaries, extract required data and save it as separate columns in the dataframe.</p>
 <div class="cell" data-execution_count="107">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># convert 'extra' column to dict readable format using ast.literal_eval</span></span>
@@ -804,7 +804,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<p>Also, I would like to extract opposing team’s goalkeeper location during each executed shot. These coordinates are present in <code>freeze_frame</code> column.</p>
+<p>Also, I would like to extract opposing team’s goalkeeper location during each executed shot. These coordinates are contained in <code>freeze_frame</code> column.</p>
 <div class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># write a custom function to unpack dictionaries within freeze_frame column</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ff_unpacking(players):</span>
@@ -827,7 +827,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>shots.to_csv(<span class="st">'.data/shots.csv'</span>, index <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This is the end of preprocessing stage for data that will be used in xG model. Now, we can move on to model building phase which will include exploratory data analysis, feature engineering and model selection.</p>
+<p>This is the end of preprocessing stage for data that will be used in the proposed xG model. Now, we can move on to the model building phase that will focus on exploratory data analysis, feature engineering and model selection.</p>
 
 
 

@@ -232,8 +232,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><!-- Justify text. --></p>
 <section id="package-prerequisites" class="level2">
 <h2 class="anchored" data-anchor-id="package-prerequisites">Package prerequisites</h2>
-<p>In this part, the following packages need to be imported. <code>scikit-learn</code> libraries will be imported in required places in <strong>Model Selection</strong> section.</p>
-<div class="cell" data-execution_count="723">
+<p>In this part, the following packages need to be imported:</p>
+<div class="cell" data-execution_count="1">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
@@ -251,8 +251,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="exploratory-data-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="exploratory-data-analysis">Exploratory Data Analysis</h2>
-<p>Firstly, I read a preprocessed <code>.csv</code> data file and convert all required columns to python readable object types.</p>
-<div class="cell" data-execution_count="754">
+<p>Firstly, I read the preprocessed <code>.csv</code> data file and convert all required columns to python readable object types.</p>
+<div class="cell" data-execution_count="2">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read shots.csv file </span></span>
@@ -262,8 +262,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>shots.loc[:, <span class="st">'end_loc'</span>] <span class="op">=</span> shots.loc[:, <span class="st">'end_loc'</span>].<span class="bu">apply</span>(ast.literal_eval)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Prediction of a goal outcome in soccer is a binary classification task { 0 - No goal ; 1 - Goal }. However, the key point to note is that, in xG model, we are not dealing with hard classes but rather trying to make a probabilistic prediction for a shot outcome. In comparison with hard classes, probabilistic outputs allow to describe the quality of shot since not all shots are equally probable to be scored. In other words, given a shot, how likely it is to result into a goal. This is what xG value estimates for a given shot.</p>
-<p>As you can see from below code snippet, there are different outcome types for a given shot such as <em>Saved</em>, <em>Off target</em>, shot that hit <em>Post</em>, <em>Blocked</em>, way off target <em>Wayward</em> shot and etc. To build a binary probabilistic classifier, it is necessary for us to define predictions as hard classes. Here, I convert each value of <code>outcome_type</code> column to 1 for <em>Goal</em> scenario or 0 for the rest of scenarios.</p>
+<p>Prediction of a goal outcome in soccer is a binary classification task { 0 - No goal ; 1 - Goal }. However, the key point is that, in xG model, we are not dealing with hard classes but rather trying to make a probabilistic prediction for a shot outcome. In comparison with hard classes, probabilistic outputs allow to describe the quality of a shot since not all shots are equally probable to be scored. In other words, given a shot, how likely it is to result in a goal. This is what the xG value estimates for a given shot.</p>
+<p>The code snippet below shows that there are different outcome types for a given shot such as <em>Saved</em>, <em>Off target</em>, shot that hit <em>Post</em>, <em>Blocked</em>, way off target <em>Wayward</em> shot, etc. To build a binary probabilistic classifier, it is necessary to define predictions as hard classes. Here, I convert each value of <code>outcome_type</code> column to 1 for <em>Goal</em> scenario or 0 for the rest of scenarios.</p>
 <div class="cell" data-execution_count="5">
 <details>
 <summary>Code</summary>
@@ -274,7 +274,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
        'Saved Off Target', 'Saved to Post'], dtype=object)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="755">
+<div class="cell" data-execution_count="3">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rename existing 'outcome' column to 'outcome_type' </span></span>
@@ -283,7 +283,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>shots.loc[:, <span class="st">'outcome'</span>] <span class="op">=</span> shots.loc[:, <span class="st">'outcome_type'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="dv">1</span> <span class="cf">if</span> x <span class="op">==</span> <span class="st">'Goal'</span> <span class="cf">else</span> <span class="dv">0</span>)</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>shots.loc[:, <span class="st">'outcome'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="755">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>0        0
 1        0
 2        0
@@ -298,8 +298,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Name: outcome, Length: 11043, dtype: int64</code></pre>
 </div>
 </div>
-<p>Now, let us analyze the types of available shots and their frequencies. From <a href="#fig-1">Figure&nbsp;1</a>, it can be seen that our dataframe has a data on 11043 shots. As we can see below, 1165 of them resulted into a goal.</p>
-<div class="cell" data-execution_count="724">
+<p>Now, let us analyze the types of available shots and their frequencies. From <a href="#fig-1">Figure&nbsp;1</a>, it can be seen that our dataframe contains data on 11043 shots. Below you can see that 1165 of them resulted in a goal.</p>
+<div class="cell" data-execution_count="5">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data preparation</span></span>
@@ -324,10 +324,9 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 <span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Outcome Type"</span>, fontsize <span class="op">=</span> <span class="dv">10</span>)</span>
 <span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"# of instances"</span>, fontsize <span class="op">=</span> <span class="dv">10</span>)</span>
 <span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>ax.tick_params(axis <span class="op">=</span> <span class="st">'both'</span>, which <span class="op">=</span> <span class="st">'major'</span>, labelsize <span class="op">=</span> <span class="dv">10</span>)</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">""</span>, loc <span class="op">=</span> <span class="st">"left"</span>, pad <span class="op">=</span> <span class="dv">1</span>, fontdict <span class="op">=</span> font)</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>ax.spines[[<span class="st">'top'</span>, <span class="st">'right'</span>]].set_visible(<span class="va">False</span>)</span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>ax.spines[[<span class="st">'top'</span>, <span class="st">'right'</span>]].set_visible(<span class="va">False</span>)</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="fig-1" class="quarto-figure quarto-figure-center anchored">
@@ -338,9 +337,9 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 </div>
 </div>
 </div>
-<p>To sum up, we can see that the majority of shots are off target, blocked or saved. Since only 1165 out of 11043 shots are goals, we can conclude that our data is imbalanced. This will affect our choice of model evaluation metric, later in the model selection phase.</p>
+<p>To sum up, we can see that a majority of shots are off target, blocked or saved. Since only 1165 out of 11043 shots are goals, we can conclude that our data is imbalanced. This will affect our choice of model evaluation metric in the model selection phase.</p>
 <p>Next, we can visualize the location of all shots.</p>
-<div class="cell" data-execution_count="725">
+<div class="cell" data-execution_count="6">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Canvas</span></span>
@@ -379,12 +378,12 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 </div>
 </div>
 </div>
-<p>The majority of shots is made in the central block of the final third area. In addition, there are several outlying shots made from a central area and flang positions. On the right flang, some of outliers even resulted into a Goal.</p>
+<p>A majority of shots is made in the central block of the final third area. In addition, there are several outlying shots made from a central area and flang positions. On the right flang, some of outliers even resulted in a goal.</p>
 </section>
 <section id="feature-engineering" class="level2">
 <h2 class="anchored" data-anchor-id="feature-engineering">Feature Engineering</h2>
-<p>When it comes to the analysis of a shot made by a player, one can even intuitively predict whether that shot will have a decent outcome or not. In practice, there are two major factors which drive that intuition and can be actually quantified. These are <strong>distance</strong> to a goal and <strong>angle</strong> under which a shot was implemented.</p>
-<div class="cell" data-execution_count="397">
+<p>When it comes to the analysis of a shot made by a player, one can even intuitively predict whether that shot will have a decent outcome or not. In practice, two major factors drive this intuition and can be actually quantified. These are <strong>distance</strong> to a goal and <strong>angle</strong> under which a shot is taken.</p>
+<div class="cell" data-execution_count="18">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pitch design</span></span>
@@ -392,7 +391,7 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                      half <span class="op">=</span> <span class="va">True</span>, </span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                      pad_left <span class="op">=</span> <span class="dv">0</span>, pad_right <span class="op">=</span> <span class="dv">0</span>, pad_top <span class="op">=</span> <span class="dv">0</span>, pad_bottom <span class="op">=</span> <span class="fl">0.15</span>)  </span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Canvas</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> pitch.draw(nrows <span class="op">=</span> <span class="dv">1</span>, ncols <span class="op">=</span> <span class="dv">3</span>, figsize <span class="op">=</span> (<span class="dv">10</span>, <span class="dv">12</span>))</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> pitch.draw(nrows <span class="op">=</span> <span class="dv">1</span>, ncols <span class="op">=</span> <span class="dv">3</span>, figsize <span class="op">=</span> (<span class="dv">8</span>, <span class="dv">10</span>))</span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Data preparation</span></span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">100</span>, <span class="dv">120</span>, <span class="dv">105</span>, <span class="dv">120</span>, <span class="dv">110</span>, <span class="dv">120</span>]).reshape(<span class="dv">3</span>, <span class="dv">2</span>)</span>
@@ -408,18 +407,18 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 <div class="cell-output cell-output-display">
 <div id="fig-3" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="building_model_files/figure-html/fig-3-output-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;3: Different distance to goal (solid line) and angle (shaded area) for a given shot.</figcaption><p></p>
+<p><img src="building_model_files/figure-html/fig-3-output-1.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3: Different distances to a goal (solid line) and angles (shaded area) for a given shot.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <section id="distance-angle-features" class="level3">
 <h3 class="anchored" data-anchor-id="distance-angle-features">Distance &amp; Angle Features</h3>
-<p>To demonstrate an impact of <strong>distance</strong> and <strong>angle</strong> features on a probability of a shot resulting into a goal, I evaluate these features from a given (x, y) coordinate of each shot and build a simple logistic regression that makes probabilitistic predictions.</p>
-<p>To evaluate distance to the goal, I calculate euclidean distance between (x, y) coordinate of a shot and goal centerline. Since I work with Statsbomb data, I use their pitch dimensions which are [0, 120] on x axis and [0, 80] on y axis. Thus, goal centerline coordinates are (120, 40).</p>
-<p>Below, you can see my implementation:</p>
-<div class="cell" data-execution_count="756">
+<p>To demonstrate an impact of <strong>distance</strong> and <strong>angle</strong> features on the probability of a shot to result in a goal, I evaluate these features from a given (x, y) coordinate of each shot and build a simple logistic regression that makes probabilitistic predictions.</p>
+<p>To evaluate the distance to a goal, I calculate the Euclidean distance between (x, y) coordinate of a shot and the goal centerline. Since I work with Statsbomb data, I use their pitch dimensions, which are [0, 120] on the x axis and [0, 80] on the y axis. Thus, the goal centerline coordinates are (120, 40).</p>
+<p>Below you can see my implementation:</p>
+<div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Distance Feature calculation</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># define goal center for 'statsbomb'</span></span>
@@ -429,9 +428,9 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>shots[<span class="st">'distance'</span>] <span class="op">=</span> np.sqrt((shots[<span class="st">'x_start'</span>] <span class="op">-</span> goal_center[<span class="dv">0</span>])<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (shots[<span class="st">'y_start'</span>] <span class="op">-</span> goal_center[<span class="dv">1</span>])<span class="op">**</span><span class="dv">2</span>)</span>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>shots[<span class="st">'distance'</span>] <span class="op">=</span> shots[<span class="st">'distance'</span>].<span class="bu">round</span>(decimals <span class="op">=</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Next, I calculate an angle of a shot. The task breaks down to finding an angle between two sides of a triangle given that all lengths (a, b, c) of a triangle are known.</p>
-<p>Below, you can see my implementation:</p>
-<div class="cell" data-execution_count="757">
+<p>Next, I calculate the angle of a shot. The task breaks down to finding the angle between two sides of a triangle given that all lengths (a, b, c) of the triangle are known.</p>
+<p>Below you can see my implementation:</p>
+<div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Angle Feature calculation</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># transform (x, y) coordinates from percentiles to field length coordinates (105 meters x 68 meters)</span></span>
@@ -449,9 +448,9 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 <span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co"># remember to leave angle in radians (if you want to transfer to degree multiply cos_alpha by 180/pi)</span></span>
 <span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>shots[<span class="st">'angle'</span>] <span class="op">=</span> np.arccos(cos_alpha)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Now, I would like to demonstrate how both of these features impact probability of scoring.</p>
-<p>I run a simple logistic regression that includes only these features (distance, angle) and obtain probabilisitc predictions for each shot. Then, I plot both of these features against my probabilistic predictions to visualize the relationship. The goal here is to illustrate relationship between our features and probability of scoring.</p>
-<div class="cell" data-execution_count="732">
+<p>Now, I would like to demonstrate how both of these features impact the probability of scoring.</p>
+<p>I run a simple logistic regression that includes only these features (distance, angle) and obtain probabilisitc predictions for each shot. Then, I plot both of these features against the probabilistic predictions to visualize the relationship. The objective is to illustrate the relationship between the features and the probability of scoring.</p>
+<div class="cell" data-execution_count="9">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
@@ -521,9 +520,9 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 </div>
 </div>
 </div>
-<p>As it can be seen from a) part of <a href="#fig-4">Figure&nbsp;4</a>, indeed, probability of scoring (or you can also call it xG value) decreases exponentially with increasing distance. On the contrast, probability of scoring increases linearly with increasing angle.</p>
-<p>In both plots of <a href="#fig-4">Figure&nbsp;4</a>, there are densely populated parts that can be analyzed in a slightly different way. These are the areas from where majority of shots is executed. When analyzing <a href="#fig-5">Figure&nbsp;5</a>, we can observe that most of the shots are executed within a distance range of 5 to 30 meters. Similarly, most of the angles of executed shots are distributed within 0 to 60 degrees (0 to 1 radians respectively).</p>
-<div class="cell" data-execution_count="735">
+<p>As can be seen from a) part of <a href="#fig-4">Figure&nbsp;4</a>, the inprobability of scoring (or you can also call it xG value) decreases exponentially with increasing distance. On the contrast, the probability of scoring increases linearly with angle.</p>
+<p>In both plots of <a href="#fig-4">Figure&nbsp;4</a>, there are densely populated parts that can be analyzed in a slightly different way. From these areas a majority of shots is executed. When analyzing <a href="#fig-5">Figure&nbsp;5</a>, we can observe that most of the shots are executed within the distance range from 5 to 30 m. Most of the angles of the executed shots are distributed within the angle range from 0 to 60 degrees (or from 0 to 1 radians, respectively).</p>
+<div class="cell" data-execution_count="10">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Canvas</span></span>
@@ -563,7 +562,7 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 </section>
 <section id="statistical-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="statistical-analysis">Statistical Analysis</h2>
-<p>I run a logistic regression including all features that could help me understand the statistical signficance of these features. My intention is to analyze p-values for each of the features, and determine which of those values are weakly associated with the response.</p>
+<p>All features are included into the logistic regression model to analyze their statistical signficance. The objective is to analyze p-values for each of the features and determine which of these values are weakly associated with the response.</p>
 <div class="cell" data-execution_count="428">
 <details>
 <summary>Code</summary>
@@ -679,9 +678,9 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 </div>
 </div>
 </div>
-<p>There are several categorical variables which have very high p-values. These are <strong>body_part[T.Other]</strong>, <strong>play_pattern_name[T.From Keeper]</strong>, <strong>play_pattern_name[T.From Kick Off]</strong>, <strong>play_pattern_name[T.Other]</strong> and <strong>gk_loc_y</strong>. Let us analyze those features and consider if we can leave them out of our model.</p>
-<p>First, there is a <strong>play_pattern_name</strong> column that describes different types of play during which a shot was executed. As it can be seen from below code snippet, there are in total 9 types of play.</p>
-<div class="cell" data-execution_count="431">
+<p>There are several categorical variables with very high p-values. These are <strong>body_part[T.Other]</strong>, <strong>play_pattern_name[T.From Keeper]</strong>, <strong>play_pattern_name[T.From Kick Off]</strong>, <strong>play_pattern_name[T.Other]</strong> and <strong>gk_loc_y</strong>. Let us analyze these features and decide if we can drop them from the model.</p>
+<p>First, <strong>play_pattern_name</strong> column describes different types of play during which a shot was executed. Below code snippet shows that there are 9 types of play in total.</p>
+<div class="cell" data-scrolled="true" data-execution_count="431">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>shots.loc[:, <span class="st">'play_pattern_name'</span>].unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -692,7 +691,7 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
        'Other'], dtype=object)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="741">
+<div class="cell" data-execution_count="19">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data preparation for barplot 1</span></span>
@@ -716,98 +715,96 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 <span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>       color <span class="op">=</span> <span class="st">'skyblue'</span>, edgecolor <span class="op">=</span> <span class="st">"black"</span>, zorder <span class="op">=</span> <span class="dv">2</span>, alpha <span class="op">=</span> <span class="fl">0.7</span>) </span>
 <span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Barplot labels</span></span>
-<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].bar_label(pl, padding <span class="op">=</span> <span class="dv">5</span>, label_type<span class="op">=</span><span class="st">'edge'</span>)</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].bar_label(pl, padding <span class="op">=</span> <span class="dv">5</span>, label_type<span class="op">=</span><span class="st">'edge'</span>, fontsize <span class="op">=</span> <span class="dv">8</span>)</span>
 <span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Labels and titles</span></span>
 <span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_ylabel(<span class="st">"Type of Play"</span>, fontsize <span class="op">=</span> <span class="dv">10</span>)</span>
 <span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_xlabel(<span class="st">"# of instances"</span>, fontsize <span class="op">=</span> <span class="dv">10</span>)</span>
-<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].tick_params(axis <span class="op">=</span> <span class="st">'both'</span>, which <span class="op">=</span> <span class="st">'major'</span>, labelsize <span class="op">=</span> <span class="dv">10</span>)</span>
-<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_title(<span class="st">""</span>, loc <span class="op">=</span> <span class="st">"left"</span>, pad <span class="op">=</span> <span class="dv">1</span>, fontdict <span class="op">=</span> font)</span>
-<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].spines[[<span class="st">'top'</span>, <span class="st">'right'</span>]].set_visible(<span class="va">False</span>)</span>
-<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a><span class="co">#############################################################################</span></span>
-<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Grid specs</span></span>
-<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].grid(color <span class="op">=</span> <span class="st">'black'</span>, ls <span class="op">=</span> <span class="st">'-.'</span>, lw <span class="op">=</span> <span class="fl">0.25</span>, axis <span class="op">=</span> <span class="st">"x"</span>)</span>
-<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Main plot</span></span>
-<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a>pl2 <span class="op">=</span> ax[<span class="dv">1</span>].barh(body_part[<span class="st">"body_part"</span>], body_part[<span class="st">"n"</span>], height <span class="op">=</span> <span class="fl">0.4</span>, label <span class="op">=</span> <span class="st">'n'</span>,</span>
-<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a>       color <span class="op">=</span> <span class="st">'red'</span>, edgecolor <span class="op">=</span> <span class="st">"black"</span>, zorder <span class="op">=</span> <span class="dv">2</span>, alpha <span class="op">=</span> <span class="fl">0.7</span>) </span>
-<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-40"><a href="#cb18-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Barplot labels</span></span>
-<span id="cb18-41"><a href="#cb18-41" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].bar_label(pl2, padding <span class="op">=</span> <span class="dv">5</span>, label_type<span class="op">=</span><span class="st">'edge'</span>)</span>
-<span id="cb18-42"><a href="#cb18-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-43"><a href="#cb18-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Labels and titles</span></span>
-<span id="cb18-44"><a href="#cb18-44" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_ylabel(<span class="st">"Body part"</span>, fontsize <span class="op">=</span> <span class="dv">10</span>)</span>
-<span id="cb18-45"><a href="#cb18-45" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_xlabel(<span class="st">"# of instances"</span>, fontsize <span class="op">=</span> <span class="dv">10</span>)</span>
-<span id="cb18-46"><a href="#cb18-46" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].tick_params(axis <span class="op">=</span> <span class="st">'both'</span>, which <span class="op">=</span> <span class="st">'major'</span>, labelsize <span class="op">=</span> <span class="dv">10</span>)</span>
-<span id="cb18-47"><a href="#cb18-47" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_title(<span class="st">""</span>, loc <span class="op">=</span> <span class="st">"left"</span>, pad <span class="op">=</span> <span class="dv">1</span>, fontdict <span class="op">=</span> font)</span>
-<span id="cb18-48"><a href="#cb18-48" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].spines[[<span class="st">'top'</span>, <span class="st">'right'</span>]].set_visible(<span class="va">False</span>)</span>
-<span id="cb18-49"><a href="#cb18-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-50"><a href="#cb18-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-51"><a href="#cb18-51" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the spacing parameters between subplots</span></span>
-<span id="cb18-52"><a href="#cb18-52" aria-hidden="true" tabindex="-1"></a>plt.subplots_adjust(left <span class="op">=</span> <span class="fl">0.1</span>,</span>
-<span id="cb18-53"><a href="#cb18-53" aria-hidden="true" tabindex="-1"></a>                    bottom <span class="op">=</span> <span class="fl">1.3</span>, </span>
-<span id="cb18-54"><a href="#cb18-54" aria-hidden="true" tabindex="-1"></a>                    right <span class="op">=</span> <span class="dv">2</span>, </span>
-<span id="cb18-55"><a href="#cb18-55" aria-hidden="true" tabindex="-1"></a>                    top <span class="op">=</span> <span class="dv">2</span>, </span>
-<span id="cb18-56"><a href="#cb18-56" aria-hidden="true" tabindex="-1"></a>                    wspace <span class="op">=</span> <span class="fl">0.65</span>, </span>
-<span id="cb18-57"><a href="#cb18-57" aria-hidden="true" tabindex="-1"></a>                    hspace <span class="op">=</span> <span class="fl">0.5</span>)</span>
-<span id="cb18-58"><a href="#cb18-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-59"><a href="#cb18-59" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].tick_params(axis <span class="op">=</span> <span class="st">'both'</span>, which <span class="op">=</span> <span class="st">'major'</span>, labelsize <span class="op">=</span> <span class="dv">8</span>)</span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].spines[[<span class="st">'top'</span>, <span class="st">'right'</span>]].set_visible(<span class="va">False</span>)</span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a><span class="co">#############################################################################</span></span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Grid specs</span></span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].grid(color <span class="op">=</span> <span class="st">'black'</span>, ls <span class="op">=</span> <span class="st">'-.'</span>, lw <span class="op">=</span> <span class="fl">0.25</span>, axis <span class="op">=</span> <span class="st">"x"</span>)</span>
+<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Main plot</span></span>
+<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a>pl2 <span class="op">=</span> ax[<span class="dv">1</span>].barh(body_part[<span class="st">"body_part"</span>], body_part[<span class="st">"n"</span>], height <span class="op">=</span> <span class="fl">0.4</span>, label <span class="op">=</span> <span class="st">'n'</span>,</span>
+<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a>       color <span class="op">=</span> <span class="st">'red'</span>, edgecolor <span class="op">=</span> <span class="st">"black"</span>, zorder <span class="op">=</span> <span class="dv">2</span>, alpha <span class="op">=</span> <span class="fl">0.7</span>) </span>
+<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Barplot labels</span></span>
+<span id="cb18-40"><a href="#cb18-40" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].bar_label(pl2, padding <span class="op">=</span> <span class="dv">5</span>, label_type<span class="op">=</span><span class="st">'edge'</span>, fontsize <span class="op">=</span> <span class="dv">8</span>)</span>
+<span id="cb18-41"><a href="#cb18-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-42"><a href="#cb18-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Labels and titles</span></span>
+<span id="cb18-43"><a href="#cb18-43" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_ylabel(<span class="st">"Body part"</span>, fontsize <span class="op">=</span> <span class="dv">10</span>)</span>
+<span id="cb18-44"><a href="#cb18-44" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_xlabel(<span class="st">"# of instances"</span>, fontsize <span class="op">=</span> <span class="dv">10</span>)</span>
+<span id="cb18-45"><a href="#cb18-45" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].tick_params(axis <span class="op">=</span> <span class="st">'both'</span>, which <span class="op">=</span> <span class="st">'major'</span>, labelsize <span class="op">=</span> <span class="dv">8</span>)</span>
+<span id="cb18-46"><a href="#cb18-46" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].spines[[<span class="st">'top'</span>, <span class="st">'right'</span>]].set_visible(<span class="va">False</span>)</span>
+<span id="cb18-47"><a href="#cb18-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-48"><a href="#cb18-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-49"><a href="#cb18-49" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the spacing parameters between subplots</span></span>
+<span id="cb18-50"><a href="#cb18-50" aria-hidden="true" tabindex="-1"></a>plt.subplots_adjust(left <span class="op">=</span> <span class="fl">0.1</span>,</span>
+<span id="cb18-51"><a href="#cb18-51" aria-hidden="true" tabindex="-1"></a>                    bottom <span class="op">=</span> <span class="fl">1.3</span>, </span>
+<span id="cb18-52"><a href="#cb18-52" aria-hidden="true" tabindex="-1"></a>                    right <span class="op">=</span> <span class="dv">2</span>, </span>
+<span id="cb18-53"><a href="#cb18-53" aria-hidden="true" tabindex="-1"></a>                    top <span class="op">=</span> <span class="dv">2</span>, </span>
+<span id="cb18-54"><a href="#cb18-54" aria-hidden="true" tabindex="-1"></a>                    wspace <span class="op">=</span> <span class="fl">0.65</span>, </span>
+<span id="cb18-55"><a href="#cb18-55" aria-hidden="true" tabindex="-1"></a>                    hspace <span class="op">=</span> <span class="fl">0.5</span>)</span>
+<span id="cb18-56"><a href="#cb18-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-57"><a href="#cb18-57" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="fig-6" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="building_model_files/figure-html/fig-6-output-1.svg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6: Distribution of shots in different types of play (left) and implemented with different parts of a body (right).</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6: Distribution of shots in different types of play (left) and implemented with different parts of the body (right).</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Features <strong>play_pattern_name[T.From Keeper]</strong>, <strong>play_pattern_name[T.From Kick Off]</strong>, <strong>play_pattern_name[T.Other]</strong> that received high p-values are actually very rare events and can be considered as outliers in our model. There are very few situations in which attack starting from goalkeeper or from a kick-off can result into a goal. From <a href="#fig-6">Figure&nbsp;6</a>, it can be seen that in total 300 shots were executed in types of play: ‘From Keeper’, ‘From Kick Off’ and ‘Other’.</p>
-<div class="cell" data-scrolled="true" data-execution_count="470">
+<p>Features <strong>play_pattern_name[T.From Keeper]</strong>, <strong>play_pattern_name[T.From Kick Off]</strong>, <strong>play_pattern_name[T.Other]</strong> that received high p-values are actually very rare events and can be considered as outliers in the model. There are very few situations in which attack starting from goalkeeper or from a kick-off can result in a goal. From <a href="#fig-6">Figure&nbsp;6</a>, it can be seen that, in total, 300 shots were executed in types of play: ‘From Keeper’, ‘From Kick Off’ and ‘Other’.</p>
+<div class="cell" data-scrolled="true" data-execution_count="21">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.<span class="bu">sum</span>(shots.loc[shots[<span class="st">'play_pattern_name'</span>] <span class="op">==</span> <span class="st">'From Keeper'</span>, <span class="st">'outcome'</span>]), </span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>     <span class="st">'goals were scored when attack was initiated from goal keeper.'</span>,)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>     <span class="st">'goals were scored when attack was initiated by a goalkeeper.'</span>,)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>13 goals were scored when attack was initiated from goal keeper.</code></pre>
+<pre><code>13 goals were scored when attack was initiated by a goalkeeper.</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="471">
+<div class="cell" data-execution_count="22">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.<span class="bu">sum</span>(shots.loc[shots[<span class="st">'play_pattern_name'</span>] <span class="op">==</span> <span class="st">'From Kick Off'</span>, <span class="st">'outcome'</span>]),</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>      <span class="st">'goals were scored when attack was initiated from kick-off.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>      <span class="st">'goals were scored when attack was initiated from a kick-off.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>10 goals were scored when attack was initiated from kick-off.</code></pre>
+<pre><code>10 goals were scored when attack was initiated from a kick-off.</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="472">
+<div class="cell" data-execution_count="24">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.<span class="bu">sum</span>(shots.loc[shots[<span class="st">'play_pattern_name'</span>] <span class="op">==</span> <span class="st">'Other'</span>, <span class="st">'outcome'</span>]),</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>      <span class="st">'goals were scored when attack was initiated from other scenarios.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>      <span class="st">'goals were scored when attack was initiated in other scenarios.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>7 goals were scored when attack was initiated from other scenarios.</code></pre>
+<pre><code>7 goals were scored when attack was initiated in other scenarios.</code></pre>
 </div>
 </div>
-<p>In total, only 30 out of those 300 shots were scored.</p>
-<p>Similar pattern can be observed when analyzing <code>body_part</code> categorical column and <strong>body_part[T.Other]</strong> feature that received a high p-value in our logistic regression. Out of 11043 shots available in our dataset, only 30 shots were executed with a body part other than foot or head.</p>
-<div class="cell" data-execution_count="475">
+<p>In total, only 30 out of these 300 shots were scored.</p>
+<p>A similar pattern can be observed when analyzing <code>body_part</code> categorical column and <strong>body_part[T.Other]</strong> feature that received a high p-value. Out of 11043 shots available in the dataset, only 30 shots were executed with a body part other than foot or head.</p>
+<div class="cell" data-execution_count="20">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Only'</span>, np.<span class="bu">sum</span>(shots.loc[shots[<span class="st">'body_part'</span>] <span class="op">==</span> <span class="st">'Other'</span>, <span class="st">'outcome'</span>]),</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>      <span class="st">'goals out of 30 shots were scored when body part other than foot or head.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>      <span class="st">'goals out of 30 shots were scored with a body part other than foot or head.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Only 6 goals out of 30 shots were scored when body part other than foot or head.</code></pre>
+<pre><code>Only 6 goals out of 30 shots were scored with a body part other than foot or head.</code></pre>
 </div>
 </div>
-<p>To sum up both of these scenarios, we see that there are only 330 shots and 36 goals which fall into this outlying conditions. This is a relatively small sample size in comparison to the available data, thus, I exclude this data points from the dataset.</p>
+<p>To sum up both of these scenarios, only 330 shots and 36 goals fall into these outlying conditions. This is a relatively small sample size in comparison to the available data; thus, I exclude these data points from analysis.</p>
 <div class="cell" data-execution_count="758">
 <details>
 <summary>Code</summary>
@@ -815,11 +812,11 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="op">|</span> (shots[<span class="st">'play_pattern_name'</span>] <span class="op">==</span> <span class="st">'From Kick Off'</span>) <span class="op">|</span> (shots[<span class="st">'body_part'</span>] <span class="op">==</span> <span class="st">'Other'</span>)),  :]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Finally, there is one more column <code>gk_loc_y</code> which also has a high p-value. This column together with <code>gk_loc_x</code> describe a location of opposing team’s goalkeeper during an executed shot. Naturally, a goalkeeper standing on the goal line can move differently but in most of the cases along the goal line. This means that her/his y coordinate should change much more frequently than x coordinate. However, what we see is that y coordinate is less significant in our model than x coordinate. As of now, I will leave both of these features in the dataset.</p>
+<p>Finally, there is one more column <code>gk_loc_y</code> which also has a high p-value. This column together with <code>gk_loc_x</code> describe the location of the opposing team’s goalkeeper during an executed shot. Naturally, a goalkeeper standing on the goalline can move differently but in most of the cases along the goalline. This means that the y coordinate should change much more frequently than the x coordinate. However, the y coordinate is less significant in the model than the x coordinate. As of now, I will leave both of these features in the dataset.</p>
 </section>
 <section id="transforming-and-splitting-data" class="level2">
 <h2 class="anchored" data-anchor-id="transforming-and-splitting-data">Transforming and Splitting Data</h2>
-<p>One-hot encoding transformation is applied to all categorical variables present in the dataset. These are <strong>body_part</strong>, <strong>technique</strong> and <strong>play_pattern_name</strong>. Note that variables <code>under_pressure</code>, <code>follows_dribble</code>, <code>first_time</code> and <code>open_goal</code> are already transformed 0/1 boolean variables (False/True), thus, they do not need any additional preprocessing. In addition, features <strong>distance</strong>, <strong>angle</strong>, <strong>gk_loc_x</strong> and <strong>gk_loc_y</strong> are standardized.</p>
+<p>One-hot encoding transformation is applied to all categorical variables present in the dataset. These are <strong>body_part</strong>, <strong>technique</strong> and <strong>play_pattern_name</strong>. Note that variables <code>under_pressure</code>, <code>follows_dribble</code>, <code>first_time</code> and <code>open_goal</code> are already transformed into 0/1 boolean variables (False/True); thus, they do not need any additional preprocessing. In addition, features <strong>distance</strong>, <strong>angle</strong>, <strong>gk_loc_x</strong> and <strong>gk_loc_y</strong> are standardized.</p>
 <div class="cell" data-execution_count="759">
 <details>
 <summary>Code</summary>
@@ -833,7 +830,7 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 <span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size <span class="op">=</span> <span class="fl">0.2</span>, random_state <span class="op">=</span> <span class="dv">42</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>In the next section, model selection will be implemented using <code>RandomizedSearchCV</code>. Thus, our dataset is splitted into <code>X_train</code>, <code>y_train</code>, <code>X_test</code>, <code>y_test</code> where k-fold cross validation will be applied on <code>X_train</code>, <code>y_train</code> to find optimal parameters for each type of model. Finally, each model will be run on <code>X_test</code>, <code>y_test</code> to evaluate its performance on a new data.</p>
+<p>In the next section, model selection will be implemented using <code>RandomizedSearchCV</code>. Thus, the dataset is splitted into <code>X_train</code>, <code>y_train</code>, <code>X_test</code>, <code>y_test</code> where k-fold cross validation will be applied on <code>X_train</code>, <code>y_train</code> to find optimal parameters for each type of model. Finally, each model will be run on <code>X_test</code>, <code>y_test</code> to evaluate its performance on new data.</p>
 <div class="cell" data-execution_count="760">
 <details>
 <summary>Code</summary>
@@ -854,7 +851,7 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 </section>
 <section id="model-selection" class="level2">
 <h2 class="anchored" data-anchor-id="model-selection">Model Selection</h2>
-<p>Three different classifiers were run and evaluated on a given dataset. These are Logistic Regression, Gradient Boosting and Random Forest. Since I am interested in predicting probabilistic outputs, the aim is achieve the highest accuracy for probability values. Thus, I use <strong>Brier score</strong> as an evaluation metric in <code>RandomizedSearchCV</code>. In addition to that, I also evaluate <strong>ROC-AUC</strong> score for each model with its best parameters. However, <strong>ROC-AUC</strong> is mainly used here as a supportive metric to illustrate relative performance in comparison to a random guess.</p>
+<p>Three different classifiers were run and evaluated on the given dataset. These are Logistic Regression, Gradient Boosting and Random Forest. Since I am interested in predicting probabilistic outputs, the aim is to achieve the highest accuracy of the probabilistic predictions. Thus, I use <strong>Brier score</strong> as an evaluation metric in <code>RandomizedSearchCV</code>. In addition, I evaluate <strong>ROC-AUC</strong> score for each model with its best parameters. However, <strong>ROC-AUC</strong> is mainly used here as a supportive metric to illustrate the performance in comparison with a random guess.</p>
 <section id="logistic-regression" class="level3">
 <h3 class="anchored" data-anchor-id="logistic-regression">Logistic Regression</h3>
 <div class="cell" data-execution_count="764">
@@ -958,17 +955,17 @@ Brier score =  0.07892679615459904
 ROC-AUC =  0.7761693797650938</code></pre>
 </div>
 </div>
-<p>To sum up, when comparing Brier scores for each of classifiers, it can be seen that Logistic Regression outperforms Gradient Boosting and Random Forest by a small margin. In addition, Logistic Regression also demonstrates the highest ROC-AUC value 0.781. This value is well above 0.5 which proves that the classifier performs much better than a random guess.</p>
+<p>To sum up, when comparing Brier scores for each classifier, it can be seen that Logistic Regression outperforms Gradient Boosting and Random Forest by a small margin. In addition, Logistic Regression demonstrates the highest ROC-AUC value (0.781). This value is well above 0.5, which confirms that the classifier performs much better than a random guess.</p>
 </section>
 </section>
 <section id="future-improvements" class="level2">
 <h2 class="anchored" data-anchor-id="future-improvements">Future Improvements</h2>
-<p>The model illustrates a decent performance. However, there are always areas for improvement that I would like to briefly outline:</p>
+<p>The model illustrates a good performance. However, there are always areas for improvement that I would like to briefly outline:</p>
 <ul>
-<li>More thorough analysis of opposing team’s goalkeeper coordinates.</li>
+<li>Perform more thorough analysis of opposing team’s goalkeeper coordinates.</li>
 <li>Analyze how discarded outliers may affect model performance.</li>
-<li>Analyze correlation between features using different techniques such as point biserial correlation and chi square test of association.</li>
-<li>Use location of opposing team’s defenders to construct additional features.</li>
+<li>Analyze the correlation between features using different techniques such as point biserial correlation and chi square test of association.</li>
+<li>Use the location of opposing team’s defenders to construct additional features.</li>
 </ul>
 
 
