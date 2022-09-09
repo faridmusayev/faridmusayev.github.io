@@ -1,7 +1,6 @@
 ---
 title: "Data Visualization"
 ---
-<style> body {text-align: justify} </style> <!-- Justify text. -->
 
 
 ## Allsvenskan 2021

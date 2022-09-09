@@ -1,7 +1,13 @@
 ---
 title: "Expected Goals Model"
 ---
-<style> body {text-align: justify} </style> <!-- Justify text. -->
+
+<style>
+#quarto-margin-sidebar{
+  display: none;
+
+}
+</style>
 
 ## Summary
 

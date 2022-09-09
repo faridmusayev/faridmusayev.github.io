@@ -1,9 +1,24 @@
 /* css styles */
 
 
+/* use justify alignment for  text*/
+body{
+  text-align: justify;
+}
+
+
+/* avoid justify alignment for toc*/
+.anchored{
+  text-align: left;
+}
+
+
+
+
 /* remove categories sidebar in blog page*/
 #quarto-margin-sidebar{
-  display: none;
+  /*display: none;*/
+  text-align: left
 }
 
 /* remove text shadow in left title*/
