@@ -18,7 +18,7 @@
     "href": "p2.html#mcmc-convergence-of-parameters",
     "title": "Data Visualization",
     "section": "MCMC Convergence of Parameters",
-    "text": "MCMC Convergence of Parameters\nIn this visualization, MCMC algorithm is used to draw parameters of Poisson regression from a multivariate posterior distribution. After approximately 250 iterations, the parameters start to converge. This plot was designed using ggplot2.\nCode is available here.\n\nThis plot was created in collaboration with Kristina Levina."
+    "text": "MCMC Convergence of Parameters\nIn this visualization, Markov chain Monte Carlo (MCMC) algorithm is used to draw parameters of Poisson regression from a multivariate posterior distribution. After approximately 250 iterations, the parameters start to converge. This plot was designed using ggplot2.\nCode is available here.\n\nThis plot was created in collaboration with Kristina Levina."
   },
   {
     "objectID": "about.html",
