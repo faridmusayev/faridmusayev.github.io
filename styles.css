@@ -12,8 +12,14 @@ body{
   text-align: left;
 }
 
+.title{
+  text-align: left;
+}
 
 
+.subtitle.lead{
+  text-align: left;
+}
 
 /* remove categories sidebar in blog page*/
 #quarto-margin-sidebar{

@@ -32,7 +32,7 @@ Code is available [here.](https://github.com/faridmusayev/data_visualization/blo
 This plot was created in collaboration with [Kristina Levina](https://github.com/Ada-Lev/Data-Visualisation).
 
 ## MCMC Convergence of Parameters
-In this visualization, MCMC algorithm is used to draw parameters of Poisson regression
+In this visualization, Markov chain Monte Carlo (MCMC) algorithm is used to draw parameters of Poisson regression
 from a multivariate posterior distribution. After approximately 250 iterations, the parameters
 start to converge. This plot was designed using [`ggplot2`](https://ggplot2.tidyverse.org/).
 
