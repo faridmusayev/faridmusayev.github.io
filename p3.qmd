@@ -8,7 +8,7 @@ were sampled from their respective conditional posterior distributions until con
 plots show the trajectories of sampled Markov Chains. The lower plots show the number of iterations
 required to reach convergence for each parameter. This plot was designed using [`ggplot2`](https://ggplot2.tidyverse.org/).
 
-Code is available [here.](https://github.com/faridmusayev/data_visualization/blob/main/gibbs/gibb_sampling.R) or [here](gibbs_plot.qmd).
+Code is available [here.](https://github.com/faridmusayev/data_visualization/blob/main/gibbs/gibb_sampling.R).
 
 ![](./gibbs_sampling.svg)
 
