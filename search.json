@@ -9,7 +9,7 @@
   {
     "objectID": "p2.html",
     "href": "p2.html",
-    "title": "Data Visualization",
+    "title": "Soccer Analytics",
     "section": "",
     "text": "In this visualization, I make a gridplot of xG values conceded and scored by each team against all other teams in Allsvenskan (Swedish Top Football League) during season 2021. Since this is a gridplot, one can obtain only a general performance overview for each team. This gridplot was designed using object-oriented plotting in matplotlib.\nCode is available here.\n\nTo view this plot in a high resolution, please follow this link."
   },
@@ -81,21 +81,14 @@
     "href": "p3.html",
     "title": "Scientific Visualization",
     "section": "",
-    "text": "This is a visualization of two parameters, variance and mean, which were sampled from their respective conditional posterior distributions until convergence. The upper plots show the trajectories of sampled Markov Chains. The lower plots show the number of iterations required to reach convergence for each parameter. This plot was designed using ggplot2.\nCode is available here..\n\nThis plot was created in collaboration with Kristina Levina."
-  },
-  {
-    "objectID": "p3.html#mcmc-convergence-of-parameters",
-    "href": "p3.html#mcmc-convergence-of-parameters",
-    "title": "Scientific Visualization",
-    "section": "MCMC Convergence of Parameters",
-    "text": "MCMC Convergence of Parameters\nIn this visualization, Markov chain Monte Carlo (MCMC) algorithm is used to draw parameters of Poisson regression from a multivariate posterior distribution. After approximately 250 iterations, the parameters start to converge. This plot was designed using ggplot2.\nCode is available here.\n\nThis plot was created in collaboration with Kristina Levina."
+    "text": "Gibbs Sampling Convergence\nThis is a visualization of two parameters, variance and mean, which were sampled from their respective conditional posterior distributions until convergence. The upper plots show the trajectories of sampled Markov Chains. The lower plots show the number of iterations required to reach convergence for each parameter. This plot was designed using ggplot2.\nCode is available here.\n\nThis plot was created in collaboration with Kristina Levina.\n\n\nMCMC Convergence of Parameters\nIn this visualization, Markov chain Monte Carlo (MCMC) algorithm is used to draw parameters of Poisson regression from a multivariate posterior distribution. After approximately 250 iterations, the parameters start to converge. This plot was designed using ggplot2.\nCode is available here.\n\nThis plot was created in collaboration with Kristina Levina."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Projects",
     "section": "",
-    "text": "Expected Goals Model | Data Visualization"
+    "text": "Expected Goals Model | Scientific Visualization | Soccer Analytics"
   },
   {
     "objectID": "about.html",
