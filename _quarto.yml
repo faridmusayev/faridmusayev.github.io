@@ -14,8 +14,8 @@ website:
       - text: "Projects"
         menu:
           - p1.qmd
-          - p2.qmd
           - p3.qmd
+          - p2.qmd
       - text: "About"
         file: about.qmd
 format:
