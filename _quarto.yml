@@ -15,6 +15,7 @@ website:
         menu:
           - p1.qmd
           - p2.qmd
+          - p3.qmd
       - text: "About"
         file: about.qmd
 format:

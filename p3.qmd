@@ -1,0 +1,26 @@
+---
+title: "Scientific Visualization"
+---
+
+## Gibbs Sampling Convergence
+This is a visualization of two parameters, variance and mean, which
+were sampled from their respective conditional posterior distributions until convergence. The upper
+plots show the trajectories of sampled Markov Chains. The lower plots show the number of iterations
+required to reach convergence for each parameter. This plot was designed using [`ggplot2`](https://ggplot2.tidyverse.org/).
+
+Code is available [here.](https://github.com/faridmusayev/data_visualization/blob/main/gibbs/gibb_sampling.R) or [here](gibbs_plot.qmd).
+
+![](./gibbs_sampling.svg)
+
+This plot was created in collaboration with [Kristina Levina](https://github.com/Ada-Lev/Data-Visualisation).
+
+## MCMC Convergence of Parameters
+In this visualization, Markov chain Monte Carlo (MCMC) algorithm is used to draw parameters of Poisson regression
+from a multivariate posterior distribution. After approximately 250 iterations, the parameters
+start to converge. This plot was designed using [`ggplot2`](https://ggplot2.tidyverse.org/).
+
+Code is available [here.](https://github.com/faridmusayev/data_visualization/blob/main/mcmc/MCMC.R)
+
+![](./mcmc.svg)
+
+This plot was created in collaboration with [Kristina Levina](https://github.com/Ada-Lev/Data-Visualisation).
