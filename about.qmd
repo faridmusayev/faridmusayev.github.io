@@ -11,9 +11,9 @@ about:
       text: Github
       href: https://github.com/faridmusayev
 ---
-I am a 2nd Year Master's Student in Statistics and Machine Learning
+I am a 2nd Year Master Student in Statistics and Machine Learning
 at Linköping University.
 
 I am interested in:
 
-statistical data analysis, machine learning and data visualization.
+Statistical Machine Learning, Deep Learning and Scientific Visualization.

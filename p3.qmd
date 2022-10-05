@@ -8,6 +8,8 @@ given  function sin(x). In other words, for a given range of x values, Gaussian 
 allows to predict values of sin(x). It can be oberved that approximated and  sin(x)
 values are very close to each other. This plot was designed using [`ggplot2`](https://ggplot2.tidyverse.org/).
 
+Code is available [here.](https://github.com/faridmusayev/data_visualization/blob/main/kernels/Kernel_sine_approx.R)
+
 ![](./kernel_sin.svg)
 
 
