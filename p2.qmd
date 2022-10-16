@@ -18,3 +18,7 @@ Code is available [here.](xG_for_against_subplots.ipynb)
 
 To view this plot in a high resolution,
 please follow this [link.](https://raw.githubusercontent.com/faridmusayev/Swedish_Football_Analytics/main/allsvenskan/plots/xg_subplots.png)
+
+## Expected Goals model
+
+In this [article](report.ipynb), I step by step demonstrate how to build a simple expected goals model.
