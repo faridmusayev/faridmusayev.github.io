@@ -67,7 +67,7 @@
     "href": "building_model.html#future-improvements",
     "title": "Part 2 | Building Model",
     "section": "Future Improvements",
-    "text": "Future Improvements\nThe model illustrates a good performance. However, there are always areas for improvement that I would like to briefly outline:\n\nPerform more thorough analysis of opposing team’s goalkeeper coordinates.\nAnalyze how discarded outliers may affect model performance.\nAnalyze the correlation between features using different techniques such as point biserial correlation and chi square test of association.\nUse the location of opposing team’s defenders to construct additional features."
+    "text": "Future Improvements\nThe model illustrates a good performance. However, there are always areas for improvement that I would like to briefly outline:\n\nAdd more extensive analysis in model selection and evaluation phase.\nPerform more thorough analysis of opposing team’s goalkeeper coordinates.\nAnalyze how discarded outliers may affect model performance.\nAnalyze the correlation between features using different techniques such as point biserial correlation and chi square test of association.\nUse the location of opposing team’s defenders to construct additional features."
   },
   {
     "objectID": "p1.html",
