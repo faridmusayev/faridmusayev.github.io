@@ -16,4 +16,4 @@ at Linköping University.
 
 I am interested in:
 
-Statistical Machine Learning, Deep Learning and Scientific Visualization.
+Statistical Machine Learning, Deep Learning and Software Development.
