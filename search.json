@@ -56,11 +56,11 @@
     "text": "In this visualization, I make a gridplot of xG values conceded and scored by each team against all other teams in Allsvenskan (Swedish Top Football League) during season 2021. Since this is a gridplot, one can obtain only a general performance overview for each team. This gridplot was designed using object-oriented plotting in matplotlib.\nCode is available here.\n\nTo view this plot in a high resolution, please follow this link."
   },
   {
-    "objectID": "p2.html#expected-goals-model",
-    "href": "p2.html#expected-goals-model",
+    "objectID": "p2.html#expected-threat-model",
+    "href": "p2.html#expected-threat-model",
     "title": "Soccer Analytics",
-    "section": "Expected Goals model",
-    "text": "Expected Goals model\nIn this article, I step by step demonstrate how to build a simple expected goals model."
+    "section": "Expected Threat model",
+    "text": "Expected Threat model\nIn this article, I step by step demonstrate how to build a simple Expected Threat (xT) model."
   },
   {
     "objectID": "blog.html",
