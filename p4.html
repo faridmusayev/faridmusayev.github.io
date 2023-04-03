@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Farid Musayev - Expected Goals Model</title>
+<title>Farid Musayev - Text Mining Project</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -121,8 +121,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#summary" id="toc-summary" class="nav-link active" data-scroll-target="#summary">Summary</a></li>
-  <li><a href="#implementation" id="toc-implementation" class="nav-link" data-scroll-target="#implementation">Implementation</a></li>
+  <li><a href="#transfer-learning-in-lstm-networks" id="toc-transfer-learning-in-lstm-networks" class="nav-link active" data-scroll-target="#transfer-learning-in-lstm-networks">Transfer Learning in LSTM Networks</a></li>
+  <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations</a></li>
   </ul>
 </nav>
     </div>
@@ -131,7 +131,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Expected Goals Model</h1>
+<h1 class="title">Text Mining Project</h1>
 </div>
 
 
@@ -146,26 +146,15 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<style>
-#quarto-margin-sidebar{
-  display: none;
-
-}
-</style>
-<section id="summary" class="level2">
-<h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<p>Soccer is a low-scoring game. Thus, it appears difficult to evaluate performance of teams by looking only at the number of scored and conceded goals. In comparison to goals, teams usually execute a much higher number of shots. However, not all of these shots are of the same quality. In other words, different shots may have different probabilities of being scored. These probabilities may depend on many different parameters. In this project, I implement Expected Goals Model that computes how likely is a given shot to result in a goal.</p>
-<p>Project repository is available <a href="https://github.com/faridmusayev/Expected_Goals_Model/tree/main/statsbomb">here</a>.</p>
+<section id="transfer-learning-in-lstm-networks" class="level2">
+<h2 class="anchored" data-anchor-id="transfer-learning-in-lstm-networks">Transfer Learning in LSTM Networks</h2>
+<p>This study focuses on the Sentiment Analysis of Tweets shared as a part of for Kaggle Competition in 2020. During the study, a machine learning model, namely SVM classifier, and a deep neural model, namely LSTM network, with three different initiations of word embeddings are compared. Thus, another focus of the study is to analyze transfer learning impact on a given sentiment analysis task. It is demonstrated that transfer learning and further retraining can indeed improve performance of a deep neural model. Nevertheless, when compared with well tuned machine learning model, deep neural model does not outperform it by a significant margin. There can be several reasons for that. First, a small amount of available training data can be a limiting factor. Second, hyperparameters of a deep neural model should be probably adjusted in a more nuanced way. Third, an architecture choice of a deep neural model can be elaborated further to capture the contextual information in a given sequence. All of these points showcase that despite using transfer learning, the expectations should not always be that the model will start working much better. One should always be willing to spend enough time on design choices to understand behavior of model in a better way.</p>
+<p>Code is available <a href="https://github.com/faridmusayev/Text_Mining_Project/blob/main/model.ipynb">here.</a></p>
+<p>Report is available <a href="https://github.com/faridmusayev/Text_Mining_Project/blob/main/project_report.pdf">here.</a></p>
 </section>
-<section id="implementation" class="level2">
-<h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
-<p>The project consists of the following parts:</p>
-<ul>
-<li><p><a href="./data_preprocessing.html">Part 1 | Data Preprocessing</a></p>
-<p>In this section, I demonstrate how to extract data from an external resource, filter out only required competitions, specify the columns of interest and bring them into a desirable format.</p></li>
-<li><p><a href="./building_model.html">Part 2 | Building Model</a></p>
-<p>This part mainly focuses on the exploratory data analysis, design of new features, statistical analysis of existing features, splitting and transforming data, hyperparameter tuning and model selection.</p></li>
-</ul>
+<section id="limitations" class="level2">
+<h2 class="anchored" data-anchor-id="limitations">Limitations</h2>
+<p>There are several limitations of this study that were already briefly mentioned above. In particular, LSTM networks can be potentially better adjusted to improve their accuracy values. One of the ways of doing it is to try to apply different types of regularization. It is important to rigorously examine architecture choice for all three neural models, and experiment with other suitable alternatives. In addition, the quality of trained word embeddings can be compared to the quality of retrained ones with techniques such as similarity or analogy benchmarks. Simple yet important criteria of saving computational resources when using pretrained embeddings should not be omitted and can be illustrated with the help of different test runs.</p>
 
 
 </section>

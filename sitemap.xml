@@ -1,51 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://faridmusayev.github.io/posts/second-post/index.html</loc>
-    <lastmod>2022-11-08T10:15:36.566Z</lastmod>
-  </url>
-  <url>
-    <loc>https://faridmusayev.github.io/posts/first-post/index.html</loc>
-    <lastmod>2022-11-08T10:15:37.498Z</lastmod>
-  </url>
-  <url>
-    <loc>https://faridmusayev.github.io/xG_for_against_subplots.html</loc>
-    <lastmod>2022-11-08T10:15:38.130Z</lastmod>
-  </url>
-  <url>
-    <loc>https://faridmusayev.github.io/index.html</loc>
-    <lastmod>2022-11-08T10:15:38.542Z</lastmod>
-  </url>
-  <url>
-    <loc>https://faridmusayev.github.io/p2.html</loc>
-    <lastmod>2022-11-08T10:15:39.022Z</lastmod>
-  </url>
-  <url>
-    <loc>https://faridmusayev.github.io/blog.html</loc>
-    <lastmod>2022-11-08T10:15:39.522Z</lastmod>
-  </url>
-  <url>
-    <loc>https://faridmusayev.github.io/report.html</loc>
-    <lastmod>2022-11-08T10:15:40.994Z</lastmod>
-  </url>
-  <url>
-    <loc>https://faridmusayev.github.io/data_preprocessing.html</loc>
-    <lastmod>2022-11-08T10:15:41.630Z</lastmod>
+    <loc>https://faridmusayev.github.io/p3.html</loc>
+    <lastmod>2023-04-03T20:37:35.257Z</lastmod>
   </url>
   <url>
     <loc>https://faridmusayev.github.io/about.html</loc>
-    <lastmod>2022-11-08T10:15:41.978Z</lastmod>
-  </url>
-  <url>
-    <loc>https://faridmusayev.github.io/p1.html</loc>
-    <lastmod>2022-11-08T10:15:42.430Z</lastmod>
-  </url>
-  <url>
-    <loc>https://faridmusayev.github.io/p3.html</loc>
-    <lastmod>2022-11-08T10:15:42.810Z</lastmod>
+    <lastmod>2023-04-03T20:37:35.877Z</lastmod>
   </url>
   <url>
     <loc>https://faridmusayev.github.io/building_model.html</loc>
-    <lastmod>2022-11-08T10:15:43.842Z</lastmod>
+    <lastmod>2023-04-03T20:37:36.701Z</lastmod>
+  </url>
+  <url>
+    <loc>https://faridmusayev.github.io/report.html</loc>
+    <lastmod>2023-04-03T20:37:37.745Z</lastmod>
+  </url>
+  <url>
+    <loc>https://faridmusayev.github.io/index.html</loc>
+    <lastmod>2023-04-03T20:37:38.025Z</lastmod>
+  </url>
+  <url>
+    <loc>https://faridmusayev.github.io/data_preprocessing.html</loc>
+    <lastmod>2023-04-03T20:37:38.473Z</lastmod>
+  </url>
+  <url>
+    <loc>https://faridmusayev.github.io/p4.html</loc>
+    <lastmod>2023-04-03T20:37:38.761Z</lastmod>
+  </url>
+  <url>
+    <loc>https://faridmusayev.github.io/p2.html</loc>
+    <lastmod>2023-04-03T20:37:39.033Z</lastmod>
+  </url>
+  <url>
+    <loc>https://faridmusayev.github.io/xG_for_against_subplots.html</loc>
+    <lastmod>2023-04-03T20:37:39.405Z</lastmod>
+  </url>
+  <url>
+    <loc>https://faridmusayev.github.io/p1.html</loc>
+    <lastmod>2023-04-03T20:37:39.681Z</lastmod>
   </url>
 </urlset>
