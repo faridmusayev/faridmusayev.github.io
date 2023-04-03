@@ -1,0 +1,40 @@
+---
+title: "Text Mining Project"
+---
+
+## Transfer Learning in LSTM Networks
+This study focuses on the Sentiment Analysis
+of Tweets shared as a part of for Kaggle Competition in 2020. During the study, a machine
+learning model, namely SVM classifier, and
+a deep neural model, namely LSTM network,
+with three different initiations of word embeddings are compared. Thus, another focus of the
+study is to analyze transfer learning impact on
+a given sentiment analysis task. It is demonstrated that transfer learning
+and further retraining can indeed improve performance of a deep neural model. Nevertheless, when compared with well tuned machine learning model,
+deep neural model does not outperform it by a significant margin. There can be several reasons for
+that. First, a small amount of available training
+data can be a limiting factor. Second, hyperparameters of a deep neural model should be probably
+adjusted in a more nuanced way. Third, an architecture choice of a deep neural model can be
+elaborated further to capture the contextual information in a given sequence. All of these points
+showcase that despite using transfer learning, the
+expectations should not always be that the model
+will start working much better. One should always
+be willing to spend enough time on design choices
+to understand behavior of model in a better way.
+
+Code is available [here.](https://github.com/faridmusayev/Text_Mining_Project/blob/main/model.ipynb)
+
+Report is available [here.](https://github.com/faridmusayev/Text_Mining_Project/blob/main/project_report.pdf)
+
+## Limitations
+There are several limitations of this study that were
+already briefly mentioned above. In particular, LSTM networks can be potentially better
+adjusted to improve their accuracy values. One
+of the ways of doing it is to try to apply different
+types of regularization. It is important to rigorously
+examine architecture choice for all three neural
+models, and experiment with other suitable alternatives. In addition, the quality of trained word
+embeddings can be compared to the quality of retrained ones with techniques such as similarity or
+analogy benchmarks. Simple yet important criteria
+of saving computational resources when using pretrained embeddings should not be omitted and can
+be illustrated with the help of different test runs.

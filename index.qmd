@@ -5,4 +5,4 @@ about:
   #image: profile.jpg
 ---
 
-[Expected Goals Model](p1.qmd)  |  [Scientific Visualization](p3.qmd)  |  [Soccer Analytics](p2.qmd)
+[Expected Goals Model](p1.qmd)  |  [Scientific Visualization](p3.qmd)  |  [Soccer Analytics](p2.qmd)  |  [Text Mining](p4.qmd)

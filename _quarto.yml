@@ -16,6 +16,7 @@ website:
           - p1.qmd
           - p3.qmd
           - p2.qmd
+          - p4.qmd
       - text: "About"
         file: about.qmd
 format:
