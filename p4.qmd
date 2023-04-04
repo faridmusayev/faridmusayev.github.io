@@ -4,7 +4,7 @@ title: "Text Mining Project"
 
 ## Transfer Learning in LSTM Networks
 This study focuses on the Sentiment Analysis
-of Tweets shared as a part of for Kaggle Competition in 2020. During the study, a machine
+of Tweets shared as a part of Kaggle Competition in 2020. During the study, a machine
 learning model, namely SVM classifier, and
 a deep neural model, namely LSTM network,
 with three different initiations of word embeddings are compared. Thus, another focus of the
