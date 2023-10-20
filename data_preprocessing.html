@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.475">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,9 +19,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -48,43 +49,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -120,7 +91,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
@@ -142,40 +114,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <span class="navbar-title">Farid Musayev</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projects" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projects" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
  <span class="menu-text">Projects</span>
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-projects">    
         <li>
-    <a class="dropdown-item" href="./p1.html">
+    <a class="dropdown-item" href="./p1.html" rel="" target="">
  <span class="dropdown-text">Expected Goals Model</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./p3.html">
+    <a class="dropdown-item" href="./p3.html" rel="" target="">
  <span class="dropdown-text">Scientific Visualization</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./p2.html">
+    <a class="dropdown-item" href="./p2.html" rel="" target="">
  <span class="dropdown-text">Soccer Analytics</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./p4.html">
+    <a class="dropdown-item" href="./p4.html" rel="" target="">
  <span class="dropdown-text">Text Mining Project</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./about.html">
+    <a class="nav-link" href="./about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -246,78 +220,79 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>female_comps <span class="op">=</span> competitions.loc[competitions[<span class="st">'competition_gender'</span>] <span class="op">==</span> <span class="st">'female'</span>, :].reset_index(drop <span class="op">=</span> <span class="va">True</span>)</span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>female_comps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>season_id</th>
-      <th>competition_id</th>
-      <th>competition_name</th>
-      <th>country_name</th>
-      <th>competition_gender</th>
-      <th>season_name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>90</td>
-      <td>37</td>
-      <td>FA Women's Super League</td>
-      <td>England</td>
-      <td>female</td>
-      <td>2020/2021</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>42</td>
-      <td>37</td>
-      <td>FA Women's Super League</td>
-      <td>England</td>
-      <td>female</td>
-      <td>2019/2020</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>4</td>
-      <td>37</td>
-      <td>FA Women's Super League</td>
-      <td>England</td>
-      <td>female</td>
-      <td>2018/2019</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>3</td>
-      <td>49</td>
-      <td>NWSL</td>
-      <td>United States of America</td>
-      <td>female</td>
-      <td>2018</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>106</td>
-      <td>53</td>
-      <td>UEFA Women's Euro</td>
-      <td>Europe</td>
-      <td>female</td>
-      <td>2022</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>30</td>
-      <td>72</td>
-      <td>Women's World Cup</td>
-      <td>International</td>
-      <td>female</td>
-      <td>2019</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">season_id</th>
+<th data-quarto-table-cell-role="th">competition_id</th>
+<th data-quarto-table-cell-role="th">competition_name</th>
+<th data-quarto-table-cell-role="th">country_name</th>
+<th data-quarto-table-cell-role="th">competition_gender</th>
+<th data-quarto-table-cell-role="th">season_name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>90</td>
+<td>37</td>
+<td>FA Women's Super League</td>
+<td>England</td>
+<td>female</td>
+<td>2020/2021</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>42</td>
+<td>37</td>
+<td>FA Women's Super League</td>
+<td>England</td>
+<td>female</td>
+<td>2019/2020</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>4</td>
+<td>37</td>
+<td>FA Women's Super League</td>
+<td>England</td>
+<td>female</td>
+<td>2018/2019</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>3</td>
+<td>49</td>
+<td>NWSL</td>
+<td>United States of America</td>
+<td>female</td>
+<td>2018</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>106</td>
+<td>53</td>
+<td>UEFA Women's Euro</td>
+<td>Europe</td>
+<td>female</td>
+<td>2022</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>30</td>
+<td>72</td>
+<td>Women's World Cup</td>
+<td>International</td>
+<td>female</td>
+<td>2019</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -350,111 +325,112 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell" data-scrolled="true" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>all_events.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>game_id</th>
-      <th>event_id</th>
-      <th>period_id</th>
-      <th>team_id</th>
-      <th>player_id</th>
-      <th>type_id</th>
-      <th>type_name</th>
-      <th>index</th>
-      <th>timestamp</th>
-      <th>minute</th>
-      <th>...</th>
-      <th>team_name</th>
-      <th>duration</th>
-      <th>extra</th>
-      <th>related_events</th>
-      <th>player_name</th>
-      <th>position_id</th>
-      <th>position_name</th>
-      <th>location</th>
-      <th>under_pressure</th>
-      <th>counterpress</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>3764230</td>
-      <td>3f5dde74-d91b-44ea-9a1f-88e84da555ab</td>
-      <td>1</td>
-      <td>749</td>
-      <td>NaN</td>
-      <td>35</td>
-      <td>Starting XI</td>
-      <td>1</td>
-      <td>1900-01-01 00:00:00.000</td>
-      <td>0</td>
-      <td>...</td>
-      <td>Tottenham Hotspur Women</td>
-      <td>0.0</td>
-      <td>{'tactics': {'formation': 4231, 'lineup': [{'p...</td>
-      <td>[]</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>False</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>3764230</td>
-      <td>e4fefe61-4e08-47e0-be4d-2276388e6eb4</td>
-      <td>1</td>
-      <td>972</td>
-      <td>NaN</td>
-      <td>35</td>
-      <td>Starting XI</td>
-      <td>2</td>
-      <td>1900-01-01 00:00:00.000</td>
-      <td>0</td>
-      <td>...</td>
-      <td>West Ham United LFC</td>
-      <td>0.0</td>
-      <td>{'tactics': {'formation': 433, 'lineup': [{'pl...</td>
-      <td>[]</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>False</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3764230</td>
-      <td>ff9a99d3-3efd-45c2-8736-a8a93dd02638</td>
-      <td>1</td>
-      <td>972</td>
-      <td>NaN</td>
-      <td>18</td>
-      <td>Half Start</td>
-      <td>3</td>
-      <td>1900-01-01 00:00:00.000</td>
-      <td>0</td>
-      <td>...</td>
-      <td>West Ham United LFC</td>
-      <td>0.0</td>
-      <td>{}</td>
-      <td>['5fb7026c-83aa-4490-96b1-a55825c4dcb8']</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>False</td>
-      <td>False</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">game_id</th>
+<th data-quarto-table-cell-role="th">event_id</th>
+<th data-quarto-table-cell-role="th">period_id</th>
+<th data-quarto-table-cell-role="th">team_id</th>
+<th data-quarto-table-cell-role="th">player_id</th>
+<th data-quarto-table-cell-role="th">type_id</th>
+<th data-quarto-table-cell-role="th">type_name</th>
+<th data-quarto-table-cell-role="th">index</th>
+<th data-quarto-table-cell-role="th">timestamp</th>
+<th data-quarto-table-cell-role="th">minute</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">team_name</th>
+<th data-quarto-table-cell-role="th">duration</th>
+<th data-quarto-table-cell-role="th">extra</th>
+<th data-quarto-table-cell-role="th">related_events</th>
+<th data-quarto-table-cell-role="th">player_name</th>
+<th data-quarto-table-cell-role="th">position_id</th>
+<th data-quarto-table-cell-role="th">position_name</th>
+<th data-quarto-table-cell-role="th">location</th>
+<th data-quarto-table-cell-role="th">under_pressure</th>
+<th data-quarto-table-cell-role="th">counterpress</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>3764230</td>
+<td>3f5dde74-d91b-44ea-9a1f-88e84da555ab</td>
+<td>1</td>
+<td>749</td>
+<td>NaN</td>
+<td>35</td>
+<td>Starting XI</td>
+<td>1</td>
+<td>1900-01-01 00:00:00.000</td>
+<td>0</td>
+<td>...</td>
+<td>Tottenham Hotspur Women</td>
+<td>0.0</td>
+<td>{'tactics': {'formation': 4231, 'lineup': [{'p...</td>
+<td>[]</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>3764230</td>
+<td>e4fefe61-4e08-47e0-be4d-2276388e6eb4</td>
+<td>1</td>
+<td>972</td>
+<td>NaN</td>
+<td>35</td>
+<td>Starting XI</td>
+<td>2</td>
+<td>1900-01-01 00:00:00.000</td>
+<td>0</td>
+<td>...</td>
+<td>West Ham United LFC</td>
+<td>0.0</td>
+<td>{'tactics': {'formation': 433, 'lineup': [{'pl...</td>
+<td>[]</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>3764230</td>
+<td>ff9a99d3-3efd-45c2-8736-a8a93dd02638</td>
+<td>1</td>
+<td>972</td>
+<td>NaN</td>
+<td>18</td>
+<td>Half Start</td>
+<td>3</td>
+<td>1900-01-01 00:00:00.000</td>
+<td>0</td>
+<td>...</td>
+<td>West Ham United LFC</td>
+<td>0.0</td>
+<td>{}</td>
+<td>['5fb7026c-83aa-4490-96b1-a55825c4dcb8']</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>False</td>
+<td>False</td>
+</tr>
+</tbody>
 </table>
+
 <p>3 rows × 26 columns</p>
 </div>
 </div>
@@ -493,93 +469,94 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell" data-scrolled="true" data-execution_count="106">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>shots.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="106">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>minute</th>
-      <th>player_name</th>
-      <th>team_name</th>
-      <th>type_name</th>
-      <th>play_pattern_name</th>
-      <th>position_name</th>
-      <th>under_pressure</th>
-      <th>extra</th>
-      <th>x_start</th>
-      <th>y_start</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>7</td>
-      <td>Lucy Quinn</td>
-      <td>Tottenham Hotspur Women</td>
-      <td>Shot</td>
-      <td>Regular Play</td>
-      <td>Right Wing</td>
-      <td>False</td>
-      <td>{'shot': {'statsbomb_xg': 0.013642391, 'end_lo...</td>
-      <td>95.9</td>
-      <td>58.9</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>10</td>
-      <td>Rianna Dean</td>
-      <td>Tottenham Hotspur Women</td>
-      <td>Shot</td>
-      <td>From Free Kick</td>
-      <td>Center Forward</td>
-      <td>False</td>
-      <td>{'shot': {'statsbomb_xg': 0.04084396, 'end_loc...</td>
-      <td>106.1</td>
-      <td>54.3</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>11</td>
-      <td>Angela Addison</td>
-      <td>Tottenham Hotspur Women</td>
-      <td>Shot</td>
-      <td>From Free Kick</td>
-      <td>Left Wing</td>
-      <td>True</td>
-      <td>{'shot': {'statsbomb_xg': 0.13687119, 'end_loc...</td>
-      <td>110.0</td>
-      <td>28.2</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>13</td>
-      <td>Kit Graham</td>
-      <td>Tottenham Hotspur Women</td>
-      <td>Shot</td>
-      <td>From Throw In</td>
-      <td>Center Attacking Midfield</td>
-      <td>False</td>
-      <td>{'shot': {'statsbomb_xg': 0.12462413, 'end_loc...</td>
-      <td>113.2</td>
-      <td>40.4</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>16</td>
-      <td>Kit Graham</td>
-      <td>Tottenham Hotspur Women</td>
-      <td>Shot</td>
-      <td>From Counter</td>
-      <td>Center Attacking Midfield</td>
-      <td>False</td>
-      <td>{'shot': {'statsbomb_xg': 0.02380701, 'end_loc...</td>
-      <td>95.2</td>
-      <td>39.8</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">minute</th>
+<th data-quarto-table-cell-role="th">player_name</th>
+<th data-quarto-table-cell-role="th">team_name</th>
+<th data-quarto-table-cell-role="th">type_name</th>
+<th data-quarto-table-cell-role="th">play_pattern_name</th>
+<th data-quarto-table-cell-role="th">position_name</th>
+<th data-quarto-table-cell-role="th">under_pressure</th>
+<th data-quarto-table-cell-role="th">extra</th>
+<th data-quarto-table-cell-role="th">x_start</th>
+<th data-quarto-table-cell-role="th">y_start</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>7</td>
+<td>Lucy Quinn</td>
+<td>Tottenham Hotspur Women</td>
+<td>Shot</td>
+<td>Regular Play</td>
+<td>Right Wing</td>
+<td>False</td>
+<td>{'shot': {'statsbomb_xg': 0.013642391, 'end_lo...</td>
+<td>95.9</td>
+<td>58.9</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>10</td>
+<td>Rianna Dean</td>
+<td>Tottenham Hotspur Women</td>
+<td>Shot</td>
+<td>From Free Kick</td>
+<td>Center Forward</td>
+<td>False</td>
+<td>{'shot': {'statsbomb_xg': 0.04084396, 'end_loc...</td>
+<td>106.1</td>
+<td>54.3</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>11</td>
+<td>Angela Addison</td>
+<td>Tottenham Hotspur Women</td>
+<td>Shot</td>
+<td>From Free Kick</td>
+<td>Left Wing</td>
+<td>True</td>
+<td>{'shot': {'statsbomb_xg': 0.13687119, 'end_loc...</td>
+<td>110.0</td>
+<td>28.2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>13</td>
+<td>Kit Graham</td>
+<td>Tottenham Hotspur Women</td>
+<td>Shot</td>
+<td>From Throw In</td>
+<td>Center Attacking Midfield</td>
+<td>False</td>
+<td>{'shot': {'statsbomb_xg': 0.12462413, 'end_loc...</td>
+<td>113.2</td>
+<td>40.4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>16</td>
+<td>Kit Graham</td>
+<td>Tottenham Hotspur Women</td>
+<td>Shot</td>
+<td>From Counter</td>
+<td>Center Attacking Midfield</td>
+<td>False</td>
+<td>{'shot': {'statsbomb_xg': 0.02380701, 'end_loc...</td>
+<td>95.2</td>
+<td>39.8</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -676,141 +653,142 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>shots <span class="op">=</span> pd.concat([shots.drop(columns <span class="op">=</span> [<span class="st">'extra'</span>, <span class="st">'type_name'</span>]), extra_features], axis <span class="op">=</span> <span class="dv">1</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>shots.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="108">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>minute</th>
-      <th>player_name</th>
-      <th>team_name</th>
-      <th>play_pattern_name</th>
-      <th>position_name</th>
-      <th>under_pressure</th>
-      <th>x_start</th>
-      <th>y_start</th>
-      <th>follows_dribble</th>
-      <th>first_time</th>
-      <th>open_goal</th>
-      <th>statsbomb_xg</th>
-      <th>type</th>
-      <th>technique</th>
-      <th>body_part</th>
-      <th>outcome</th>
-      <th>end_loc</th>
-      <th>freeze_frame</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>7</td>
-      <td>Lucy Quinn</td>
-      <td>Tottenham Hotspur Women</td>
-      <td>Regular Play</td>
-      <td>Right Wing</td>
-      <td>0</td>
-      <td>95.9</td>
-      <td>58.9</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0.013642</td>
-      <td>Open Play</td>
-      <td>Normal</td>
-      <td>Left Foot</td>
-      <td>Saved</td>
-      <td>[{'end_loc': [116.7, 44.9, 1.2]}]</td>
-      <td>[{'freeze_frame': [{'location': [119.6, 42.3],...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>10</td>
-      <td>Rianna Dean</td>
-      <td>Tottenham Hotspur Women</td>
-      <td>From Free Kick</td>
-      <td>Center Forward</td>
-      <td>0</td>
-      <td>106.1</td>
-      <td>54.3</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0.040844</td>
-      <td>Open Play</td>
-      <td>Normal</td>
-      <td>Right Foot</td>
-      <td>Off T</td>
-      <td>[{'end_loc': [120.0, 41.6, 4.2]}]</td>
-      <td>[{'freeze_frame': [{'location': [118.8, 43.2],...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>11</td>
-      <td>Angela Addison</td>
-      <td>Tottenham Hotspur Women</td>
-      <td>From Free Kick</td>
-      <td>Left Wing</td>
-      <td>1</td>
-      <td>110.0</td>
-      <td>28.2</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0.136871</td>
-      <td>Open Play</td>
-      <td>Normal</td>
-      <td>Left Foot</td>
-      <td>Saved</td>
-      <td>[{'end_loc': [117.6, 36.7, 0.4]}]</td>
-      <td>[{'freeze_frame': [{'location': [111.3, 39.8],...</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>13</td>
-      <td>Kit Graham</td>
-      <td>Tottenham Hotspur Women</td>
-      <td>From Throw In</td>
-      <td>Center Attacking Midfield</td>
-      <td>0</td>
-      <td>113.2</td>
-      <td>40.4</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0.124624</td>
-      <td>Open Play</td>
-      <td>Normal</td>
-      <td>Head</td>
-      <td>Post</td>
-      <td>[{'end_loc': [120.0, 37.9, 2.9]}]</td>
-      <td>[{'freeze_frame': [{'location': [105.8, 46.6],...</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>16</td>
-      <td>Kit Graham</td>
-      <td>Tottenham Hotspur Women</td>
-      <td>From Counter</td>
-      <td>Center Attacking Midfield</td>
-      <td>0</td>
-      <td>95.2</td>
-      <td>39.8</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0.023807</td>
-      <td>Open Play</td>
-      <td>Normal</td>
-      <td>Left Foot</td>
-      <td>Post</td>
-      <td>[{'end_loc': [120.0, 37.3, 2.9]}]</td>
-      <td>[{'freeze_frame': [{'location': [97.8, 49.4], ...</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">minute</th>
+<th data-quarto-table-cell-role="th">player_name</th>
+<th data-quarto-table-cell-role="th">team_name</th>
+<th data-quarto-table-cell-role="th">play_pattern_name</th>
+<th data-quarto-table-cell-role="th">position_name</th>
+<th data-quarto-table-cell-role="th">under_pressure</th>
+<th data-quarto-table-cell-role="th">x_start</th>
+<th data-quarto-table-cell-role="th">y_start</th>
+<th data-quarto-table-cell-role="th">follows_dribble</th>
+<th data-quarto-table-cell-role="th">first_time</th>
+<th data-quarto-table-cell-role="th">open_goal</th>
+<th data-quarto-table-cell-role="th">statsbomb_xg</th>
+<th data-quarto-table-cell-role="th">type</th>
+<th data-quarto-table-cell-role="th">technique</th>
+<th data-quarto-table-cell-role="th">body_part</th>
+<th data-quarto-table-cell-role="th">outcome</th>
+<th data-quarto-table-cell-role="th">end_loc</th>
+<th data-quarto-table-cell-role="th">freeze_frame</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>7</td>
+<td>Lucy Quinn</td>
+<td>Tottenham Hotspur Women</td>
+<td>Regular Play</td>
+<td>Right Wing</td>
+<td>0</td>
+<td>95.9</td>
+<td>58.9</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.013642</td>
+<td>Open Play</td>
+<td>Normal</td>
+<td>Left Foot</td>
+<td>Saved</td>
+<td>[{'end_loc': [116.7, 44.9, 1.2]}]</td>
+<td>[{'freeze_frame': [{'location': [119.6, 42.3],...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>10</td>
+<td>Rianna Dean</td>
+<td>Tottenham Hotspur Women</td>
+<td>From Free Kick</td>
+<td>Center Forward</td>
+<td>0</td>
+<td>106.1</td>
+<td>54.3</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.040844</td>
+<td>Open Play</td>
+<td>Normal</td>
+<td>Right Foot</td>
+<td>Off T</td>
+<td>[{'end_loc': [120.0, 41.6, 4.2]}]</td>
+<td>[{'freeze_frame': [{'location': [118.8, 43.2],...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>11</td>
+<td>Angela Addison</td>
+<td>Tottenham Hotspur Women</td>
+<td>From Free Kick</td>
+<td>Left Wing</td>
+<td>1</td>
+<td>110.0</td>
+<td>28.2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.136871</td>
+<td>Open Play</td>
+<td>Normal</td>
+<td>Left Foot</td>
+<td>Saved</td>
+<td>[{'end_loc': [117.6, 36.7, 0.4]}]</td>
+<td>[{'freeze_frame': [{'location': [111.3, 39.8],...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>13</td>
+<td>Kit Graham</td>
+<td>Tottenham Hotspur Women</td>
+<td>From Throw In</td>
+<td>Center Attacking Midfield</td>
+<td>0</td>
+<td>113.2</td>
+<td>40.4</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.124624</td>
+<td>Open Play</td>
+<td>Normal</td>
+<td>Head</td>
+<td>Post</td>
+<td>[{'end_loc': [120.0, 37.9, 2.9]}]</td>
+<td>[{'freeze_frame': [{'location': [105.8, 46.6],...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>16</td>
+<td>Kit Graham</td>
+<td>Tottenham Hotspur Women</td>
+<td>From Counter</td>
+<td>Center Attacking Midfield</td>
+<td>0</td>
+<td>95.2</td>
+<td>39.8</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.023807</td>
+<td>Open Play</td>
+<td>Normal</td>
+<td>Left Foot</td>
+<td>Post</td>
+<td>[{'end_loc': [120.0, 37.3, 2.9]}]</td>
+<td>[{'freeze_frame': [{'location': [97.8, 49.4], ...</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -869,9 +847,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -987,6 +979,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {

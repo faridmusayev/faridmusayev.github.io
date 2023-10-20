@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.475">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,9 +19,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -48,43 +49,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -120,7 +91,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
@@ -142,40 +114,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <span class="navbar-title">Farid Musayev</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projects" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projects" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
  <span class="menu-text">Projects</span>
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-projects">    
         <li>
-    <a class="dropdown-item" href="./p1.html">
+    <a class="dropdown-item" href="./p1.html" rel="" target="">
  <span class="dropdown-text">Expected Goals Model</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./p3.html">
+    <a class="dropdown-item" href="./p3.html" rel="" target="">
  <span class="dropdown-text">Scientific Visualization</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./p2.html">
+    <a class="dropdown-item" href="./p2.html" rel="" target="">
  <span class="dropdown-text">Soccer Analytics</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./p4.html">
+    <a class="dropdown-item" href="./p4.html" rel="" target="">
  <span class="dropdown-text">Text Mining Project</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./about.html">
+    <a class="nav-link" href="./about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -360,7 +334,7 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 <div id="fig-1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="building_model_files/figure-html/fig-1-output-1.svg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1: Distribution of shot outcomes across female soccer competitions.</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;1: Distribution of shot outcomes across female soccer competitions.</figcaption>
 </figure>
 </div>
 </div>
@@ -401,7 +375,7 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 <div id="fig-2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="building_model_files/figure-html/fig-2-output-1.svg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2: Distribution of shots according to their coordinates.</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;2: Distribution of shots according to their coordinates.</figcaption>
 </figure>
 </div>
 </div>
@@ -436,7 +410,7 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 <div id="fig-3" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="building_model_files/figure-html/fig-3-output-1.svg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;3: Different distances to a goal (solid line) and angles (shaded area) for a given shot.</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;3: Different distances to a goal (solid line) and angles (shaded area) for a given shot.</figcaption>
 </figure>
 </div>
 </div>
@@ -540,7 +514,7 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 <div id="fig-4" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="building_model_files/figure-html/fig-4-output-1.svg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;4: Probability of scoring decreases with increasing distance (a) and increases with increasing angle (b).</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;4: Probability of scoring decreases with increasing distance (a) and increases with increasing angle (b).</figcaption>
 </figure>
 </div>
 </div>
@@ -578,7 +552,7 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 <div id="fig-5" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="building_model_files/figure-html/fig-5-output-1.svg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;5: Distribution of distances (a) and angles (b) for all executed shots.</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;5: Distribution of distances (a) and angles (b) for all executed shots.</figcaption>
 </figure>
 </div>
 </div>
@@ -613,91 +587,92 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
          Iterations 8</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="428">
-
 <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>p-value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Intercept</th>
-      <td>0.000</td>
-    </tr>
-    <tr>
-      <th>body_part[T.Left Foot]</th>
-      <td>0.000</td>
-    </tr>
-    <tr>
-      <th>body_part[T.Other]</th>
-      <td>0.642</td>
-    </tr>
-    <tr>
-      <th>body_part[T.Right Foot]</th>
-      <td>0.000</td>
-    </tr>
-    <tr>
-      <th>play_pattern_name[T.From Counter]</th>
-      <td>0.001</td>
-    </tr>
-    <tr>
-      <th>play_pattern_name[T.From Free Kick]</th>
-      <td>0.000</td>
-    </tr>
-    <tr>
-      <th>play_pattern_name[T.From Goal Kick]</th>
-      <td>0.000</td>
-    </tr>
-    <tr>
-      <th>play_pattern_name[T.From Keeper]</th>
-      <td>0.203</td>
-    </tr>
-    <tr>
-      <th>play_pattern_name[T.From Kick Off]</th>
-      <td>0.239</td>
-    </tr>
-    <tr>
-      <th>play_pattern_name[T.From Throw In]</th>
-      <td>0.001</td>
-    </tr>
-    <tr>
-      <th>play_pattern_name[T.Other]</th>
-      <td>0.252</td>
-    </tr>
-    <tr>
-      <th>play_pattern_name[T.Regular Play]</th>
-      <td>0.000</td>
-    </tr>
-    <tr>
-      <th>distance</th>
-      <td>0.000</td>
-    </tr>
-    <tr>
-      <th>angle</th>
-      <td>0.000</td>
-    </tr>
-    <tr>
-      <th>under_pressure</th>
-      <td>0.056</td>
-    </tr>
-    <tr>
-      <th>gk_loc_y</th>
-      <td>0.431</td>
-    </tr>
-    <tr>
-      <th>gk_loc_x</th>
-      <td>0.000</td>
-    </tr>
-    <tr>
-      <th>open_goal</th>
-      <td>0.000</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Intercept</td>
+<td>0.000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">body_part[T.Left Foot]</td>
+<td>0.000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">body_part[T.Other]</td>
+<td>0.642</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">body_part[T.Right Foot]</td>
+<td>0.000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">play_pattern_name[T.From Counter]</td>
+<td>0.001</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">play_pattern_name[T.From Free Kick]</td>
+<td>0.000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">play_pattern_name[T.From Goal Kick]</td>
+<td>0.000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">play_pattern_name[T.From Keeper]</td>
+<td>0.203</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">play_pattern_name[T.From Kick Off]</td>
+<td>0.239</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">play_pattern_name[T.From Throw In]</td>
+<td>0.001</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">play_pattern_name[T.Other]</td>
+<td>0.252</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">play_pattern_name[T.Regular Play]</td>
+<td>0.000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">distance</td>
+<td>0.000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">angle</td>
+<td>0.000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">under_pressure</td>
+<td>0.056</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">gk_loc_y</td>
+<td>0.431</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">gk_loc_x</td>
+<td>0.000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">open_goal</td>
+<td>0.000</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -779,7 +754,7 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 <div id="fig-6" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="building_model_files/figure-html/fig-6-output-1.svg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6: Distribution of shots in different types of play (left) and implemented with different parts of the body (right).</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;6: Distribution of shots in different types of play (left) and implemented with different parts of the body (right).</figcaption>
 </figure>
 </div>
 </div>
@@ -1009,9 +984,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1127,6 +1116,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
