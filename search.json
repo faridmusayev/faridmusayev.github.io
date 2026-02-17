@@ -177,9 +177,30 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Projects",
+    "title": "Farid Musayev",
     "section": "",
-    "text": "Expected Goals Model | Scientific Visualization | Soccer Analytics | Text Mining"
+    "text": "github - scholar - linkedin\nI’m Farid, a Master’s student in Statistics and Machine Learning at Linköping University.\nMy interests lie in statistical machine learning, deep learning, and software development. I enjoy working on projects that bridge theoretical concepts with practical applications, particularly in the intersection of statistics and sports analytics.\n\n\n\n\n\n\nFeb 26, 2026\nPitch presentation at Linköping University\n\n\n\n\nOct 25, 2025\nECAI25 presentation in Stockholm\n\n\nSep 15, 2025\nStarted thesis work on Causal Inference\n\n\nJun 10, 2025\nCompleted Machine Learning course with distinction\n\n\nMar 05, 2025\nWorkshop presentation on Sports Analytics\n\n\n\n\n\n\n\n\n\nExpected Goals ModelICML’24\n\nDeveloping a machine learning model to predict goal-scoring probabilities in soccer matches using historical match data and player statistics.\n[paper] [slides] [code]\n\n\n\nScientific VisualizationNeurIPS’23\n\nCreating intuitive visualizations for complex statistical concepts and machine learning models to make data insights more accessible.\n[paper] [slides] [code]\n\n\n\nSoccer AnalyticsICLR’25\n\nAnalyzing soccer match data to extract meaningful patterns and performance metrics for teams and individual players.\n[paper] [slides] [code]\n\n\n\nText MiningIJCAI’24\n\nApplying natural language processing techniques to extract insights from unstructured text data.\n[paper] [slides] [code]\n\n\n\n\n\nFeel free to reach out via LinkedIn or check out my code on GitHub."
+  },
+  {
+    "objectID": "index.html#news",
+    "href": "index.html#news",
+    "title": "Farid Musayev",
+    "section": "",
+    "text": "Feb 26, 2026\nPitch presentation at Linköping University\n\n\n\n\nOct 25, 2025\nECAI25 presentation in Stockholm\n\n\nSep 15, 2025\nStarted thesis work on Causal Inference\n\n\nJun 10, 2025\nCompleted Machine Learning course with distinction\n\n\nMar 05, 2025\nWorkshop presentation on Sports Analytics"
+  },
+  {
+    "objectID": "index.html#publications",
+    "href": "index.html#publications",
+    "title": "Farid Musayev",
+    "section": "",
+    "text": "Expected Goals ModelICML’24\n\nDeveloping a machine learning model to predict goal-scoring probabilities in soccer matches using historical match data and player statistics.\n[paper] [slides] [code]\n\n\n\nScientific VisualizationNeurIPS’23\n\nCreating intuitive visualizations for complex statistical concepts and machine learning models to make data insights more accessible.\n[paper] [slides] [code]\n\n\n\nSoccer AnalyticsICLR’25\n\nAnalyzing soccer match data to extract meaningful patterns and performance metrics for teams and individual players.\n[paper] [slides] [code]\n\n\n\nText MiningIJCAI’24\n\nApplying natural language processing techniques to extract insights from unstructured text data.\n[paper] [slides] [code]"
+  },
+  {
+    "objectID": "index.html#contact",
+    "href": "index.html#contact",
+    "title": "Farid Musayev",
+    "section": "",
+    "text": "Feel free to reach out via LinkedIn or check out my code on GitHub."
   },
   {
     "objectID": "xG_for_against_subplots.html#package-prerequisites",

@@ -72,12 +72,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-8f4bac897a5ad87d12853c608381ccbc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-afa37c5c79185640b9c231024f4fe5ea.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -108,6 +107,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
 
 
 <link rel="stylesheet" href="styles.css">
@@ -129,33 +131,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projects" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Projects</span>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-projects">    
-        <li>
-    <a class="dropdown-item" href="./p1.html">
- <span class="dropdown-text">Expected Goals Model</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./p3.html">
- <span class="dropdown-text">Scientific Visualization</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./p2.html">
- <span class="dropdown-text">Soccer Analytics</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./p4.html">
- <span class="dropdown-text">Text Mining Project</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
-<span class="menu-text">About</span></a>
-  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -226,7 +201,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <section id="package-prerequisites" class="level2">
-<h2 class="anchored" data-anchor-id="package-prerequisites">Package prerequisites</h2>
+<h2 data-anchor-id="package-prerequisites">Package prerequisites</h2>
 <p>In this part, the following packages need to be imported:</p>
 <div id="3a3d52ce" class="cell" data-execution_count="2">
 <details class="code-fold">
@@ -263,7 +238,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="exploratory-data-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="exploratory-data-analysis">Exploratory Data Analysis</h2>
+<h2 data-anchor-id="exploratory-data-analysis">Exploratory Data Analysis</h2>
 <p>Firstly, I read the preprocessed <code>.csv</code> data file and convert all required columns to python readable object types.</p>
 <div id="9eeb2405" class="cell" data-execution_count="3">
 <details class="code-fold">
@@ -342,7 +317,7 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 <span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
-<div id="fig-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-1" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="building_model_files/figure-html/fig-1-output-1.svg" class="img-fluid figure-img">
@@ -387,7 +362,7 @@ Figure&nbsp;1: Distribution of shot outcomes across female soccer competitions.
 <span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
-<div id="fig-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-2" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="building_model_files/figure-html/fig-2-output-1.svg" class="img-fluid figure-img">
@@ -402,7 +377,7 @@ Figure&nbsp;2: Distribution of shots according to their coordinates.
 <p>A majority of shots is made in the central block of the final third area. In addition, there are several outlying shots made from a central area and flang positions. On the right flang, some of outliers even resulted in a goal.</p>
 </section>
 <section id="feature-engineering" class="level2">
-<h2 class="anchored" data-anchor-id="feature-engineering">Feature Engineering</h2>
+<h2 data-anchor-id="feature-engineering">Feature Engineering</h2>
 <p>When it comes to the analysis of a shot made by a player, one can even intuitively predict whether that shot will have a decent outcome or not. In practice, two major factors drive this intuition and can be actually quantified. These are <strong>distance</strong> to a goal and <strong>angle</strong> under which a shot is taken.</p>
 <div id="cell-fig-3" class="cell" data-execution_count="8">
 <details class="code-fold">
@@ -426,7 +401,7 @@ Figure&nbsp;2: Distribution of shots according to their coordinates.
 <span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
-<div id="fig-3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-3" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="building_model_files/figure-html/fig-3-output-1.svg" class="img-fluid figure-img">
@@ -439,7 +414,7 @@ Figure&nbsp;3: Different distances to a goal (solid line) and angles (shaded are
 </div>
 </div>
 <section id="distance-and-angle-features" class="level3">
-<h3 class="anchored" data-anchor-id="distance-and-angle-features">Distance and Angle Features</h3>
+<h3 data-anchor-id="distance-and-angle-features">Distance and Angle Features</h3>
 <p>To demonstrate an impact of <strong>distance</strong> and <strong>angle</strong> features on the probability of a shot to result in a goal, I evaluate these features from a given (x, y) coordinate of each shot and build a simple logistic regression that makes probabilitistic predictions.</p>
 <p>To evaluate the distance to a goal, I calculate the Euclidean distance between (x, y) coordinate of a shot and the goal centerline. Since I work with Statsbomb data, I use their pitch dimensions, which are [0, 120] on the x axis and [0, 80] on the y axis. Thus, the goal centerline coordinates are (120, 40).</p>
 <p>Below you can see my implementation:</p>
@@ -534,7 +509,7 @@ Figure&nbsp;3: Different distances to a goal (solid line) and angles (shaded are
 <span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
-<div id="fig-4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-4" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="building_model_files/figure-html/fig-4-output-1.svg" class="img-fluid figure-img">
@@ -576,7 +551,7 @@ Figure&nbsp;4: Probability of scoring decreases with increasing distance (a) and
 <span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
-<div id="fig-5" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-5" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="building_model_files/figure-html/fig-5-output-1.svg" class="img-fluid figure-img">
@@ -591,7 +566,7 @@ Figure&nbsp;5: Distribution of distances (a) and angles (b) for all executed sho
 </section>
 </section>
 <section id="statistical-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="statistical-analysis">Statistical Analysis</h2>
+<h2 data-anchor-id="statistical-analysis">Statistical Analysis</h2>
 <p>All features are included into the logistic regression model to analyze their statistical signficance. The objective is to analyze p-values for each of the features and determine which of these values are weakly associated with the response.</p>
 <div id="6c74b877" class="cell" data-execution_count="428">
 <details class="code-fold">
@@ -782,7 +757,7 @@ Figure&nbsp;5: Distribution of distances (a) and angles (b) for all executed sho
 <span id="cb18-57"><a href="#cb18-57" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
-<div id="fig-6" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-6" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="building_model_files/figure-html/fig-6-output-1.svg" class="img-fluid figure-img">
@@ -848,7 +823,7 @@ Figure&nbsp;6: Distribution of shots in different types of play (left) and imple
 <p>Finally, there is one more column <code>gk_loc_y</code> which also has a high p-value. This column together with <code>gk_loc_x</code> describe the location of the opposing team’s goalkeeper during an executed shot. Naturally, a goalkeeper standing on the goalline can move differently but in most of the cases along the goalline. This means that the y coordinate should change much more frequently than the x coordinate. However, the y coordinate is less significant in the model than the x coordinate. As of now, I will leave both of these features in the dataset.</p>
 </section>
 <section id="transforming-and-splitting-data" class="level2">
-<h2 class="anchored" data-anchor-id="transforming-and-splitting-data">Transforming and Splitting Data</h2>
+<h2 data-anchor-id="transforming-and-splitting-data">Transforming and Splitting Data</h2>
 <p>One-hot encoding transformation is applied to all categorical variables present in the dataset. These are <strong>body_part</strong>, <strong>technique</strong> and <strong>play_pattern_name</strong>. Note that variables <code>under_pressure</code>, <code>follows_dribble</code>, <code>first_time</code> and <code>open_goal</code> are already transformed into 0/1 boolean variables (False/True); thus, they do not need any additional preprocessing. In addition, features <strong>distance</strong>, <strong>angle</strong>, <strong>gk_loc_x</strong> and <strong>gk_loc_y</strong> are standardized.</p>
 <div id="f12cb41a" class="cell" data-execution_count="759">
 <details class="code-fold">
@@ -879,10 +854,10 @@ Figure&nbsp;6: Distribution of shots in different types of play (left) and imple
 </div>
 </section>
 <section id="model-selection" class="level2">
-<h2 class="anchored" data-anchor-id="model-selection">Model Selection</h2>
+<h2 data-anchor-id="model-selection">Model Selection</h2>
 <p>Three different classifiers were run and evaluated on the given dataset. These are Logistic Regression, Gradient Boosting and Random Forest. Since I am interested in predicting probabilistic outputs, the aim is to achieve the highest accuracy of the probabilistic predictions. Thus, I use <strong>Brier score</strong> as an evaluation metric in <code>RandomizedSearchCV</code>. In addition, I evaluate <strong>ROC-AUC</strong> score for each model with its best parameters. However, <strong>ROC-AUC</strong> is mainly used here as a supportive metric to illustrate the performance in comparison with a random guess.</p>
 <section id="logistic-regression" class="level3">
-<h3 class="anchored" data-anchor-id="logistic-regression">Logistic Regression</h3>
+<h3 data-anchor-id="logistic-regression">Logistic Regression</h3>
 <div id="21d942d6" class="cell" data-execution_count="764">
 <details class="code-fold">
 <summary>Code</summary>
@@ -913,7 +888,7 @@ ROC-AUC =  0.7810976028573392</code></pre>
 </div>
 </section>
 <section id="gradient-boosting" class="level3">
-<h3 class="anchored" data-anchor-id="gradient-boosting">Gradient Boosting</h3>
+<h3 data-anchor-id="gradient-boosting">Gradient Boosting</h3>
 <div id="988e5f98" class="cell" data-execution_count="765">
 <details class="code-fold">
 <summary>Code</summary>
@@ -944,7 +919,7 @@ ROC-AUC =  0.7805726452954971</code></pre>
 </div>
 </section>
 <section id="random-forest" class="level3">
-<h3 class="anchored" data-anchor-id="random-forest">Random Forest</h3>
+<h3 data-anchor-id="random-forest">Random Forest</h3>
 <div id="0044e6d7" class="cell" data-execution_count="766">
 <details class="code-fold">
 <summary>Code</summary>
@@ -978,7 +953,7 @@ ROC-AUC =  0.7761693797650938</code></pre>
 </section>
 </section>
 <section id="future-improvements" class="level2">
-<h2 class="anchored" data-anchor-id="future-improvements">Future Improvements</h2>
+<h2 data-anchor-id="future-improvements">Future Improvements</h2>
 <p>The model illustrates a good performance. However, there are always areas for improvement that I would like to briefly outline:</p>
 <ul>
 <li>Add more extensive analysis in model selection and evaluation phase.</li>
@@ -994,13 +969,6 @@ ROC-AUC =  0.7761693797650938</code></pre>
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     

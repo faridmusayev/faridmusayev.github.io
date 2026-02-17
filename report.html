@@ -72,12 +72,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-8f4bac897a5ad87d12853c608381ccbc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-afa37c5c79185640b9c231024f4fe5ea.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -108,6 +107,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -158,33 +160,6 @@ window.Quarto = {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projects" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Projects</span>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-projects">    
-        <li>
-    <a class="dropdown-item" href="./p1.html">
- <span class="dropdown-text">Expected Goals Model</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./p3.html">
- <span class="dropdown-text">Scientific Visualization</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./p2.html">
- <span class="dropdown-text">Soccer Analytics</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="./p4.html">
- <span class="dropdown-text">Text Mining Project</span></a>
-  </li>  
-    </ul>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
-<span class="menu-text">About</span></a>
-  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -279,11 +254,11 @@ window.Quarto = {
 
 
 <section id="abstract" class="level2">
-<h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
+<h2 data-anchor-id="abstract">Abstract</h2>
 <p>The aim of this report is to build an Expected Threat (xT) Model and illustrate how it can be applied to evaluate performance of players that play from the deeper zones, mainly participate in the game build-up and can be overlooked by the traditional statistics like goals or assists or more advanced ones like Expected Goals (xG) or Expected Assists (xA).</p>
 </section>
 <section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<h2 data-anchor-id="introduction">Introduction</h2>
 <p>Goals and assists are traditional statistics in soccer which focus on player’s shooting and creative capabilities. They concentrate on the assessment of only goal-oriented skills of the player. However, there can be play sequences in soccer that do not end with shots and sometimes lack a final accurate pass or touch that could have put another player into a shooting position. In such circumstances, the evaluation of the game build-up is still important. The actions of players who generate these kind of situations on field should be quantifiable to understand the threatening degree of those situations, and see if a player could have made a better decision. Quantification of these actions can also help to assess impact of players who participate in the game build-up and do not often find themselves close to the opponent’s goal.</p>
 <p>There are advanced metrics for the evaluation of players that participate in the game build-up such as <strong>xGChain</strong> and <strong>xGBuildup</strong>. However, the problem with these metrics is that the xG value of a resulting shot is divided equally among all participants involved in a play sequence (in case of xGBuildup, all players, except assisting and sh0oting ones, are included). These metrics also fail to capture non-shot ending game scenarios.</p>
 <p>It is worth mentioning that there are also other well known models (Posession Value Framework, VAEP etc.) which can be used as alternatives to xT model and are widely implemented in soccer analytics today.</p>
@@ -291,7 +266,7 @@ window.Quarto = {
 <p>This model was originally introduced by <a href="https://karun.in/blog/expected-threat.html">Karun Singh</a> in his blog post from 2019. Despite being written as a blog post, it gained a strong recognition from the soccer analytics community and was cited in different research papers. A grop of researchers from DTAI Sports Analytics Lab at KU Leuven University published a <a href="https://tomdecroos.github.io/reports/xt_vs_vaep.pdf">paper</a> where they were comparing xT Model to VAEP framework.</p>
 </section>
 <section id="algorithm" class="level2">
-<h2 class="anchored" data-anchor-id="algorithm">Algorithm</h2>
+<h2 data-anchor-id="algorithm">Algorithm</h2>
 <p>xT model represents a soccer pitch as a <code>12 x 16 grid</code> where each section of a grid has an assigned xT value. This value is defined as <code>a probability of a team scoring within n next actions</code>. When a player passes from <span class="math inline">\((x_{start}, y_{start})\)</span> to <span class="math inline">\((x_{end}, y_{end})\)</span> coordinate, a completed pass generates so called <code>xT difference</code> that allows to quantify its impact and understand how a team’s probability of scoring changes.</p>
 <p>Below you can see xT grid that was calculated in the course of this report. Here, each zone of the grid contains a value that implies a team’s probability of scoring in <code>5</code> next actions. One may consider higher/lower number of actions but the important point is to observe convergence of xT values in the attacking area, and increasing probability the defending area. More actions would mean that a team can spend more time preparing an attack and gradually progressing further which results into a greater probability of scoring when starting from its own half.</p>
 <div id="b0ddb5eb" class="cell" data-execution_count="490">
@@ -320,14 +295,14 @@ xT_{x,y} = s_{x,y}\cdot xG_{x,y} + m_{x, y} \cdot T_{x,y} \cdot xT
 <p><span class="math inline">\(xT\)</span> - matrix of xT values for all (x, y) coordinates</p>
 <p>The intuition is that for a player located at (x, y) coordinate, there are two choices: shooting or passing. These are mutually exclusive events that have corresponding probabilities of occurrence. Given that a player shoots with <span class="math inline">\(s_{x, y}\)</span>, probability of scoring for that shot will be <span class="math inline">\(xG_{x, y}\)</span>. Given that player passes with <span class="math inline">\(m_{x, y}\)</span>, expected payoff from that pass will be <span class="math inline">\(T_{x, y} \cdot xT\)</span>. From (x, y) coordinate, a player has many options for passes, thus, different probabilities of passing to other areas (which are represented in the form of transition matrix <span class="math inline">\(T_{x,y}\)</span>). In addition, each of those passing choices would have their own reward in the form of <span class="math inline">\(xT\)</span> value. Thus, to calculate expected payoff of passing from (x, y), transition matrix from a given (x,y) is multiplied by a matrix of xT values of the whole pitch.</p>
 <section id="markov-chains-perspective" class="level3">
-<h3 class="anchored" data-anchor-id="markov-chains-perspective">Markov Chains Perspective</h3>
+<h3 data-anchor-id="markov-chains-perspective">Markov Chains Perspective</h3>
 <p>We can view the above formula from the <a href="https://bayesball.github.io/BOOK/simulation-by-markov-chain-monte-carlo.html#markov-chains">Markov Chains Perspective</a> in the following way. Let us leave aside the left side of the formula and focus on the right side <span class="math inline">\(T_{x,y} \cdot xT\)</span>. Here, we observe <code>transition matrix</code> that stores transition probabilities for a player deciding to pass from (x, y) to all other locations on the grid. To evaluate the expected payoff of a completed pass from each (x,y), we also start with initial matrix of <code>xT values</code>.</p>
 <p>As we know from the behavior of irreducible and aperiodic Markov Chains, as <code>transition matrix</code> is multiplied by itself infinite amount of times and some <code>initial starting state</code>, one can observe convergence to the <code>stationary distribution</code>. This actually illustrates that it does not matter what is that initial starting state. In the above formula, we view our matrix of <code>xT values</code> as an initial starting state of all <code>0</code> values and iteratively multiply it by transition matrix.</p>
 <p>In our specific case, as the number of iterations increase, one can observe convergence of xT values in more threating zones and increasing probability mass in less threatening zones. A number of iterations equals a number of subsequent actions after which a team scores a goal. This explains why a probability mass increases in less threatening zones (in the own half of the team in possesion) since more actions mean more time for abuild-up and preparation of an attack from the own half of a team in possession.</p>
 </section>
 </section>
 <section id="data" class="level2">
-<h2 class="anchored" data-anchor-id="data">Data</h2>
+<h2 data-anchor-id="data">Data</h2>
 <p><a href="https://figshare.com/collections/Soccer_match_event_dataset/4415000/2">Wyscout Soccer Match Event dataset</a> from 2017/2018 English Premier League (EPL) is used to build xT model.</p>
 <div id="8f4d5b12" class="cell" data-scrolled="true" data-execution_count="458">
 <details class="code-fold">
@@ -424,10 +399,10 @@ xT_{x,y} = s_{x,y}\cdot xG_{x,y} + m_{x, y} \cdot T_{x,y} \cdot xT
 See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code on data preparation.</p>
 </section>
 <section id="xg-model" class="level2">
-<h2 class="anchored" data-anchor-id="xg-model">xG Model</h2>
+<h2 data-anchor-id="xg-model">xG Model</h2>
 <p>This section illustrates a methodology for implementing xG model that is used to evaluate <span class="math inline">\(xG_{x, y}\)</span> for a given (x, y) coordinate on the pitch.</p>
 <section id="shots-data" class="level3">
-<h3 class="anchored" data-anchor-id="shots-data">Shots Data</h3>
+<h3 data-anchor-id="shots-data">Shots Data</h3>
 <p>After data preprocessing steps, we filter out all 7134 shots for EPL 2017/2018 season (see <strong>A3.1 Filter Shots</strong>).</p>
 <div id="4b91ef1e" class="cell" data-execution_count="46">
 <details class="code-fold">
@@ -550,7 +525,7 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 </div>
 </section>
 <section id="feature-generation" class="level3">
-<h3 class="anchored" data-anchor-id="feature-generation">Feature Generation</h3>
+<h3 data-anchor-id="feature-generation">Feature Generation</h3>
 <p>To calculate <code>xG</code> model, we have to create two features <code>distance to goal</code> and <code>angle of shot</code> (see also <strong>A3.2 Feature Generating Function</strong>).</p>
 <div id="48668401" class="cell" data-execution_count="48">
 <details class="code-fold">
@@ -588,7 +563,7 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 </div>
 </section>
 <section id="model-training-with-logistic-regression" class="level3">
-<h3 class="anchored" data-anchor-id="model-training-with-logistic-regression">Model Training with Logistic Regression</h3>
+<h3 data-anchor-id="model-training-with-logistic-regression">Model Training with Logistic Regression</h3>
 <p>Then, we use Logistic Regression to fit our data and create xG model.</p>
 <div id="ffc57a18" class="cell" data-execution_count="59">
 <details class="code-fold">
@@ -622,7 +597,7 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 </div>
 </section>
 <section id="model-performance-evaluation" class="level3">
-<h3 class="anchored" data-anchor-id="model-performance-evaluation">Model Performance Evaluation</h3>
+<h3 data-anchor-id="model-performance-evaluation">Model Performance Evaluation</h3>
 <p>Model performance evaluation is implemented using ROC curve (for details see <strong>A3.3 xG Model Evaluation with ROC</strong>).</p>
 <div id="b63d6b3c" class="cell" data-execution_count="471">
 <details class="code-fold">
@@ -651,11 +626,11 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 </section>
 </section>
 <section id="xt-equation-variables" class="level2">
-<h2 class="anchored" data-anchor-id="xt-equation-variables">xT Equation Variables</h2>
+<h2 data-anchor-id="xt-equation-variables">xT Equation Variables</h2>
 <p>In section 3, xT equation variables <span class="math inline">\(s_{x, y}\)</span>, <span class="math inline">\(m_{x, y}\)</span>, <span class="math inline">\(xG_{x, y}\)</span> were defined. Below you can see obtained results for each of these variables (see <strong>A4. xT Equation Variables Derivation</strong>).</p>
 <p>All of the results were obtained in the form of 12x16 matrix which was illustrated as a pitch heatmap.</p>
 <section id="probability-shooting-s_x-y" class="level3">
-<h3 class="anchored" data-anchor-id="probability-shooting-s_x-y">Probability Shooting <span class="math inline">\(s_{x, y}\)</span></h3>
+<h3 data-anchor-id="probability-shooting-s_x-y">Probability Shooting <span class="math inline">\(s_{x, y}\)</span></h3>
 <p>This heatmap illustrates probability of shooting <span class="math inline">\(s_{x, y}\)</span> from a given (x, y). Naturally, as a player approaches an opponent’s goal, <span class="math inline">\(s_{x, y}\)</span> increases.</p>
 <div id="6401bcfd" class="cell" data-execution_count="495">
 <details class="code-fold">
@@ -672,7 +647,7 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 </div>
 </section>
 <section id="probability-of-passing-m_x-y" class="level3">
-<h3 class="anchored" data-anchor-id="probability-of-passing-m_x-y">Probability of Passing <span class="math inline">\(m_{x, y}\)</span></h3>
+<h3 data-anchor-id="probability-of-passing-m_x-y">Probability of Passing <span class="math inline">\(m_{x, y}\)</span></h3>
 <p>This heatmap illustrates probability of passing <span class="math inline">\(m_{x, y}\)</span> from a given (x, y). Naturally, as a player approaches an opponent’s goal, <span class="math inline">\(m_{x, y}\)</span> decreases, since a player becomes more inclined to shooting.</p>
 <div id="7e99a3ed" class="cell" data-execution_count="484">
 <details class="code-fold">
@@ -689,7 +664,7 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 </div>
 </section>
 <section id="probability-of-scoring-xg_x-y" class="level3">
-<h3 class="anchored" data-anchor-id="probability-of-scoring-xg_x-y">Probability of Scoring <span class="math inline">\(xG_{x, y}\)</span></h3>
+<h3 data-anchor-id="probability-of-scoring-xg_x-y">Probability of Scoring <span class="math inline">\(xG_{x, y}\)</span></h3>
 <p>This heatmap illustrates probability of scoring <span class="math inline">\(xG_{x, y}\)</span> from a given (x, y). Naturally, as a player approaches an opponent’s goal, the distance to a goal decreases and the angle of a shot increases, thus, <span class="math inline">\(xG_{x, y}\)</span> increases.</p>
 <div id="a2f25716" class="cell" data-execution_count="488">
 <details class="code-fold">
@@ -706,7 +681,7 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 </div>
 </section>
 <section id="transition-matrix-t_x-y" class="level3">
-<h3 class="anchored" data-anchor-id="transition-matrix-t_x-y">Transition Matrix <span class="math inline">\(T_{x, y}\)</span></h3>
+<h3 data-anchor-id="transition-matrix-t_x-y">Transition Matrix <span class="math inline">\(T_{x, y}\)</span></h3>
 <p>Below you can see a function <code>transition_matrix()</code>that for a given (x, y) coordinate calculates a probability of passing to all other (x, y) coordinates (transition probabilities) and stores them inside a matrix.</p>
 <div id="ff0aad52" class="cell" data-execution_count="496">
 <details class="code-fold">
@@ -732,7 +707,7 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 </section>
 </section>
 <section id="xt-algorithm-implementation" class="level2">
-<h2 class="anchored" data-anchor-id="xt-algorithm-implementation">xT Algorithm Implementation</h2>
+<h2 data-anchor-id="xt-algorithm-implementation">xT Algorithm Implementation</h2>
 <p>Finally, using all the above estimated probabilities we can evaluate our xT values for all (x, y) coordinates of the pitch.</p>
 <div id="9f0fbf93" class="cell" data-scrolled="true" data-execution_count="192">
 <details class="code-fold">
@@ -770,12 +745,12 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 </div>
 </section>
 <section id="results-and-discussion" class="level2">
-<h2 class="anchored" data-anchor-id="results-and-discussion">Results and Discussion</h2>
+<h2 data-anchor-id="results-and-discussion">Results and Discussion</h2>
 <p>We make a sanity check of our model by comparing and plotting xT values of the players across <strong>Bundesliga, EPL, LaLiga and Ligue 1</strong> from 2017/2018 season using <a href="https://figshare.com/collections/Soccer_match_event_dataset/4415000/2">Wyscout Soccer Match Event Dataset</a>.</p>
 <p>Barplots on the left illustrate xT values of top 10 players in the league. Barplots on the right illustrate xT values of top 10 young players among all league players aged under 21. Since the data is from 2017/2018 season, this allows us to track how the careers of young players actually developed given a single successful (according to xT) season.</p>
 <p>See <strong>A5. Plot Functions</strong> for the code for all plots in the following sections.</p>
 <section id="bundesliga" class="level3">
-<h3 class="anchored" data-anchor-id="bundesliga">Bundesliga</h3>
+<h3 data-anchor-id="bundesliga">Bundesliga</h3>
 <p>For Bundesliga, top 10 performers are mainly midfielders and defenders. Thiago Alcantara is well known as one of the most technically gifted players in the european football. He plays as the central midfielder, and, naturally, does not register a high number of goals and assists (2 league goals and 2 assists in 2017/2018) in his statistics. Nevertheless, he is the top performer in terms of xT per 90 equal to 0.56 according to our model (which means that, on average, his passes increase his team’s probability of scoring by 0.56 per game). It makes sense to see Alcantara in the top 10 of our bar graph, since he is well known for a high ability to control the game in the central area and initiate attacks with line-breaking passes (the ones that may cut through and leave behind several players of opponent’s team). There are also players similar to Alcantara’s profile such as Nuri Sahin (2 goals, 2 assists), Charles Aranguiz (1 goal, 3 assists) who also found their place in our top 10.</p>
 <p>Central defenders also have a dominant presence in our xT bar graph. Given that they spend a large amount of time on field, in some scenarios, this can lead to a high number of aggregated small xT values. Thus, it is always important to normalize values per a single game ( per 90 minutes). Apart from that, modern central defenders should be capable of initiating their team’s attacks with a great first pass (line-breaking pass, switch etc.). Players like Jerome Boateng and Mats Hummels are, in particular, appreciated for this kind of passes.</p>
 <p>As stated previously, we can assess xT performance of young players and basing on a sinlge season success track their further career development. For example, Dayot Upamecano had a first breakthrough season in RB Leipzig (top of our xT bar graph) and after three more years of a consistent performance moved to Bayern Munich. During 2017/2018, Kai Havertz was already having his second full season in a senior football being 19 years old. He had two more successful seasons (29 goals, 9 assists) in Bayern Leverkusen and, then, moved to Chelsea. Panagiotis Retsos had a breakthrough season at Bayern Leverkusen as a right full back but suffered three serious injuries which kept him out of the game for the majority of the next season. This obivously had a serious impact on his career, and, so far, he struggled to regain his form during loan spells in England, France and Italy.</p>
@@ -794,7 +769,7 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 </div>
 </section>
 <section id="epl" class="level3">
-<h3 class="anchored" data-anchor-id="epl">EPL</h3>
+<h3 data-anchor-id="epl">EPL</h3>
 <p>In contrast with Bundesliga, top 10 EPL performers are mainly central and attacking midfielders and even a single wide playing forward. Starting from the latter, this is Alexis Sanchez, who made 74 shot creating passes in 2017/2018. In particular, he was also vital to his team for the ability to drop back into midfield and participate in the initiation of attacks.</p>
 <p>The rest of top five (Cesc Fabregas, Kevin De Bruyne, Mesut Ozil, David Silva) are creative forces of their teams (0.70, 0.59, 0.57, 0.54 xT per 90). All four were generating the chances of at least a half goal per a game, and this does not even include the rest of their advaced statistics such as xG or xA. The bottom top five consists of more functional central midfielders (except attacking Phillipe Coutinho) whose xT values are close or slightly higher that 0.5. In other words, we observe that xT metric validates importance of these players for their teams.</p>
 <p>When having a look at the performance of young players, we can observe a rise of full backs such as Trent Alexander-Arnold, Ainsley Maitland-Niles, Timothy Fosu-Mensah and Ben Chilwell. Alexander-Arnold (0.32 xT per 90) is regarded one of the top performing full backs of the last three seasons (9 goals, 44 assists). He is known for his ability to initiate the attacks from the right half-space. As with senior players, we observe functional midfielders such as Wilfred Ndidi and Declan Rice in the bottom five of our bar graph. Being recognized for their defensive skills, these players are regular starters of their teams despite their young age.</p>
@@ -813,7 +788,7 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 </div>
 </section>
 <section id="laliga" class="level3">
-<h3 class="anchored" data-anchor-id="laliga">LaLiga</h3>
+<h3 data-anchor-id="laliga">LaLiga</h3>
 <p>Similar to EPL, we mainly observe central and attacking midfielders among top 10 performers in LaLiga. However, one name stands out here, and that is Lionel Messi. Messi is known for his skills to drop deeper, participate in the game play in the central area and, then, run forward. This is one of the reasons why he managed to aggregate 0.59 xT per 90. Andres Iniesta and Ever Banega also have identical to Messi’s xT results and are an essential part of their teams during the possession. It is also interesting to see a left full back Marcelo with his 0.5 xT per 90. Though mainly playing from the left, he possess great passing skills which help to build and progress his team’s attacks.</p>
 <p>LaLiga’s top young players play in various positions from wingers and central midfielders to full backs and central defenders. Despite being largerly hit by injuries, Ousmane Dembele were able to demonstrate his potential with 0.28 xT per 90 in his first season for Barcelona. However, injuries still haunted him in the following seasons which, obviously, affected his career. Theo Hernandez impressed for Real Madrid as a left full back (0.22 xT per 90), despite a limited time, and, in the last three seasons, were a stable starting eleven player for Milan. Federico Valverde had a great season as a box-to-box midfielder (0.25 xT per 90) in his first season for Deportivo La Coruna, and, afterwards, earned his place in Real Madrid.</p>
 <div id="6f9afbf3" class="cell" data-scrolled="false" data-execution_count="600">
@@ -831,7 +806,7 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 </div>
 </section>
 <section id="ligue-1" class="level3">
-<h3 class="anchored" data-anchor-id="ligue-1">Ligue 1</h3>
+<h3 data-anchor-id="ligue-1">Ligue 1</h3>
 <p>When evaluating top 10 players from Ligue 1, we observe similar patterns as in LaLiga. The first place is reserved by Neymar with 0.62 xT per 90 who plays as a wide forward or attacking midfielder. There are also several deep-lying midfielders such as Marco Veratti, Yann M’vila, Thiago Motta and Jean Seri. Similar to Marcelo from LaLiga, Daniel Alves is the only full back in the list. Daniel Alves who operates from the right wing has always been a creative and technical player with great passing and ball progressing skills. In any of the teams in which he played, he has been instrumental to holding possession and movement of a ball to high threating areas.</p>
 <p>Maxime Lopez is the only player, out of four leagues that were reviewed, who earned his place in both senior and young players list with 0.51 xT per 90. Despite his young age of 19, 2017/2018 season was already his second season in senior football where he helped Marseille to achieve the fourth place in the league. He continued playing as a midfielder three more years for the french club but had a limited time in the last season. Thus, he was loaned to the italian team Sassuolo. Despite playing regularly there, he could not convince Marseille to bring him back and, eventually, stayed in Italy on the permanent basis.</p>
 <div id="e74a260c" class="cell" data-execution_count="601">
@@ -850,12 +825,12 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 </section>
 </section>
 <section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<h2 data-anchor-id="conclusion">Conclusion</h2>
 <p>As it can be seen from the above results, xT Model demonstrates a good performance when trying to evaluate players who are overlooked by traditional or shot-oriented advanced statistics but are still important to their teams. These can be different types of players such as central defenders with a great first pass, deep-lying midfielders switching game with long ranging passes and creative full backs involved in possession. However, as it stands for all models, this model also has a room for improvement.</p>
 <p>Below are suggestions for further studies of xT model: - add other action types such as carries and take-ons - account for actions with negative xT such as inaccurate passes or lost balls - use negative xT during player performance evaluation - normalize xT results per number of actions by a player</p>
 </section>
 <section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
+<h2 data-anchor-id="references">References</h2>
 <ul>
 <li><p><em><a href="https://karun.in/blog/expected-threat.html">Karun Singh’s</a> Expected Threat Model, 2019.</em></p></li>
 <li><p><em>Roy, Maaike Van, Pieter Robberechts, Tom Decroos and Jesse Davis. <a href="https://tomdecroos.github.io/reports/xt_vs_vaep.pdf">“Valuing On-the-Ball Actions in Soccer: A Critical Comparison of xT and VAEP.”</a> (2020).</em></p></li>
@@ -864,9 +839,9 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 </ul>
 </section>
 <section id="appendix" class="level2">
-<h2 class="anchored" data-anchor-id="appendix">Appendix</h2>
+<h2 data-anchor-id="appendix">Appendix</h2>
 <section id="a1.-libraries" class="level3">
-<h3 class="anchored" data-anchor-id="a1.-libraries">A1. Libraries</h3>
+<h3 data-anchor-id="a1.-libraries">A1. Libraries</h3>
 <div id="48a24e43" class="cell" data-execution_count="66">
 <details class="code-fold">
 <summary>Code</summary>
@@ -883,7 +858,7 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 </div>
 </section>
 <section id="a2.-event-data-preprocessing" class="level3">
-<h3 class="anchored" data-anchor-id="a2.-event-data-preprocessing">A2. Event Data Preprocessing</h3>
+<h3 data-anchor-id="a2.-event-data-preprocessing">A2. Event Data Preprocessing</h3>
 <div id="7a51c519" class="cell" data-execution_count="41">
 <details class="code-fold">
 <summary>Code</summary>
@@ -974,9 +949,9 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 </div>
 </section>
 <section id="a3.-xg-model" class="level3">
-<h3 class="anchored" data-anchor-id="a3.-xg-model">A3. xG Model</h3>
+<h3 data-anchor-id="a3.-xg-model">A3. xG Model</h3>
 <section id="a3.1-filter-shots" class="level4">
-<h4 class="anchored" data-anchor-id="a3.1-filter-shots">A3.1 Filter Shots</h4>
+<h4 data-anchor-id="a3.1-filter-shots">A3.1 Filter Shots</h4>
 <div id="766a077f" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1024,7 +999,7 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 </div>
 </section>
 <section id="a3.2-feature-generating-function" class="level4">
-<h4 class="anchored" data-anchor-id="a3.2-feature-generating-function">A3.2 Feature Generating Function</h4>
+<h4 data-anchor-id="a3.2-feature-generating-function">A3.2 Feature Generating Function</h4>
 <div id="a944c1dc" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1065,7 +1040,7 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 </div>
 </section>
 <section id="a3.3-xg-model-evaluation-with-roc" class="level4">
-<h4 class="anchored" data-anchor-id="a3.3-xg-model-evaluation-with-roc">A3.3 xG Model Evaluation with ROC</h4>
+<h4 data-anchor-id="a3.3-xg-model-evaluation-with-roc">A3.3 xG Model Evaluation with ROC</h4>
 <div id="6b5cdf4e" class="cell" data-execution_count="578">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1126,9 +1101,9 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 </section>
 </section>
 <section id="a4.-xt-equation-variables-derivation" class="level3">
-<h3 class="anchored" data-anchor-id="a4.-xt-equation-variables-derivation">A4. xT Equation Variables Derivation</h3>
+<h3 data-anchor-id="a4.-xt-equation-variables-derivation">A4. xT Equation Variables Derivation</h3>
 <section id="a4.1-shooting-probability" class="level4">
-<h4 class="anchored" data-anchor-id="a4.1-shooting-probability">A4.1 Shooting Probability</h4>
+<h4 data-anchor-id="a4.1-shooting-probability">A4.1 Shooting Probability</h4>
 <div id="2b8ac443" class="cell" data-execution_count="64">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1150,7 +1125,7 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 </div>
 </section>
 <section id="a4.2-passing-probability" class="level4">
-<h4 class="anchored" data-anchor-id="a4.2-passing-probability">A4.2 Passing Probability</h4>
+<h4 data-anchor-id="a4.2-passing-probability">A4.2 Passing Probability</h4>
 <div id="f61e7602" class="cell" data-execution_count="67">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1198,7 +1173,7 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 </div>
 </section>
 <section id="a4.3-scoring-probability" class="level4">
-<h4 class="anchored" data-anchor-id="a4.3-scoring-probability">A4.3 Scoring Probability</h4>
+<h4 data-anchor-id="a4.3-scoring-probability">A4.3 Scoring Probability</h4>
 <div id="b6899f28" class="cell" data-execution_count="74">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1237,9 +1212,9 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 </section>
 </section>
 <section id="a5.-plot-functions" class="level3">
-<h3 class="anchored" data-anchor-id="a5.-plot-functions">A5. Plot Functions</h3>
+<h3 data-anchor-id="a5.-plot-functions">A5. Plot Functions</h3>
 <section id="a5.1-xt-values-grid" class="level4">
-<h4 class="anchored" data-anchor-id="a5.1-xt-values-grid">A5.1 xT values Grid</h4>
+<h4 data-anchor-id="a5.1-xt-values-grid">A5.1 xT values Grid</h4>
 <div id="3c45bc5a" class="cell" data-execution_count="489">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1297,7 +1272,7 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 </div>
 </section>
 <section id="a5.2-passing-probability" class="level4">
-<h4 class="anchored" data-anchor-id="a5.2-passing-probability">A5.2 Passing Probability</h4>
+<h4 data-anchor-id="a5.2-passing-probability">A5.2 Passing Probability</h4>
 <div id="89c10fe0" class="cell" data-execution_count="483">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1359,7 +1334,7 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 </div>
 </section>
 <section id="a5.3-shooting-probability" class="level4">
-<h4 class="anchored" data-anchor-id="a5.3-shooting-probability">A5.3 Shooting Probability</h4>
+<h4 data-anchor-id="a5.3-shooting-probability">A5.3 Shooting Probability</h4>
 <div id="c3fbecb8" class="cell" data-execution_count="494">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1421,7 +1396,7 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 </div>
 </section>
 <section id="a5.4-scoring-probability" class="level4">
-<h4 class="anchored" data-anchor-id="a5.4-scoring-probability">A5.4 Scoring Probability</h4>
+<h4 data-anchor-id="a5.4-scoring-probability">A5.4 Scoring Probability</h4>
 <div id="41386ea3" class="cell" data-execution_count="486">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1483,7 +1458,7 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 </div>
 </section>
 <section id="a5.5-xt-values-for-bundesliga-players" class="level4">
-<h4 class="anchored" data-anchor-id="a5.5-xt-values-for-bundesliga-players">A5.5 xT values for Bundesliga Players</h4>
+<h4 data-anchor-id="a5.5-xt-values-for-bundesliga-players">A5.5 xT values for Bundesliga Players</h4>
 <div id="3d90e11e" class="cell" data-execution_count="586">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1566,7 +1541,7 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 </div>
 </section>
 <section id="a5.6-xt-values-for-epl-players" class="level4">
-<h4 class="anchored" data-anchor-id="a5.6-xt-values-for-epl-players">A5.6 xT values for EPL Players</h4>
+<h4 data-anchor-id="a5.6-xt-values-for-epl-players">A5.6 xT values for EPL Players</h4>
 <div id="0f428edb" class="cell" data-execution_count="595">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1649,7 +1624,7 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 </div>
 </section>
 <section id="a5.7-xt-values-for-laliga-players" class="level4">
-<h4 class="anchored" data-anchor-id="a5.7-xt-values-for-laliga-players">A5.7 xT values for LaLiga Players</h4>
+<h4 data-anchor-id="a5.7-xt-values-for-laliga-players">A5.7 xT values for LaLiga Players</h4>
 <div id="8de2782f" class="cell" data-execution_count="596">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1729,7 +1704,7 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 </div>
 </section>
 <section id="a5.8-xt-values-for-ligue-1-players" class="level4">
-<h4 class="anchored" data-anchor-id="a5.8-xt-values-for-ligue-1-players">A5.8 xT values for Ligue 1 Players</h4>
+<h4 data-anchor-id="a5.8-xt-values-for-ligue-1-players">A5.8 xT values for Ligue 1 Players</h4>
 <div id="816c02e5" class="cell" data-execution_count="598">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1816,13 +1791,6 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     

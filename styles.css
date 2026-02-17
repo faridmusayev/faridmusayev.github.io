@@ -1,81 +1,157 @@
-/* css styles */
+/* Minimalistic single-page website styles */
 
-
-/* use justify alignment for  text*/
-body{
-  text-align: justify;
+/* Universal font for all elements except code */
+* {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-
-/* avoid justify alignment for toc*/
-.anchored{
-  text-align: left;
+body {
+  color: #2c3e50;
+  line-height: 1.6;
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  font-size: 1rem;
+  font-weight: 400;
 }
 
-.title{
-  text-align: left;
+/* Main heading */
+h1 {
+  font-size: 1.9rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  color: #1a202c;
 }
 
-
-.subtitle.lead{
-  text-align: left;
+/* Section headings */
+h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  color: #2d3748;
 }
 
-/* remove categories sidebar in blog page*/
-#quarto-margin-sidebar{
-  /*display: none;*/
-  text-align: left
+/* Links */
+a {
+  color: #0066cc;
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
-/* remove text shadow in left title*/
-span.navbar-title{
-  text-shadow: 0px 0px;
-
+a:hover {
+  color: #0052a3;
+  text-decoration: underline;
 }
 
-/* remove text shadow in right menu*/
-.navbar .nav-link{
-  text-shadow: 0px 0px;
+/* Project titles */
+h2 + p strong {
+  font-size: 1.1rem;
+  color: #222;
 }
 
-/*main text font color */
-.nav-fixed.quarto-light{
-  color: #3F3D3D;
+/* Horizontal rules */
+hr {
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin: 3rem 0;
 }
 
-/*font description color in notebooks*/
-.quarto-title-block.default .description{
-  color: #6c757d;
+/* Navbar styling */
+.navbar {
+  border-bottom: 1px solid #e0e0e0;
 }
 
-/*font description color in blog */
-.subtitle.lead{
-  color: #6c757d;
+.navbar-title {
+  font-weight: 600;
+  text-shadow: none;
 }
 
-/*meta heading such as published, author color*/
-.quarto-title-meta-heading{
-  color: #6c757d;
+.navbar .nav-link {
+  text-shadow: none;
 }
 
-/*meta heading contents color*/
-.quarto-title-meta-contents{
-  color: #6c757d;
+/* Remove default Quarto margins */
+.quarto-title-block {
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
-/*each blog page tags color and letter case*/
-.quarto-title .quarto-categories .quarto-category {
-  color: black;
-  border: solid 1px #dee2e6;
-  text-transform: lowercase;
-  opacity: 0.8;
-
+/* Code blocks */
+code {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 0.9em;
+  background-color: #f5f5f5;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
 }
 
-/* main blog page tags color and letter case*/
-div.quarto-post .listing-categories .listing-category{
+/* Table styling - remove bold from all cells */
+table td, table th {
+  font-weight: 400;
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+}
 
-  color: black;
-  opacity: 0.8;
-  text-transform: lowercase;
+table {
+  border: none;
+  border-collapse: collapse;
+}
+
+table thead {
+  border-bottom: none !important;
+}
+
+table thead tr {
+  border-bottom: none !important;
+}
+
+table tbody tr {
+  border-bottom: none !important;
+  border-top: none !important;
+}
+
+/* News section styling */
+#news + p {
+  line-height: 1.8;
+}
+
+/* Publication styling */
+.publication {
+  margin-bottom: 2rem;
+}
+
+.pub-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+}
+
+.pub-header strong {
+  font-size: 1.1rem;
+  color: #222;
+}
+
+.conference {
+  color: #999;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem 0.5rem;
+  }
+  
+  h1 {
+    font-size: 1.75rem;
+  }
+  
+  h2 {
+    font-size: 1.2rem;
+  }
 }
