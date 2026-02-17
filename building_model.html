@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.8.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Farid Musayev">
 <meta name="dcterms.date" content="2022-09-06">
 
-<title>Farid Musayev - Part 2 | Building Model</title>
+<title>Part 2 | Building Model – Farid Musayev</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,6 +23,7 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -59,29 +60,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-8f4bac897a5ad87d12853c608381ccbc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -90,67 +99,67 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Farid Musayev</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projects" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projects" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Projects</span>
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-projects">    
         <li>
-    <a class="dropdown-item" href="./p1.html" rel="" target="">
+    <a class="dropdown-item" href="./p1.html">
  <span class="dropdown-text">Expected Goals Model</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./p3.html" rel="" target="">
+    <a class="dropdown-item" href="./p3.html">
  <span class="dropdown-text">Scientific Visualization</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./p2.html" rel="" target="">
+    <a class="dropdown-item" href="./p2.html">
  <span class="dropdown-text">Soccer Analytics</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./p4.html" rel="" target="">
+    <a class="dropdown-item" href="./p4.html">
  <span class="dropdown-text">Text Mining Project</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
   </li>  
 </ul>
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -212,15 +221,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <section id="package-prerequisites" class="level2">
 <h2 class="anchored" data-anchor-id="package-prerequisites">Package prerequisites</h2>
 <p>In this part, the following packages need to be imported:</p>
-<div class="cell" data-execution_count="2">
-<details>
+<div id="3a3d52ce" class="cell" data-execution_count="2">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Preprocessing</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Preprocessing</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ast</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -247,43 +258,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Model Evaluation</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> roc_auc_score, brier_score_loss</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> roc_auc_score, brier_score_loss</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
 <section id="exploratory-data-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="exploratory-data-analysis">Exploratory Data Analysis</h2>
 <p>Firstly, I read the preprocessed <code>.csv</code> data file and convert all required columns to python readable object types.</p>
-<div class="cell" data-execution_count="3">
-<details>
+<div id="9eeb2405" class="cell" data-execution_count="3">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read shots.csv file </span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read shots.csv file </span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>shots <span class="op">=</span> pd.read_csv(<span class="st">'.data/shots.csv'</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>shots.loc[:, <span class="st">'freeze_frame'</span>] <span class="op">=</span> shots.loc[:, <span class="st">'freeze_frame'</span>].<span class="bu">apply</span>(ast.literal_eval)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>shots.loc[:, <span class="st">'gk_loc'</span>] <span class="op">=</span> shots.loc[:, <span class="st">'gk_loc'</span>].<span class="bu">apply</span>(ast.literal_eval)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>shots.loc[:, <span class="st">'end_loc'</span>] <span class="op">=</span> shots.loc[:, <span class="st">'end_loc'</span>].<span class="bu">apply</span>(ast.literal_eval)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>shots.loc[:, <span class="st">'end_loc'</span>] <span class="op">=</span> shots.loc[:, <span class="st">'end_loc'</span>].<span class="bu">apply</span>(ast.literal_eval)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>Prediction of a goal outcome in soccer is a binary classification task { 0 - No goal ; 1 - Goal }. However, the key point is that, in xG model, we are not dealing with hard classes but rather trying to make a probabilistic prediction for a shot outcome. In comparison with hard classes, probabilistic outputs allow to describe the quality of a shot since not all shots are equally probable to be scored. In other words, given a shot, how likely it is to result in a goal. This is what the xG value estimates for a given shot.</p>
 <p>The code snippet below shows that there are different outcome types for a given shot such as <em>Saved</em>, <em>Off target</em>, shot that hit <em>Post</em>, <em>Blocked</em>, way off target <em>Wayward</em> shot, etc. To build a binary probabilistic classifier, it is necessary to define predictions as hard classes. Here, I convert each value of <code>outcome_type</code> column to 1 for <em>Goal</em> scenario or 0 for the rest of scenarios.</p>
-<div class="cell" data-execution_count="4">
-<details>
+<div id="35f48606" class="cell" data-execution_count="4">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>shots.loc[:, <span class="st">'outcome'</span>].unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>shots.loc[:, <span class="st">'outcome'</span>].unique()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>array(['Saved', 'Off T', 'Post', 'Goal', 'Blocked', 'Wayward',
        'Saved Off Target', 'Saved to Post'], dtype=object)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="5">
-<details>
+<div id="0f011b34" class="cell" data-execution_count="5">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rename existing 'outcome' column to 'outcome_type' </span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rename existing 'outcome' column to 'outcome_type' </span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>shots <span class="op">=</span> shots.rename(columns <span class="op">=</span> {<span class="st">'outcome'</span>: <span class="st">'outcome_type'</span>})</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># save binary results into a newly created 'outcome' column</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>shots.loc[:, <span class="st">'outcome'</span>] <span class="op">=</span> shots.loc[:, <span class="st">'outcome_type'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="dv">1</span> <span class="cf">if</span> x <span class="op">==</span> <span class="st">'Goal'</span> <span class="cf">else</span> <span class="dv">0</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>shots.loc[:, <span class="st">'outcome'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>shots.loc[:, <span class="st">'outcome'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>0        0
@@ -300,11 +311,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 Name: outcome, Length: 11043, dtype: int64</code></pre>
 </div>
 </div>
-<p>Now, let us analyze the types of available shots and their frequencies. From <a href="#fig-1">Figure&nbsp;1</a>, it can be seen that our dataframe contains data on 11043 shots. Below you can see that 1165 of them resulted in a goal.</p>
-<div class="cell" data-execution_count="6">
-<details>
+<p>Now, let us analyze the types of available shots and their frequencies. From <a href="#fig-1" class="quarto-xref">Figure&nbsp;1</a>, it can be seen that our dataframe contains data on 11043 shots. Below you can see that 1165 of them resulted in a goal.</p>
+<div id="cell-fig-1" class="cell" data-execution_count="6">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data preparation</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data preparation</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>shot_types <span class="op">=</span> pd.DataFrame(shots.loc[:, <span class="st">'outcome_type'</span>].value_counts()).reset_index()</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>shot_types.columns <span class="op">=</span> [<span class="st">'outcome_type'</span>, <span class="st">'n'</span>]</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>shot_types <span class="op">=</span> shot_types.sort_values(by <span class="op">=</span> <span class="st">'n'</span>, ascending <span class="op">=</span> <span class="va">True</span>)</span>
@@ -328,23 +339,27 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 <span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>ax.tick_params(axis <span class="op">=</span> <span class="st">'both'</span>, which <span class="op">=</span> <span class="st">'major'</span>, labelsize <span class="op">=</span> <span class="dv">10</span>)</span>
 <span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>ax.spines[[<span class="st">'top'</span>, <span class="st">'right'</span>]].set_visible(<span class="va">False</span>)</span>
 <span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
-<div id="fig-1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="building_model_files/figure-html/fig-1-output-1.svg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;1: Distribution of shot outcomes across female soccer competitions.</figcaption>
+<div id="fig-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="building_model_files/figure-html/fig-1-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Distribution of shot outcomes across female soccer competitions.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>To sum up, we can see that a majority of shots are off target, blocked or saved. Since only 1165 out of 11043 shots are goals, we can conclude that our data is imbalanced. This will affect our choice of model evaluation metric in the model selection phase.</p>
 <p>Next, we can visualize the location of all shots.</p>
-<div class="cell" data-execution_count="7">
-<details>
+<div id="cell-fig-2" class="cell" data-execution_count="7">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Canvas</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Canvas</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>pitch <span class="op">=</span> Pitch(pitch_type <span class="op">=</span> <span class="st">'statsbomb'</span>)  </span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> pitch.draw(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">8</span>))</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -369,13 +384,17 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 <span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>arrow_ax.annotate(<span class="st">'Direction of Play'</span>, xy <span class="op">=</span> (<span class="fl">0.42</span>, <span class="fl">0.02</span>), fontsize <span class="op">=</span> <span class="dv">10</span>)</span>
 <span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
-<div id="fig-2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="building_model_files/figure-html/fig-2-output-1.svg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2: Distribution of shots according to their coordinates.</figcaption>
+<div id="fig-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="building_model_files/figure-html/fig-2-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Distribution of shots according to their coordinates.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -385,10 +404,10 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 <section id="feature-engineering" class="level2">
 <h2 class="anchored" data-anchor-id="feature-engineering">Feature Engineering</h2>
 <p>When it comes to the analysis of a shot made by a player, one can even intuitively predict whether that shot will have a decent outcome or not. In practice, two major factors drive this intuition and can be actually quantified. These are <strong>distance</strong> to a goal and <strong>angle</strong> under which a shot is taken.</p>
-<div class="cell" data-execution_count="8">
-<details>
+<div id="cell-fig-3" class="cell" data-execution_count="8">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pitch design</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pitch design</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>pitch <span class="op">=</span> VerticalPitch(pitch_type <span class="op">=</span> <span class="st">'statsbomb'</span>,</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                      half <span class="op">=</span> <span class="va">True</span>, </span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                      pad_left <span class="op">=</span> <span class="dv">0</span>, pad_right <span class="op">=</span> <span class="dv">0</span>, pad_top <span class="op">=</span> <span class="dv">0</span>, pad_bottom <span class="op">=</span> <span class="fl">0.15</span>)  </span>
@@ -404,13 +423,17 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 <span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    pitch.lines(x[i][<span class="dv">0</span>], y[i][<span class="dv">0</span>], x[i][<span class="dv">1</span>], y[i][<span class="dv">1</span>], ax <span class="op">=</span> ax[i], linewidth <span class="op">=</span> <span class="dv">1</span>)</span>
 <span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
-<div id="fig-3" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="building_model_files/figure-html/fig-3-output-1.svg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;3: Different distances to a goal (solid line) and angles (shaded area) for a given shot.</figcaption>
+<div id="fig-3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="building_model_files/figure-html/fig-3-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Different distances to a goal (solid line) and angles (shaded area) for a given shot.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -420,20 +443,20 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 <p>To demonstrate an impact of <strong>distance</strong> and <strong>angle</strong> features on the probability of a shot to result in a goal, I evaluate these features from a given (x, y) coordinate of each shot and build a simple logistic regression that makes probabilitistic predictions.</p>
 <p>To evaluate the distance to a goal, I calculate the Euclidean distance between (x, y) coordinate of a shot and the goal centerline. Since I work with Statsbomb data, I use their pitch dimensions, which are [0, 120] on the x axis and [0, 80] on the y axis. Thus, the goal centerline coordinates are (120, 40).</p>
 <p>Below you can see my implementation:</p>
-<div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Distance Feature calculation</span></span>
+<div id="414de825" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Distance Feature calculation</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># define goal center for 'statsbomb'</span></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>goal_center <span class="op">=</span> np.array([<span class="dv">120</span>, <span class="dv">40</span>])</span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate distance between a shot coordinate and goal centerline coordinate</span></span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>shots[<span class="st">'distance'</span>] <span class="op">=</span> np.sqrt((shots[<span class="st">'x_start'</span>] <span class="op">-</span> goal_center[<span class="dv">0</span>])<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (shots[<span class="st">'y_start'</span>] <span class="op">-</span> goal_center[<span class="dv">1</span>])<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>shots[<span class="st">'distance'</span>] <span class="op">=</span> shots[<span class="st">'distance'</span>].<span class="bu">round</span>(decimals <span class="op">=</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>shots[<span class="st">'distance'</span>] <span class="op">=</span> shots[<span class="st">'distance'</span>].<span class="bu">round</span>(decimals <span class="op">=</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Next, I calculate the angle of a shot. The task breaks down to finding the angle between two sides of a triangle given that all lengths (a, b, c) of the triangle are known.</p>
 <p>Below you can see my implementation:</p>
-<div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Angle Feature calculation</span></span>
+<div id="37776c92" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Angle Feature calculation</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># transform (x, y) coordinates from percentiles to field length coordinates (105 meters x 68 meters)</span></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> shots[<span class="st">'x_start'</span>] <span class="op">*</span> <span class="dv">105</span><span class="op">/</span><span class="dv">120</span></span>
@@ -448,14 +471,14 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 <span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>cos_alpha <span class="op">=</span> np.<span class="bu">round</span>(cos_alpha, decimals <span class="op">=</span> <span class="dv">4</span>)</span>
 <span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co"># remember to leave angle in radians (if you want to transfer to degree multiply cos_alpha by 180/pi)</span></span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>shots[<span class="st">'angle'</span>] <span class="op">=</span> np.arccos(cos_alpha)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>shots[<span class="st">'angle'</span>] <span class="op">=</span> np.arccos(cos_alpha)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now, I would like to demonstrate how both of these features impact the probability of scoring.</p>
 <p>I run a simple logistic regression that includes only these features (distance, angle) and obtain probabilisitc predictions for each shot. Then, I plot both of these features against the probabilistic predictions to visualize the relationship. The objective is to illustrate the relationship between the features and the probability of scoring.</p>
-<div class="cell" data-execution_count="11">
-<details>
+<div id="cell-fig-4" class="cell" data-execution_count="11">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare features and labels from available data</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare features and labels from available data</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> shots.loc[:, [<span class="st">'distance'</span>, <span class="st">'angle'</span>]]</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> shots.loc[:, <span class="st">'outcome'</span>]</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -508,23 +531,27 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 <span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].text(x <span class="op">=</span> <span class="fl">1.72</span>, y <span class="op">=</span> <span class="op">-</span><span class="fl">0.2</span>, s <span class="op">=</span> <span class="st">'b)'</span>, fontsize <span class="op">=</span> <span class="dv">12</span>)</span>
 <span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
-<div id="fig-4" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="building_model_files/figure-html/fig-4-output-1.svg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;4: Probability of scoring decreases with increasing distance (a) and increases with increasing angle (b).</figcaption>
+<div id="fig-4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="building_model_files/figure-html/fig-4-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Probability of scoring decreases with increasing distance (a) and increases with increasing angle (b).
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>As can be seen from a) part of <a href="#fig-4">Figure&nbsp;4</a>, the inprobability of scoring (or you can also call it xG value) decreases exponentially with increasing distance. On the contrast, the probability of scoring increases linearly with angle.</p>
-<p>In both plots of <a href="#fig-4">Figure&nbsp;4</a>, there are densely populated parts that can be analyzed in a slightly different way. From these areas a majority of shots is executed. When analyzing <a href="#fig-5">Figure&nbsp;5</a>, we can observe that most of the shots are executed within the distance range from 5 to 30 m. Most of the angles of the executed shots are distributed within the angle range from 0 to 60 degrees (or from 0 to 1 radians, respectively).</p>
-<div class="cell" data-execution_count="12">
-<details>
+<p>As can be seen from a) part of <a href="#fig-4" class="quarto-xref">Figure&nbsp;4</a>, the inprobability of scoring (or you can also call it xG value) decreases exponentially with increasing distance. On the contrast, the probability of scoring increases linearly with angle.</p>
+<p>In both plots of <a href="#fig-4" class="quarto-xref">Figure&nbsp;4</a>, there are densely populated parts that can be analyzed in a slightly different way. From these areas a majority of shots is executed. When analyzing <a href="#fig-5" class="quarto-xref">Figure&nbsp;5</a>, we can observe that most of the shots are executed within the distance range from 5 to 30 m. Most of the angles of the executed shots are distributed within the angle range from 0 to 60 degrees (or from 0 to 1 radians, respectively).</p>
+<div id="cell-fig-5" class="cell" data-scrolled="false" data-execution_count="12">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Canvas</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Canvas</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(nrows <span class="op">=</span> <span class="dv">1</span>, ncols <span class="op">=</span> <span class="dv">2</span>, figsize <span class="op">=</span> (<span class="dv">10</span>, <span class="dv">4</span>))</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Distance density plot design</span></span>
@@ -546,13 +573,17 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 <span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].text(x <span class="op">=</span> <span class="fl">1.5</span>, y <span class="op">=</span> <span class="op">-</span><span class="fl">0.63</span>, s <span class="op">=</span> <span class="st">'b)'</span>, fontsize <span class="op">=</span> <span class="dv">12</span>)</span>
 <span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
-<div id="fig-5" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="building_model_files/figure-html/fig-5-output-1.svg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;5: Distribution of distances (a) and angles (b) for all executed shots.</figcaption>
+<div id="fig-5" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="building_model_files/figure-html/fig-5-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Distribution of distances (a) and angles (b) for all executed shots.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -562,10 +593,10 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 <section id="statistical-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="statistical-analysis">Statistical Analysis</h2>
 <p>All features are included into the logistic regression model to analyze their statistical signficance. The objective is to analyze p-values for each of the features and determine which of these values are weakly associated with the response.</p>
-<div class="cell" data-execution_count="428">
-<details>
+<div id="6c74b877" class="cell" data-execution_count="428">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data Preparation</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data Preparation</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> shots.loc[:, [<span class="st">'play_pattern_name'</span>,<span class="st">'under_pressure'</span>, <span class="st">'distance'</span>, <span class="st">'angle'</span>, <span class="st">'gk_loc_x'</span>, <span class="st">'gk_loc_y'</span>,</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'follows_dribble'</span>, <span class="st">'first_time'</span>, <span class="st">'open_goal'</span>, <span class="st">'technique'</span>, <span class="st">'body_part'</span>]]</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> shots.loc[:, <span class="st">'outcome'</span>]</span>
@@ -574,12 +605,12 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># run model</span></span>
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>logreg_model <span class="op">=</span> smf.logit(</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    formula <span class="op">=</span> <span class="st">"outcome ~ distance + angle + under_pressure + gk_loc_y + gk_loc_x + </span><span class="ch">\</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    formula <span class="op">=</span> <span class="st">"outcome ~ distance + angle + under_pressure + gk_loc_y + gk_loc_x + </span><span class="op">\</span></span>
 <span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="st">    body_part + open_goal + play_pattern_name"</span>,</span>
 <span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>                         data <span class="op">=</span> df_train).fit()</span>
 <span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract p-values</span></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(logreg_model.pvalues, columns <span class="op">=</span> [<span class="st">'p-value'</span>]).<span class="bu">round</span>(decimals <span class="op">=</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(logreg_model.pvalues, columns <span class="op">=</span> [<span class="st">'p-value'</span>]).<span class="bu">round</span>(decimals <span class="op">=</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Optimization terminated successfully.
@@ -590,7 +621,7 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 <div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -599,75 +630,75 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">Intercept</td>
+<th data-quarto-table-cell-role="th">Intercept</th>
 <td>0.000</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">body_part[T.Left Foot]</td>
+<th data-quarto-table-cell-role="th">body_part[T.Left Foot]</th>
 <td>0.000</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">body_part[T.Other]</td>
+<th data-quarto-table-cell-role="th">body_part[T.Other]</th>
 <td>0.642</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">body_part[T.Right Foot]</td>
+<th data-quarto-table-cell-role="th">body_part[T.Right Foot]</th>
 <td>0.000</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">play_pattern_name[T.From Counter]</td>
+<th data-quarto-table-cell-role="th">play_pattern_name[T.From Counter]</th>
 <td>0.001</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">play_pattern_name[T.From Free Kick]</td>
+<th data-quarto-table-cell-role="th">play_pattern_name[T.From Free Kick]</th>
 <td>0.000</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">play_pattern_name[T.From Goal Kick]</td>
+<th data-quarto-table-cell-role="th">play_pattern_name[T.From Goal Kick]</th>
 <td>0.000</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">play_pattern_name[T.From Keeper]</td>
+<th data-quarto-table-cell-role="th">play_pattern_name[T.From Keeper]</th>
 <td>0.203</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">play_pattern_name[T.From Kick Off]</td>
+<th data-quarto-table-cell-role="th">play_pattern_name[T.From Kick Off]</th>
 <td>0.239</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">play_pattern_name[T.From Throw In]</td>
+<th data-quarto-table-cell-role="th">play_pattern_name[T.From Throw In]</th>
 <td>0.001</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">play_pattern_name[T.Other]</td>
+<th data-quarto-table-cell-role="th">play_pattern_name[T.Other]</th>
 <td>0.252</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">play_pattern_name[T.Regular Play]</td>
+<th data-quarto-table-cell-role="th">play_pattern_name[T.Regular Play]</th>
 <td>0.000</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">distance</td>
+<th data-quarto-table-cell-role="th">distance</th>
 <td>0.000</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">angle</td>
+<th data-quarto-table-cell-role="th">angle</th>
 <td>0.000</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">under_pressure</td>
+<th data-quarto-table-cell-role="th">under_pressure</th>
 <td>0.056</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">gk_loc_y</td>
+<th data-quarto-table-cell-role="th">gk_loc_y</th>
 <td>0.431</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">gk_loc_x</td>
+<th data-quarto-table-cell-role="th">gk_loc_x</th>
 <td>0.000</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">open_goal</td>
+<th data-quarto-table-cell-role="th">open_goal</th>
 <td>0.000</td>
 </tr>
 </tbody>
@@ -678,10 +709,10 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 </div>
 <p>There are several categorical variables with very high p-values. These are <strong>body_part[T.Other]</strong>, <strong>play_pattern_name[T.From Keeper]</strong>, <strong>play_pattern_name[T.From Kick Off]</strong>, <strong>play_pattern_name[T.Other]</strong> and <strong>gk_loc_y</strong>. Let us analyze these features and decide if we can drop them from the model.</p>
 <p>First, <strong>play_pattern_name</strong> column describes different types of play during which a shot was executed. Below code snippet shows that there are 9 types of play in total.</p>
-<div class="cell" data-scrolled="true" data-execution_count="431">
-<details>
+<div id="3c8b8362" class="cell" data-scrolled="true" data-execution_count="431">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>shots.loc[:, <span class="st">'play_pattern_name'</span>].unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>shots.loc[:, <span class="st">'play_pattern_name'</span>].unique()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="431">
 <pre><code>array(['Regular Play', 'From Free Kick', 'From Throw In', 'From Counter',
@@ -689,10 +720,10 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
        'Other'], dtype=object)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="13">
-<details>
+<div id="cell-fig-6" class="cell" data-execution_count="13">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data preparation for barplot 1</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data preparation for barplot 1</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>play_types <span class="op">=</span> pd.DataFrame(shots.loc[:, <span class="st">'play_pattern_name'</span>].value_counts()).reset_index()</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>play_types.columns <span class="op">=</span> [<span class="st">'play_pattern_name'</span>, <span class="st">'n'</span>]</span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>play_types <span class="op">=</span> play_types.sort_values(by <span class="op">=</span> <span class="st">'n'</span>, ascending <span class="op">=</span> <span class="va">True</span>)</span>
@@ -748,43 +779,47 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 <span id="cb18-54"><a href="#cb18-54" aria-hidden="true" tabindex="-1"></a>                    wspace <span class="op">=</span> <span class="fl">0.65</span>, </span>
 <span id="cb18-55"><a href="#cb18-55" aria-hidden="true" tabindex="-1"></a>                    hspace <span class="op">=</span> <span class="fl">0.5</span>)</span>
 <span id="cb18-56"><a href="#cb18-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-57"><a href="#cb18-57" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-57"><a href="#cb18-57" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
-<div id="fig-6" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="building_model_files/figure-html/fig-6-output-1.svg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;6: Distribution of shots in different types of play (left) and implemented with different parts of the body (right).</figcaption>
+<div id="fig-6" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="building_model_files/figure-html/fig-6-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: Distribution of shots in different types of play (left) and implemented with different parts of the body (right).
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Features <strong>play_pattern_name[T.From Keeper]</strong>, <strong>play_pattern_name[T.From Kick Off]</strong>, <strong>play_pattern_name[T.Other]</strong> that received high p-values are actually very rare events and can be considered as outliers in the model. There are very few situations in which attack starting from goalkeeper or from a kick-off can result in a goal. From <a href="#fig-6">Figure&nbsp;6</a>, it can be seen that, in total, 300 shots were executed in types of play: ‘From Keeper’, ‘From Kick Off’ and ‘Other’.</p>
-<div class="cell" data-scrolled="true" data-execution_count="21">
-<details>
+<p>Features <strong>play_pattern_name[T.From Keeper]</strong>, <strong>play_pattern_name[T.From Kick Off]</strong>, <strong>play_pattern_name[T.Other]</strong> that received high p-values are actually very rare events and can be considered as outliers in the model. There are very few situations in which attack starting from goalkeeper or from a kick-off can result in a goal. From <a href="#fig-6" class="quarto-xref">Figure&nbsp;6</a>, it can be seen that, in total, 300 shots were executed in types of play: ‘From Keeper’, ‘From Kick Off’ and ‘Other’.</p>
+<div id="aaa58b22" class="cell" data-scrolled="true" data-execution_count="21">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.<span class="bu">sum</span>(shots.loc[shots[<span class="st">'play_pattern_name'</span>] <span class="op">==</span> <span class="st">'From Keeper'</span>, <span class="st">'outcome'</span>]), </span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>     <span class="st">'goals were scored when attack was initiated by a goalkeeper.'</span>,)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.<span class="bu">sum</span>(shots.loc[shots[<span class="st">'play_pattern_name'</span>] <span class="op">==</span> <span class="st">'From Keeper'</span>, <span class="st">'outcome'</span>]), </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>     <span class="st">'goals were scored when attack was initiated by a goalkeeper.'</span>,)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>13 goals were scored when attack was initiated by a goalkeeper.</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="22">
-<details>
+<div id="9f2e7360" class="cell" data-execution_count="22">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.<span class="bu">sum</span>(shots.loc[shots[<span class="st">'play_pattern_name'</span>] <span class="op">==</span> <span class="st">'From Kick Off'</span>, <span class="st">'outcome'</span>]),</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>      <span class="st">'goals were scored when attack was initiated from a kick-off.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.<span class="bu">sum</span>(shots.loc[shots[<span class="st">'play_pattern_name'</span>] <span class="op">==</span> <span class="st">'From Kick Off'</span>, <span class="st">'outcome'</span>]),</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>      <span class="st">'goals were scored when attack was initiated from a kick-off.'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>10 goals were scored when attack was initiated from a kick-off.</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="24">
-<details>
+<div id="8afb357c" class="cell" data-execution_count="24">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.<span class="bu">sum</span>(shots.loc[shots[<span class="st">'play_pattern_name'</span>] <span class="op">==</span> <span class="st">'Other'</span>, <span class="st">'outcome'</span>]),</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>      <span class="st">'goals were scored when attack was initiated in other scenarios.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.<span class="bu">sum</span>(shots.loc[shots[<span class="st">'play_pattern_name'</span>] <span class="op">==</span> <span class="st">'Other'</span>, <span class="st">'outcome'</span>]),</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>      <span class="st">'goals were scored when attack was initiated in other scenarios.'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>7 goals were scored when attack was initiated in other scenarios.</code></pre>
@@ -792,22 +827,22 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 </div>
 <p>In total, only 30 out of these 300 shots were scored.</p>
 <p>A similar pattern can be observed when analyzing <code>body_part</code> categorical column and <strong>body_part[T.Other]</strong> feature that received a high p-value. Out of 11043 shots available in the dataset, only 30 shots were executed with a body part other than foot or head.</p>
-<div class="cell" data-execution_count="20">
-<details>
+<div id="8c806a6a" class="cell" data-execution_count="20">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Only'</span>, np.<span class="bu">sum</span>(shots.loc[shots[<span class="st">'body_part'</span>] <span class="op">==</span> <span class="st">'Other'</span>, <span class="st">'outcome'</span>]),</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>      <span class="st">'goals out of 30 shots were scored with a body part other than foot or head.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Only'</span>, np.<span class="bu">sum</span>(shots.loc[shots[<span class="st">'body_part'</span>] <span class="op">==</span> <span class="st">'Other'</span>, <span class="st">'outcome'</span>]),</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>      <span class="st">'goals out of 30 shots were scored with a body part other than foot or head.'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Only 6 goals out of 30 shots were scored with a body part other than foot or head.</code></pre>
 </div>
 </div>
 <p>To sum up both of these scenarios, only 330 shots and 36 goals fall into these outlying conditions. This is a relatively small sample size in comparison to the available data; thus, I exclude these data points from analysis.</p>
-<div class="cell" data-execution_count="758">
-<details>
+<div id="17f18765" class="cell" data-execution_count="758">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>shots <span class="op">=</span> shots.loc[<span class="op">~</span>((shots[<span class="st">'play_pattern_name'</span>] <span class="op">==</span> <span class="st">'Other'</span>) <span class="op">|</span> (shots[<span class="st">'play_pattern_name'</span>] <span class="op">==</span> <span class="st">'From Keeper'</span> ) </span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="op">|</span> (shots[<span class="st">'play_pattern_name'</span>] <span class="op">==</span> <span class="st">'From Kick Off'</span>) <span class="op">|</span> (shots[<span class="st">'body_part'</span>] <span class="op">==</span> <span class="st">'Other'</span>)),  :]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>shots <span class="op">=</span> shots.loc[<span class="op">~</span>((shots[<span class="st">'play_pattern_name'</span>] <span class="op">==</span> <span class="st">'Other'</span>) <span class="op">|</span> (shots[<span class="st">'play_pattern_name'</span>] <span class="op">==</span> <span class="st">'From Keeper'</span> ) </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="op">|</span> (shots[<span class="st">'play_pattern_name'</span>] <span class="op">==</span> <span class="st">'From Kick Off'</span>) <span class="op">|</span> (shots[<span class="st">'body_part'</span>] <span class="op">==</span> <span class="st">'Other'</span>)),  :]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>Finally, there is one more column <code>gk_loc_y</code> which also has a high p-value. This column together with <code>gk_loc_x</code> describe the location of the opposing team’s goalkeeper during an executed shot. Naturally, a goalkeeper standing on the goalline can move differently but in most of the cases along the goalline. This means that the y coordinate should change much more frequently than the x coordinate. However, the y coordinate is less significant in the model than the x coordinate. As of now, I will leave both of these features in the dataset.</p>
@@ -815,23 +850,23 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 <section id="transforming-and-splitting-data" class="level2">
 <h2 class="anchored" data-anchor-id="transforming-and-splitting-data">Transforming and Splitting Data</h2>
 <p>One-hot encoding transformation is applied to all categorical variables present in the dataset. These are <strong>body_part</strong>, <strong>technique</strong> and <strong>play_pattern_name</strong>. Note that variables <code>under_pressure</code>, <code>follows_dribble</code>, <code>first_time</code> and <code>open_goal</code> are already transformed into 0/1 boolean variables (False/True); thus, they do not need any additional preprocessing. In addition, features <strong>distance</strong>, <strong>angle</strong>, <strong>gk_loc_x</strong> and <strong>gk_loc_y</strong> are standardized.</p>
-<div class="cell" data-execution_count="759">
-<details>
+<div id="f12cb41a" class="cell" data-execution_count="759">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare features and labels from available data</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare features and labels from available data</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> shots.loc[:, [<span class="st">'play_pattern_name'</span>,<span class="st">'under_pressure'</span>, <span class="st">'distance'</span>, <span class="st">'angle'</span>, <span class="st">'gk_loc_x'</span>, <span class="st">'gk_loc_y'</span>,</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'follows_dribble'</span>, <span class="st">'first_time'</span>, <span class="st">'open_goal'</span>, <span class="st">'technique'</span>, <span class="st">'body_part'</span>]]</span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> shots.loc[:, <span class="st">'outcome'</span>]</span>
 <span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="co"># split data</span></span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size <span class="op">=</span> <span class="fl">0.2</span>, random_state <span class="op">=</span> <span class="dv">42</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size <span class="op">=</span> <span class="fl">0.2</span>, random_state <span class="op">=</span> <span class="dv">42</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>In the next section, model selection will be implemented using <code>RandomizedSearchCV</code>. Thus, the dataset is splitted into <code>X_train</code>, <code>y_train</code>, <code>X_test</code>, <code>y_test</code> where k-fold cross validation will be applied on <code>X_train</code>, <code>y_train</code> to find optimal parameters for each type of model. Finally, each model will be run on <code>X_test</code>, <code>y_test</code> to evaluate its performance on new data.</p>
-<div class="cell" data-execution_count="760">
-<details>
+<div id="abdf1b77" class="cell" data-execution_count="760">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Build a column transformer</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Build a column transformer</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>column_trans <span class="op">=</span> ColumnTransformer(</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    [(<span class="st">'encode_bodyparts'</span>, OneHotEncoder(dtype<span class="op">=</span><span class="st">'int'</span>), [<span class="st">'play_pattern_name'</span>, <span class="st">'technique'</span>, <span class="st">'body_part'</span>]),</span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'std_coords'</span>, StandardScaler(), [<span class="st">'distance'</span>, <span class="st">'angle'</span>, <span class="st">'gk_loc_x'</span>, <span class="st">'gk_loc_y'</span>])],</span>
@@ -839,7 +874,7 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 <span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Transform feature columns</span></span>
 <span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> column_trans.fit_transform(X_train)</span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>X_test <span class="op">=</span> column_trans.transform(X_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>X_test <span class="op">=</span> column_trans.transform(X_test)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -848,10 +883,10 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 <p>Three different classifiers were run and evaluated on the given dataset. These are Logistic Regression, Gradient Boosting and Random Forest. Since I am interested in predicting probabilistic outputs, the aim is to achieve the highest accuracy of the probabilistic predictions. Thus, I use <strong>Brier score</strong> as an evaluation metric in <code>RandomizedSearchCV</code>. In addition, I evaluate <strong>ROC-AUC</strong> score for each model with its best parameters. However, <strong>ROC-AUC</strong> is mainly used here as a supportive metric to illustrate the performance in comparison with a random guess.</p>
 <section id="logistic-regression" class="level3">
 <h3 class="anchored" data-anchor-id="logistic-regression">Logistic Regression</h3>
-<div class="cell" data-execution_count="764">
-<details>
+<div id="21d942d6" class="cell" data-execution_count="764">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Model</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Model</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> LogisticRegression(solver <span class="op">=</span> <span class="st">'saga'</span>, max_iter <span class="op">=</span> <span class="dv">200</span>, random_state <span class="op">=</span> <span class="dv">42</span>)</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Hyperparameters</span></span>
@@ -867,7 +902,7 @@ Name: outcome, Length: 11043, dtype: int64</code></pre>
 <span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate on test data</span></span>
 <span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>predictions <span class="op">=</span> classifier.predict_proba(X_test)[:, <span class="dv">1</span>]</span>
 <span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Brier score = '</span>, brier_score_loss(y_test, predictions))</span>
-<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'ROC-AUC = '</span>, roc_auc_score(y_test, predictions))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'ROC-AUC = '</span>, roc_auc_score(y_test, predictions))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Optimal parameters are:
@@ -879,10 +914,10 @@ ROC-AUC =  0.7810976028573392</code></pre>
 </section>
 <section id="gradient-boosting" class="level3">
 <h3 class="anchored" data-anchor-id="gradient-boosting">Gradient Boosting</h3>
-<div class="cell" data-execution_count="765">
-<details>
+<div id="988e5f98" class="cell" data-execution_count="765">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Model</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Model</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> GradientBoostingClassifier(random_state <span class="op">=</span> <span class="dv">42</span>)</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Hyperparameters</span></span>
@@ -898,7 +933,7 @@ ROC-AUC =  0.7810976028573392</code></pre>
 <span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate on test data</span></span>
 <span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>predictions <span class="op">=</span> classifier.predict_proba(X_test)[:, <span class="dv">1</span>]</span>
 <span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Brier score = '</span>, brier_score_loss(y_test, predictions))</span>
-<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'ROC-AUC = '</span>, roc_auc_score(y_test, predictions))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'ROC-AUC = '</span>, roc_auc_score(y_test, predictions))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Optimal parameters are:
@@ -910,10 +945,10 @@ ROC-AUC =  0.7805726452954971</code></pre>
 </section>
 <section id="random-forest" class="level3">
 <h3 class="anchored" data-anchor-id="random-forest">Random Forest</h3>
-<div class="cell" data-execution_count="766">
-<details>
+<div id="0044e6d7" class="cell" data-execution_count="766">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Model</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Model</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> RandomForestClassifier(random_state <span class="op">=</span> <span class="dv">42</span>)</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Hyperparameters</span></span>
@@ -930,7 +965,7 @@ ROC-AUC =  0.7805726452954971</code></pre>
 <span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate on test data</span></span>
 <span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>predictions <span class="op">=</span> classifier.predict_proba(X_test)[:, <span class="dv">1</span>]</span>
 <span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Brier score = '</span>, brier_score_loss(y_test, predictions))</span>
-<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'ROC-AUC = '</span>, roc_auc_score(y_test, predictions))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'ROC-AUC = '</span>, roc_auc_score(y_test, predictions))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Optimal parameters are:
@@ -958,43 +993,58 @@ ROC-AUC =  0.7761693797650938</code></pre>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
       }
+      return false;
     }
-    return false;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
@@ -1002,246 +1052,399 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
       return codeEl.innerText;
     }
-  });
-  clipboard.on('success', function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  });
-  const viewSource = window.document.getElementById('quarto-view-source') ||
-                     window.document.getElementById('quarto-code-tools-source');
-  if (viewSource) {
-    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-    viewSource.addEventListener("click", function(e) {
-      if (sourceUrl) {
-        // rstudio viewer pane
-        if (/\bcapabilities=\b/.test(window.location)) {
-          window.open(sourceUrl);
-        } else {
-          window.location.href = sourceUrl;
-        }
-      } else {
-        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-        modal.show();
-      }
-      return false;
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
     });
-  }
-  function toggleCodeHandler(show) {
-    return function(e) {
-      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-      for (let i=0; i<detailsSrc.length; i++) {
-        const details = detailsSrc[i].parentElement;
-        if (show) {
-          details.open = true;
-        } else {
-          details.removeAttribute("open");
-        }
-      }
-      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-      const fromCls = show ? "hidden" : "unhidden";
-      const toCls = show ? "unhidden" : "hidden";
-      for (let i=0; i<cellCodeDivs.length; i++) {
-        const codeDiv = cellCodeDivs[i];
-        if (codeDiv.classList.contains(fromCls)) {
-          codeDiv.classList.remove(fromCls);
-          codeDiv.classList.add(toCls);
-        } 
-      }
-      return false;
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
     }
-  }
-  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-  if (hideAllCode) {
-    hideAllCode.addEventListener("click", toggleCodeHandler(false));
-  }
-  const showAllCode = window.document.getElementById("quarto-show-all-code");
-  if (showAllCode) {
-    showAllCode.addEventListener("click", toggleCodeHandler(true));
-  }
-  function tippyHover(el, contentFn) {
-    const config = {
-      allowHTML: true,
-      content: contentFn,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start'
-    };
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      return note.innerHTML;
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
           } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
+            window.location.href = sourceUrl;
           }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
       });
     }
-  }
-});
-</script>
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/faridmusayev\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 </div> <!-- /content -->
+
 
 
 

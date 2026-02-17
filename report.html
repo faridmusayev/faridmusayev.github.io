@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.8.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Farid Musayev">
 <meta name="dcterms.date" content="2022-06-26">
 
-<title>Farid Musayev - Expected Threat Model</title>
+<title>Expected Threat Model – Farid Musayev</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,6 +23,7 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -59,29 +60,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-8f4bac897a5ad87d12853c608381ccbc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -90,69 +99,96 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Farid Musayev</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projects" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projects" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Projects</span>
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-projects">    
         <li>
-    <a class="dropdown-item" href="./p1.html" rel="" target="">
+    <a class="dropdown-item" href="./p1.html">
  <span class="dropdown-text">Expected Goals Model</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./p3.html" rel="" target="">
+    <a class="dropdown-item" href="./p3.html">
  <span class="dropdown-text">Scientific Visualization</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./p2.html" rel="" target="">
+    <a class="dropdown-item" href="./p2.html">
  <span class="dropdown-text">Soccer Analytics</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./p4.html" rel="" target="">
+    <a class="dropdown-item" href="./p4.html">
  <span class="dropdown-text">Text Mining Project</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
   </li>  
 </ul>
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -238,7 +274,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <section id="abstract" class="level2">
 <h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
@@ -256,13 +294,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="algorithm">Algorithm</h2>
 <p>xT model represents a soccer pitch as a <code>12 x 16 grid</code> where each section of a grid has an assigned xT value. This value is defined as <code>a probability of a team scoring within n next actions</code>. When a player passes from <span class="math inline">\((x_{start}, y_{start})\)</span> to <span class="math inline">\((x_{end}, y_{end})\)</span> coordinate, a completed pass generates so called <code>xT difference</code> that allows to quantify its impact and understand how a team’s probability of scoring changes.</p>
 <p>Below you can see xT grid that was calculated in the course of this report. Here, each zone of the grid contains a value that implies a team’s probability of scoring in <code>5</code> next actions. One may consider higher/lower number of actions but the important point is to observe convergence of xT values in the attacking area, and increasing probability the defending area. More actions would mean that a team can spend more time preparing an attack and gradually progressing further which results into a greater probability of scoring when starting from its own half.</p>
-<div class="cell" data-execution_count="490">
-<details>
+<div id="b0ddb5eb" class="cell" data-execution_count="490">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>plot_xT()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>plot_xT()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
-<p><img src="report_files/figure-html/cell-2-output-1.svg" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="report_files/figure-html/cell-2-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>To calculate xT value for each coordinate (x, y) on the pitch, the following equation is used:</p>
@@ -287,16 +329,16 @@ xT_{x,y} = s_{x,y}\cdot xG_{x,y} + m_{x, y} \cdot T_{x,y} \cdot xT
 <section id="data" class="level2">
 <h2 class="anchored" data-anchor-id="data">Data</h2>
 <p><a href="https://figshare.com/collections/Soccer_match_event_dataset/4415000/2">Wyscout Soccer Match Event dataset</a> from 2017/2018 English Premier League (EPL) is used to build xT model.</p>
-<div class="cell" data-scrolled="true" data-execution_count="458">
-<details>
+<div id="8f4d5b12" class="cell" data-scrolled="true" data-execution_count="458">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>wyscout_data.competitions()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>wyscout_data.competitions()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="458">
 <div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -310,7 +352,7 @@ xT_{x,y} = s_{x,y}\cdot xG_{x,y} + m_{x, y} \cdot T_{x,y} \cdot xT
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>524</td>
 <td>181248</td>
 <td>Italy</td>
@@ -319,7 +361,7 @@ xT_{x,y} = s_{x,y}\cdot xG_{x,y} + m_{x, y} \cdot T_{x,y} \cdot xT
 <td>2017/2018</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>364</td>
 <td>181150</td>
 <td>England</td>
@@ -328,7 +370,7 @@ xT_{x,y} = s_{x,y}\cdot xG_{x,y} + m_{x, y} \cdot T_{x,y} \cdot xT
 <td>2017/2018</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>795</td>
 <td>181144</td>
 <td>Spain</td>
@@ -337,7 +379,7 @@ xT_{x,y} = s_{x,y}\cdot xG_{x,y} + m_{x, y} \cdot T_{x,y} \cdot xT
 <td>2017/2018</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>412</td>
 <td>181189</td>
 <td>France</td>
@@ -346,7 +388,7 @@ xT_{x,y} = s_{x,y}\cdot xG_{x,y} + m_{x, y} \cdot T_{x,y} \cdot xT
 <td>2017/2018</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>426</td>
 <td>181137</td>
 <td>Germany</td>
@@ -355,7 +397,7 @@ xT_{x,y} = s_{x,y}\cdot xG_{x,y} + m_{x, y} \cdot T_{x,y} \cdot xT
 <td>2017/2018</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">5</td>
+<th data-quarto-table-cell-role="th">5</th>
 <td>102</td>
 <td>9291</td>
 <td>International</td>
@@ -364,7 +406,7 @@ xT_{x,y} = s_{x,y}\cdot xG_{x,y} + m_{x, y} \cdot T_{x,y} \cdot xT
 <td>2016</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">6</td>
+<th data-quarto-table-cell-role="th">6</th>
 <td>28</td>
 <td>10078</td>
 <td>International</td>
@@ -387,16 +429,16 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <section id="shots-data" class="level3">
 <h3 class="anchored" data-anchor-id="shots-data">Shots Data</h3>
 <p>After data preprocessing steps, we filter out all 7134 shots for EPL 2017/2018 season (see <strong>A3.1 Filter Shots</strong>).</p>
-<div class="cell" data-execution_count="46">
-<details>
+<div id="4b91ef1e" class="cell" data-execution_count="46">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>shots.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>shots.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="46">
 <div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -416,7 +458,7 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>25413</td>
 <td>10</td>
 <td>shot</td>
@@ -431,7 +473,7 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <td>1</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>26150</td>
 <td>10</td>
 <td>shot</td>
@@ -446,7 +488,7 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <td>0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>7868</td>
 <td>10</td>
 <td>shot</td>
@@ -461,7 +503,7 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <td>0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>7868</td>
 <td>10</td>
 <td>shot</td>
@@ -476,7 +518,7 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <td>0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>7945</td>
 <td>10</td>
 <td>shot</td>
@@ -496,11 +538,11 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 </div>
 </div>
 </div>
-<div class="cell" data-scrolled="true" data-execution_count="47">
-<details>
+<div id="87d544fe" class="cell" data-scrolled="true" data-execution_count="47">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (number of shots, number of features)</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>shots.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (number of shots, number of features)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>shots.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="47">
 <pre><code>(7134, 12)</code></pre>
@@ -510,23 +552,23 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <section id="feature-generation" class="level3">
 <h3 class="anchored" data-anchor-id="feature-generation">Feature Generation</h3>
 <p>To calculate <code>xG</code> model, we have to create two features <code>distance to goal</code> and <code>angle of shot</code> (see also <strong>A3.2 Feature Generating Function</strong>).</p>
-<div class="cell" data-execution_count="48">
-<details>
+<div id="48668401" class="cell" data-execution_count="48">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Distance Feature calculation</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Distance Feature calculation</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># define goal center for 'wyscout' data</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>goal_center <span class="op">=</span> np.array([<span class="dv">100</span>, <span class="dv">50</span>])</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate distance between shot and goal center</span></span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>shots[<span class="st">'distance'</span>] <span class="op">=</span> np.sqrt((shots[<span class="st">'x_start'</span>] <span class="op">-</span> goal_center[<span class="dv">0</span>])<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (shots[<span class="st">'y_start'</span>] <span class="op">-</span> goal_center[<span class="dv">1</span>])<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>shots[<span class="st">'distance'</span>] <span class="op">=</span> shots[<span class="st">'distance'</span>].<span class="bu">round</span>(decimals <span class="op">=</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>shots[<span class="st">'distance'</span>] <span class="op">=</span> shots[<span class="st">'distance'</span>].<span class="bu">round</span>(decimals <span class="op">=</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div class="cell" data-execution_count="49">
-<details>
+<div id="68f05495" class="cell" data-execution_count="49">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Angle Feature calculation</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Angle Feature calculation</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># transform x, y coordinates from percentiles to field length coordinates (105 meters x 68 meters)</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> shots[<span class="st">'x_start'</span>] <span class="op">*</span> <span class="dv">105</span><span class="op">/</span><span class="dv">100</span></span>
@@ -541,17 +583,17 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>cos_alpha <span class="op">=</span> np.<span class="bu">round</span>(cos_alpha, decimals <span class="op">=</span> <span class="dv">4</span>)</span>
 <span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co"># remember to leave angle in radians (if you want to transfer to degree multiply cos_alpha by 180/pi)</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>shots[<span class="st">'angle'</span>] <span class="op">=</span> np.arccos(cos_alpha)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>shots[<span class="st">'angle'</span>] <span class="op">=</span> np.arccos(cos_alpha)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
 <section id="model-training-with-logistic-regression" class="level3">
 <h3 class="anchored" data-anchor-id="model-training-with-logistic-regression">Model Training with Logistic Regression</h3>
 <p>Then, we use Logistic Regression to fit our data and create xG model.</p>
-<div class="cell" data-execution_count="59">
-<details>
+<div id="ffc57a18" class="cell" data-execution_count="59">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare features and labels from available data</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare features and labels from available data</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>features <span class="op">=</span> shots[[<span class="st">'distance'</span>, <span class="st">'angle'</span>]]</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> shots[<span class="st">'outcome'</span>]</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -561,37 +603,45 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>xG_model.fit(features, labels)</span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># save predictions</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>predictions <span class="op">=</span> xG_model.predict_proba(features)[:, <span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>predictions <span class="op">=</span> xG_model.predict_proba(features)[:, <span class="dv">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>Below is a plot of a number of shots versus predictions. This allows to see that only a small fraction of shots has a high probability of scoring which makes sense.</p>
-<div class="cell" data-execution_count="579">
-<details>
+<div id="72e3fc1d" class="cell" data-execution_count="579">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>plot_predictions()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>plot_predictions()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
-<p><img src="report_files/figure-html/cell-9-output-1.svg" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="report_files/figure-html/cell-9-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="model-performance-evaluation" class="level3">
 <h3 class="anchored" data-anchor-id="model-performance-evaluation">Model Performance Evaluation</h3>
 <p>Model performance evaluation is implemented using ROC curve (for details see <strong>A3.3 xG Model Evaluation with ROC</strong>).</p>
-<div class="cell" data-execution_count="471">
-<details>
+<div id="b63d6b3c" class="cell" data-execution_count="471">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>plot_roc()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>plot_roc()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
-<p><img src="report_files/figure-html/cell-10-output-1.svg" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="report_files/figure-html/cell-10-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
-<div class="cell" data-execution_count="62">
-<details>
+</div>
+<div id="9c53dc5e" class="cell" data-execution_count="62">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># evaluate area under ROC curve using Python function roc_auc_score()</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>roc_auc_score(ndf[<span class="st">'outcome'</span>], ndf[<span class="st">'xG'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># evaluate area under ROC curve using Python function roc_auc_score()</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>roc_auc_score(ndf[<span class="st">'outcome'</span>], ndf[<span class="st">'xG'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="62">
 <pre><code>0.7843416803145005</code></pre>
@@ -607,49 +657,61 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <section id="probability-shooting-s_x-y" class="level3">
 <h3 class="anchored" data-anchor-id="probability-shooting-s_x-y">Probability Shooting <span class="math inline">\(s_{x, y}\)</span></h3>
 <p>This heatmap illustrates probability of shooting <span class="math inline">\(s_{x, y}\)</span> from a given (x, y). Naturally, as a player approaches an opponent’s goal, <span class="math inline">\(s_{x, y}\)</span> increases.</p>
-<div class="cell" data-execution_count="495">
-<details>
+<div id="6401bcfd" class="cell" data-execution_count="495">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>plot_shot_probs()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>plot_shot_probs()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
-<p><img src="report_files/figure-html/cell-12-output-1.svg" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="report_files/figure-html/cell-12-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="probability-of-passing-m_x-y" class="level3">
 <h3 class="anchored" data-anchor-id="probability-of-passing-m_x-y">Probability of Passing <span class="math inline">\(m_{x, y}\)</span></h3>
 <p>This heatmap illustrates probability of passing <span class="math inline">\(m_{x, y}\)</span> from a given (x, y). Naturally, as a player approaches an opponent’s goal, <span class="math inline">\(m_{x, y}\)</span> decreases, since a player becomes more inclined to shooting.</p>
-<div class="cell" data-execution_count="484">
-<details>
+<div id="7e99a3ed" class="cell" data-execution_count="484">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>plot_pass_probs()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>plot_pass_probs()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
-<p><img src="report_files/figure-html/cell-13-output-1.svg" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="report_files/figure-html/cell-13-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="probability-of-scoring-xg_x-y" class="level3">
 <h3 class="anchored" data-anchor-id="probability-of-scoring-xg_x-y">Probability of Scoring <span class="math inline">\(xG_{x, y}\)</span></h3>
 <p>This heatmap illustrates probability of scoring <span class="math inline">\(xG_{x, y}\)</span> from a given (x, y). Naturally, as a player approaches an opponent’s goal, the distance to a goal decreases and the angle of a shot increases, thus, <span class="math inline">\(xG_{x, y}\)</span> increases.</p>
-<div class="cell" data-execution_count="488">
-<details>
+<div id="a2f25716" class="cell" data-execution_count="488">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>plot_score_probs()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>plot_score_probs()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
-<p><img src="report_files/figure-html/cell-14-output-1.svg" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="report_files/figure-html/cell-14-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="transition-matrix-t_x-y" class="level3">
 <h3 class="anchored" data-anchor-id="transition-matrix-t_x-y">Transition Matrix <span class="math inline">\(T_{x, y}\)</span></h3>
 <p>Below you can see a function <code>transition_matrix()</code>that for a given (x, y) coordinate calculates a probability of passing to all other (x, y) coordinates (transition probabilities) and stores them inside a matrix.</p>
-<div class="cell" data-execution_count="496">
-<details>
+<div id="ff0aad52" class="cell" data-execution_count="496">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> transition_matrix(x, y):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> transition_matrix(x, y):</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># empty matrix for storing transition probabilities</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    transition_matrix <span class="op">=</span> np.zeros(shape <span class="op">=</span> (<span class="dv">12</span>, <span class="dv">16</span>))</span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    </span>
@@ -664,7 +726,7 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># divide counts for each (x, y) by the total number of passes to calculate probabilities</span></span>
 <span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    transition_matrix <span class="op">=</span> transition_matrix<span class="op">/</span>transition_passes.shape[<span class="dv">0</span>]</span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> transition_matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> transition_matrix</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -672,10 +734,10 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <section id="xt-algorithm-implementation" class="level2">
 <h2 class="anchored" data-anchor-id="xt-algorithm-implementation">xT Algorithm Implementation</h2>
 <p>Finally, using all the above estimated probabilities we can evaluate our xT values for all (x, y) coordinates of the pitch.</p>
-<div class="cell" data-scrolled="true" data-execution_count="192">
-<details>
+<div id="9f0fbf93" class="cell" data-scrolled="true" data-execution_count="192">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># xT algorithm</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># xT algorithm</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>xT <span class="op">=</span> np.zeros(shape <span class="op">=</span> (<span class="dv">12</span>, <span class="dv">16</span>))</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 5 iterations</span></span>
@@ -690,16 +752,20 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="co"># round and save results</span></span>
 <span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>it5 <span class="op">=</span> pd.DataFrame(xT).<span class="bu">round</span>(decimals <span class="op">=</span> <span class="dv">3</span>)</span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="co">#it5.to_csv('xT_grid.csv', index = False)    </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="co">#it5.to_csv('xT_grid.csv', index = False)    </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div class="cell" data-execution_count="491">
-<details>
+<div id="e319bc3f" class="cell" data-execution_count="491">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>plot_xT()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>plot_xT()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
-<p><img src="report_files/figure-html/cell-17-output-1.svg" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="report_files/figure-html/cell-17-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -713,13 +779,17 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <p>For Bundesliga, top 10 performers are mainly midfielders and defenders. Thiago Alcantara is well known as one of the most technically gifted players in the european football. He plays as the central midfielder, and, naturally, does not register a high number of goals and assists (2 league goals and 2 assists in 2017/2018) in his statistics. Nevertheless, he is the top performer in terms of xT per 90 equal to 0.56 according to our model (which means that, on average, his passes increase his team’s probability of scoring by 0.56 per game). It makes sense to see Alcantara in the top 10 of our bar graph, since he is well known for a high ability to control the game in the central area and initiate attacks with line-breaking passes (the ones that may cut through and leave behind several players of opponent’s team). There are also players similar to Alcantara’s profile such as Nuri Sahin (2 goals, 2 assists), Charles Aranguiz (1 goal, 3 assists) who also found their place in our top 10.</p>
 <p>Central defenders also have a dominant presence in our xT bar graph. Given that they spend a large amount of time on field, in some scenarios, this can lead to a high number of aggregated small xT values. Thus, it is always important to normalize values per a single game ( per 90 minutes). Apart from that, modern central defenders should be capable of initiating their team’s attacks with a great first pass (line-breaking pass, switch etc.). Players like Jerome Boateng and Mats Hummels are, in particular, appreciated for this kind of passes.</p>
 <p>As stated previously, we can assess xT performance of young players and basing on a sinlge season success track their further career development. For example, Dayot Upamecano had a first breakthrough season in RB Leipzig (top of our xT bar graph) and after three more years of a consistent performance moved to Bayern Munich. During 2017/2018, Kai Havertz was already having his second full season in a senior football being 19 years old. He had two more successful seasons (29 goals, 9 assists) in Bayern Leverkusen and, then, moved to Chelsea. Panagiotis Retsos had a breakthrough season at Bayern Leverkusen as a right full back but suffered three serious injuries which kept him out of the game for the majority of the next season. This obivously had a serious impact on his career, and, so far, he struggled to regain his form during loan spells in England, France and Italy.</p>
-<div class="cell" data-execution_count="587">
-<details>
+<div id="11349735" class="cell" data-execution_count="587">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>plot_bundesliga()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>plot_bundesliga()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
-<p><img src="report_files/figure-html/cell-18-output-1.svg" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="report_files/figure-html/cell-18-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -728,13 +798,17 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <p>In contrast with Bundesliga, top 10 EPL performers are mainly central and attacking midfielders and even a single wide playing forward. Starting from the latter, this is Alexis Sanchez, who made 74 shot creating passes in 2017/2018. In particular, he was also vital to his team for the ability to drop back into midfield and participate in the initiation of attacks.</p>
 <p>The rest of top five (Cesc Fabregas, Kevin De Bruyne, Mesut Ozil, David Silva) are creative forces of their teams (0.70, 0.59, 0.57, 0.54 xT per 90). All four were generating the chances of at least a half goal per a game, and this does not even include the rest of their advaced statistics such as xG or xA. The bottom top five consists of more functional central midfielders (except attacking Phillipe Coutinho) whose xT values are close or slightly higher that 0.5. In other words, we observe that xT metric validates importance of these players for their teams.</p>
 <p>When having a look at the performance of young players, we can observe a rise of full backs such as Trent Alexander-Arnold, Ainsley Maitland-Niles, Timothy Fosu-Mensah and Ben Chilwell. Alexander-Arnold (0.32 xT per 90) is regarded one of the top performing full backs of the last three seasons (9 goals, 44 assists). He is known for his ability to initiate the attacks from the right half-space. As with senior players, we observe functional midfielders such as Wilfred Ndidi and Declan Rice in the bottom five of our bar graph. Being recognized for their defensive skills, these players are regular starters of their teams despite their young age.</p>
-<div class="cell" data-execution_count="599">
-<details>
+<div id="665f75b4" class="cell" data-scrolled="false" data-execution_count="599">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>plot_epl()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>plot_epl()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
-<p><img src="report_files/figure-html/cell-19-output-1.svg" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="report_files/figure-html/cell-19-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -742,13 +816,17 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <h3 class="anchored" data-anchor-id="laliga">LaLiga</h3>
 <p>Similar to EPL, we mainly observe central and attacking midfielders among top 10 performers in LaLiga. However, one name stands out here, and that is Lionel Messi. Messi is known for his skills to drop deeper, participate in the game play in the central area and, then, run forward. This is one of the reasons why he managed to aggregate 0.59 xT per 90. Andres Iniesta and Ever Banega also have identical to Messi’s xT results and are an essential part of their teams during the possession. It is also interesting to see a left full back Marcelo with his 0.5 xT per 90. Though mainly playing from the left, he possess great passing skills which help to build and progress his team’s attacks.</p>
 <p>LaLiga’s top young players play in various positions from wingers and central midfielders to full backs and central defenders. Despite being largerly hit by injuries, Ousmane Dembele were able to demonstrate his potential with 0.28 xT per 90 in his first season for Barcelona. However, injuries still haunted him in the following seasons which, obviously, affected his career. Theo Hernandez impressed for Real Madrid as a left full back (0.22 xT per 90), despite a limited time, and, in the last three seasons, were a stable starting eleven player for Milan. Federico Valverde had a great season as a box-to-box midfielder (0.25 xT per 90) in his first season for Deportivo La Coruna, and, afterwards, earned his place in Real Madrid.</p>
-<div class="cell" data-execution_count="600">
-<details>
+<div id="6f9afbf3" class="cell" data-scrolled="false" data-execution_count="600">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>plot_laliga()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>plot_laliga()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
-<p><img src="report_files/figure-html/cell-20-output-1.svg" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="report_files/figure-html/cell-20-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -756,13 +834,17 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <h3 class="anchored" data-anchor-id="ligue-1">Ligue 1</h3>
 <p>When evaluating top 10 players from Ligue 1, we observe similar patterns as in LaLiga. The first place is reserved by Neymar with 0.62 xT per 90 who plays as a wide forward or attacking midfielder. There are also several deep-lying midfielders such as Marco Veratti, Yann M’vila, Thiago Motta and Jean Seri. Similar to Marcelo from LaLiga, Daniel Alves is the only full back in the list. Daniel Alves who operates from the right wing has always been a creative and technical player with great passing and ball progressing skills. In any of the teams in which he played, he has been instrumental to holding possession and movement of a ball to high threating areas.</p>
 <p>Maxime Lopez is the only player, out of four leagues that were reviewed, who earned his place in both senior and young players list with 0.51 xT per 90. Despite his young age of 19, 2017/2018 season was already his second season in senior football where he helped Marseille to achieve the fourth place in the league. He continued playing as a midfielder three more years for the french club but had a limited time in the last season. Thus, he was loaned to the italian team Sassuolo. Despite playing regularly there, he could not convince Marseille to bring him back and, eventually, stayed in Italy on the permanent basis.</p>
-<div class="cell" data-execution_count="601">
-<details>
+<div id="e74a260c" class="cell" data-execution_count="601">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>plot_ligue1()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>plot_ligue1()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
-<p><img src="report_files/figure-html/cell-21-output-1.svg" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="report_files/figure-html/cell-21-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -785,10 +867,10 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <h2 class="anchored" data-anchor-id="appendix">Appendix</h2>
 <section id="a1.-libraries" class="level3">
 <h3 class="anchored" data-anchor-id="a1.-libraries">A1. Libraries</h3>
-<div class="cell" data-execution_count="66">
-<details>
+<div id="48a24e43" class="cell" data-execution_count="66">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import required libraries</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import required libraries</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ast</span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -796,16 +878,16 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mplsoccer <span class="im">import</span> Pitch, VerticalPitch</span>
 <span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib_inline</span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> cm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> cm</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
 <section id="a2.-event-data-preprocessing" class="level3">
 <h3 class="anchored" data-anchor-id="a2.-event-data-preprocessing">A2. Event Data Preprocessing</h3>
-<div class="cell" data-execution_count="41">
-<details>
+<div id="7a51c519" class="cell" data-execution_count="41">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import public wyscout data loader from socceraction library</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import public wyscout data loader from socceraction library</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> socceraction.data.wyscout <span class="im">import</span> PublicWyscoutLoader </span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># load public wyscout data</span></span>
@@ -818,13 +900,13 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>tags[<span class="st">'Description'</span>] <span class="op">=</span> tags[<span class="st">'Description'</span>].<span class="bu">str</span>.lower()</span>
 <span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="co"># transform tags data frame into dictionary</span></span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>tags <span class="op">=</span> <span class="bu">dict</span>(<span class="bu">zip</span>(tags[<span class="st">'Tag'</span>], tags[<span class="st">'Description'</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>tags <span class="op">=</span> <span class="bu">dict</span>(<span class="bu">zip</span>(tags[<span class="st">'Tag'</span>], tags[<span class="st">'Description'</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div class="cell">
-<details>
+<div id="aaa9fa12" class="cell">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># England 17/18, competition_id = 364, season_id = 181150</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># England 17/18, competition_id = 364, season_id = 181150</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>epl_games <span class="op">=</span> wyscout_data.games(competition_id <span class="op">=</span> <span class="dv">364</span>, season_id <span class="op">=</span> <span class="dv">181150</span>)[<span class="st">"game_id"</span>]</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -887,7 +969,7 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <span id="cb25-61"><a href="#cb25-61" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.iloc[:, rearr_cols]</span>
 <span id="cb25-62"><a href="#cb25-62" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-63"><a href="#cb25-63" aria-hidden="true" tabindex="-1"></a><span class="co"># save 'df' as 'refined_events.csv' data frame</span></span>
-<span id="cb25-64"><a href="#cb25-64" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">'refined_events.csv'</span>, index <span class="op">=</span> <span class="va">False</span>)    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-64"><a href="#cb25-64" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">'refined_events.csv'</span>, index <span class="op">=</span> <span class="va">False</span>)    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -895,10 +977,10 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <h3 class="anchored" data-anchor-id="a3.-xg-model">A3. xG Model</h3>
 <section id="a3.1-filter-shots" class="level4">
 <h4 class="anchored" data-anchor-id="a3.1-filter-shots">A3.1 Filter Shots</h4>
-<div class="cell">
-<details>
+<div id="766a077f" class="cell">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'epl/refined_events.csv'</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'epl/refined_events.csv'</span>)</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'tag_id'</span>] <span class="op">=</span> df[<span class="st">'tag_id'</span>].<span class="bu">apply</span>(ast.literal_eval)</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'tag_name'</span>] <span class="op">=</span> df[<span class="st">'tag_name'</span>].<span class="bu">apply</span>(ast.literal_eval)</span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -931,22 +1013,22 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <span id="cb26-31"><a href="#cb26-31" aria-hidden="true" tabindex="-1"></a>outcome <span class="op">=</span> shots[<span class="st">'tag_id'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: goals(x))</span>
 <span id="cb26-32"><a href="#cb26-32" aria-hidden="true" tabindex="-1"></a>shots[<span class="st">'outcome'</span>] <span class="op">=</span> outcome</span>
 <span id="cb26-33"><a href="#cb26-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-34"><a href="#cb26-34" aria-hidden="true" tabindex="-1"></a>shots.to_csv(<span class="st">'epl/shots.csv'</span>, index <span class="op">=</span> <span class="va">False</span>)    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-34"><a href="#cb26-34" aria-hidden="true" tabindex="-1"></a>shots.to_csv(<span class="st">'epl/shots.csv'</span>, index <span class="op">=</span> <span class="va">False</span>)    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div class="cell" data-execution_count="44">
-<details>
+<div id="32f42e47" class="cell" data-execution_count="44">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>shots <span class="op">=</span> pd.read_csv(<span class="st">'epl/shots.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>shots <span class="op">=</span> pd.read_csv(<span class="st">'epl/shots.csv'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
 <section id="a3.2-feature-generating-function" class="level4">
 <h4 class="anchored" data-anchor-id="a3.2-feature-generating-function">A3.2 Feature Generating Function</h4>
-<div class="cell">
-<details>
+<div id="a944c1dc" class="cell">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate 'Angle' and 'Distance' features from x,y coordinates provided as a new input to our xG model</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate 'Angle' and 'Distance' features from x,y coordinates provided as a new input to our xG model</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_features(coords):</span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    </span>
@@ -978,27 +1060,27 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <span id="cb28-30"><a href="#cb28-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># remember to leave angle in radians (if you want to transfer to degree multiply cos_alpha by 180/pi)</span></span>
 <span id="cb28-31"><a href="#cb28-31" aria-hidden="true" tabindex="-1"></a>    angle <span class="op">=</span> np.arccos(cos_alpha).<span class="bu">round</span>(decimals <span class="op">=</span> <span class="dv">2</span>)</span>
 <span id="cb28-32"><a href="#cb28-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># return 'distance' and 'angle' features as numpy array</span></span>
-<span id="cb28-33"><a href="#cb28-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.array([distance, angle])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-33"><a href="#cb28-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.array([distance, angle])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
 <section id="a3.3-xg-model-evaluation-with-roc" class="level4">
 <h4 class="anchored" data-anchor-id="a3.3-xg-model-evaluation-with-roc">A3.3 xG Model Evaluation with ROC</h4>
-<div class="cell" data-execution_count="578">
-<details>
+<div id="6b5cdf4e" class="cell" data-execution_count="578">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_predictions():</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_predictions():</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    plt.figure(figsize <span class="op">=</span> (<span class="dv">5</span>, <span class="dv">3</span>))</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    plt.plot(<span class="bu">sorted</span>(predictions))</span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">'number of shots'</span>)</span>
 <span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">'probabiliy of scoring'</span>)</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div class="cell" data-execution_count="60">
-<details>
+<div id="955ed169" class="cell" data-execution_count="60">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>ndf <span class="op">=</span> pd.concat([features, labels], axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>ndf <span class="op">=</span> pd.concat([features, labels], axis <span class="op">=</span> <span class="dv">1</span>)</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>ndf <span class="op">=</span> ndf.reset_index()</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>ndf.drop(<span class="st">"index"</span>, axis <span class="op">=</span> <span class="dv">1</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>ndf[<span class="st">"xG"</span>] <span class="op">=</span> xG_model.predict_proba(features)[:, <span class="dv">1</span>]</span>
@@ -1038,7 +1120,7 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <span id="cb30-38"><a href="#cb30-38" aria-hidden="true" tabindex="-1"></a>    ax.legend(labels <span class="op">=</span> [<span class="st">'xG Model'</span>, <span class="st">'Random Guess'</span>], loc <span class="op">=</span> <span class="dv">4</span>,</span>
 <span id="cb30-39"><a href="#cb30-39" aria-hidden="true" tabindex="-1"></a>              <span class="co">#bbox_to_anchor=(1.0, 0.1, 0.5, 0.5),</span></span>
 <span id="cb30-40"><a href="#cb30-40" aria-hidden="true" tabindex="-1"></a>             frameon <span class="op">=</span> <span class="va">True</span>)</span>
-<span id="cb30-41"><a href="#cb30-41" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb30-41"><a href="#cb30-41" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -1047,10 +1129,10 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <h3 class="anchored" data-anchor-id="a4.-xt-equation-variables-derivation">A4. xT Equation Variables Derivation</h3>
 <section id="a4.1-shooting-probability" class="level4">
 <h4 class="anchored" data-anchor-id="a4.1-shooting-probability">A4.1 Shooting Probability</h4>
-<div class="cell" data-execution_count="64">
-<details>
+<div id="2b8ac443" class="cell" data-execution_count="64">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>x_intervals <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">17</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>x_intervals <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">17</span>)</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>y_intervals <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">13</span>)</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>shots[<span class="st">"x_start_bin"</span>] <span class="op">=</span> pd.cut(shots[<span class="st">"x_start"</span>], bins <span class="op">=</span> x_intervals, include_lowest<span class="op">=</span><span class="va">True</span>, labels <span class="op">=</span> <span class="va">False</span>)</span>
@@ -1063,24 +1145,24 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(shots.shape[<span class="dv">0</span>]):</span>
 <span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>    row_ind <span class="op">=</span> shots[<span class="st">"y_start_bin"</span>].iloc[i]</span>
 <span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>    col_ind <span class="op">=</span> shots[<span class="st">"x_start_bin"</span>].iloc[i]</span>
-<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>    shot_counts[row_ind, col_ind] <span class="op">=</span> shot_counts[row_ind, col_ind] <span class="op">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>    shot_counts[row_ind, col_ind] <span class="op">=</span> shot_counts[row_ind, col_ind] <span class="op">+</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
 <section id="a4.2-passing-probability" class="level4">
 <h4 class="anchored" data-anchor-id="a4.2-passing-probability">A4.2 Passing Probability</h4>
-<div class="cell" data-execution_count="67">
-<details>
+<div id="f61e7602" class="cell" data-execution_count="67">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'epl/refined_events.csv'</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'epl/refined_events.csv'</span>)</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'tag_id'</span>] <span class="op">=</span> df[<span class="st">'tag_id'</span>].<span class="bu">apply</span>(ast.literal_eval)</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'tag_name'</span>] <span class="op">=</span> df[<span class="st">'tag_name'</span>].<span class="bu">apply</span>(ast.literal_eval)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'tag_name'</span>] <span class="op">=</span> df[<span class="st">'tag_name'</span>].<span class="bu">apply</span>(ast.literal_eval)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div class="cell">
-<details>
+<div id="d76780e3" class="cell">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># free kicks are not included (penalties are also part of free kicks)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># free kicks are not included (penalties are also part of free kicks)</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>passes <span class="op">=</span> df[df[<span class="st">'type_name'</span>] <span class="op">==</span> <span class="st">'pass'</span>]</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>passes[<span class="st">"x_start_bin"</span>] <span class="op">=</span> pd.cut(passes[<span class="st">"x_start"</span>], bins <span class="op">=</span> x_intervals, include_lowest<span class="op">=</span><span class="va">True</span>, labels <span class="op">=</span> <span class="va">False</span>)</span>
@@ -1090,37 +1172,37 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>passes[<span class="st">"y_end_bin"</span>] <span class="op">=</span> pd.cut(passes[<span class="st">"y_end"</span>], bins <span class="op">=</span> y_intervals, include_lowest<span class="op">=</span><span class="va">True</span>, labels <span class="op">=</span> <span class="va">False</span>)</span>
 <span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="co"># save accurate passes as .csv file</span></span>
-<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>passes.to_csv(<span class="st">'epl_passes.csv'</span>, index <span class="op">=</span> <span class="va">False</span>)      </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>passes.to_csv(<span class="st">'epl_passes.csv'</span>, index <span class="op">=</span> <span class="va">False</span>)      </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div class="cell" data-execution_count="68">
-<details>
+<div id="287b829d" class="cell" data-execution_count="68">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>passes <span class="op">=</span> pd.read_csv(<span class="st">'epl/epl_passes.csv'</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>passes <span class="op">=</span> pd.read_csv(<span class="st">'epl/epl_passes.csv'</span>)</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>pass_counts <span class="op">=</span> np.zeros(shape <span class="op">=</span> (<span class="dv">12</span>, <span class="dv">16</span>))</span>
 <span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(passes.shape[<span class="dv">0</span>]):</span>
 <span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>    row_ind <span class="op">=</span> passes[<span class="st">"y_start_bin"</span>].iloc[i]</span>
 <span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>    col_ind <span class="op">=</span> passes[<span class="st">"x_start_bin"</span>].iloc[i]</span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>    pass_counts[row_ind, col_ind] <span class="op">=</span> pass_counts[row_ind, col_ind] <span class="op">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>    pass_counts[row_ind, col_ind] <span class="op">=</span> pass_counts[row_ind, col_ind] <span class="op">+</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div class="cell">
-<details>
+<div id="495953a6" class="cell">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pass probabilities</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pass probabilities</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>pass_probs <span class="op">=</span> pass_counts<span class="op">/</span>(pass_counts <span class="op">+</span> shot_counts)</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># shot probabilities</span></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>shot_probs <span class="op">=</span> shot_counts<span class="op">/</span>(pass_counts <span class="op">+</span> shot_counts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>shot_probs <span class="op">=</span> shot_counts<span class="op">/</span>(pass_counts <span class="op">+</span> shot_counts)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
 <section id="a4.3-scoring-probability" class="level4">
 <h4 class="anchored" data-anchor-id="a4.3-scoring-probability">A4.3 Scoring Probability</h4>
-<div class="cell" data-execution_count="74">
-<details>
+<div id="b6899f28" class="cell" data-execution_count="74">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>x_grid <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">160</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>x_grid <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">160</span>)</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>y_grid <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">120</span>)</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># scoring probability for </span></span>
@@ -1149,7 +1231,7 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <span id="cb36-27"><a href="#cb36-27" aria-hidden="true" tabindex="-1"></a>    row_ind <span class="op">=</span> row_ind <span class="op">+</span> <span class="dv">1</span></span>
 <span id="cb36-28"><a href="#cb36-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-29"><a href="#cb36-29" aria-hidden="true" tabindex="-1"></a><span class="co"># scoring probabilities derived from xG model</span></span>
-<span id="cb36-30"><a href="#cb36-30" aria-hidden="true" tabindex="-1"></a>score_probs <span class="op">=</span> refined_xg.<span class="bu">round</span>(decimals <span class="op">=</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb36-30"><a href="#cb36-30" aria-hidden="true" tabindex="-1"></a>score_probs <span class="op">=</span> refined_xg.<span class="bu">round</span>(decimals <span class="op">=</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
@@ -1158,10 +1240,10 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <h3 class="anchored" data-anchor-id="a5.-plot-functions">A5. Plot Functions</h3>
 <section id="a5.1-xt-values-grid" class="level4">
 <h4 class="anchored" data-anchor-id="a5.1-xt-values-grid">A5.1 xT values Grid</h4>
-<div class="cell" data-execution_count="489">
-<details>
+<div id="3c45bc5a" class="cell" data-execution_count="489">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>matplotlib_inline.backend_inline.set_matplotlib_formats(<span class="st">'svg'</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>matplotlib_inline.backend_inline.set_matplotlib_formats(<span class="st">'svg'</span>)</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_xT():</span>
 <span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1210,16 +1292,16 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <span id="cb37-47"><a href="#cb37-47" aria-hidden="true" tabindex="-1"></a>    fig.colorbar(pt, cax <span class="op">=</span> ax_cbar).set_label(label <span class="op">=</span> <span class="st">'xT values'</span>, size<span class="op">=</span><span class="dv">10</span>)</span>
 <span id="cb37-48"><a href="#cb37-48" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb37-49"><a href="#cb37-49" aria-hidden="true" tabindex="-1"></a>    <span class="co">#</span></span>
-<span id="cb37-50"><a href="#cb37-50" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb37-50"><a href="#cb37-50" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
 <section id="a5.2-passing-probability" class="level4">
 <h4 class="anchored" data-anchor-id="a5.2-passing-probability">A5.2 Passing Probability</h4>
-<div class="cell" data-execution_count="483">
-<details>
+<div id="89c10fe0" class="cell" data-execution_count="483">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_pass_probs():</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_pass_probs():</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># import probability of passing as .csv file</span></span>
 <span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    xT_grid <span class="op">=</span> pd.DataFrame(pass_probs.<span class="bu">round</span>(decimals <span class="op">=</span> <span class="dv">2</span>))</span>
@@ -1272,16 +1354,16 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <span id="cb38-51"><a href="#cb38-51" aria-hidden="true" tabindex="-1"></a>    fig.colorbar(pt, cax <span class="op">=</span> ax_cbar).set_label(label <span class="op">=</span> <span class="st">'$m_{x, y}$, probability of passing'</span>, size<span class="op">=</span><span class="dv">10</span>)</span>
 <span id="cb38-52"><a href="#cb38-52" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb38-53"><a href="#cb38-53" aria-hidden="true" tabindex="-1"></a>    <span class="co">#</span></span>
-<span id="cb38-54"><a href="#cb38-54" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb38-54"><a href="#cb38-54" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
 <section id="a5.3-shooting-probability" class="level4">
 <h4 class="anchored" data-anchor-id="a5.3-shooting-probability">A5.3 Shooting Probability</h4>
-<div class="cell" data-execution_count="494">
-<details>
+<div id="c3fbecb8" class="cell" data-execution_count="494">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_shot_probs():</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_shot_probs():</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># import probability of shooting as .csv file</span></span>
 <span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>    xT_grid <span class="op">=</span> pd.DataFrame(shot_probs.<span class="bu">round</span>(decimals <span class="op">=</span> <span class="dv">2</span>))</span>
@@ -1334,16 +1416,16 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <span id="cb39-51"><a href="#cb39-51" aria-hidden="true" tabindex="-1"></a>    fig.colorbar(pt, cax <span class="op">=</span> ax_cbar).set_label(label <span class="op">=</span> <span class="st">'$s_{x, y}$, probability of shooting'</span>, size<span class="op">=</span><span class="dv">10</span>)</span>
 <span id="cb39-52"><a href="#cb39-52" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-53"><a href="#cb39-53" aria-hidden="true" tabindex="-1"></a>    <span class="co">#</span></span>
-<span id="cb39-54"><a href="#cb39-54" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb39-54"><a href="#cb39-54" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
 <section id="a5.4-scoring-probability" class="level4">
 <h4 class="anchored" data-anchor-id="a5.4-scoring-probability">A5.4 Scoring Probability</h4>
-<div class="cell" data-execution_count="486">
-<details>
+<div id="41386ea3" class="cell" data-execution_count="486">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_score_probs():</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_score_probs():</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># import probability of scoring as .csv file</span></span>
 <span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    xT_grid <span class="op">=</span> pd.DataFrame(score_probs.<span class="bu">round</span>(decimals <span class="op">=</span> <span class="dv">2</span>))</span>
@@ -1396,16 +1478,16 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <span id="cb40-51"><a href="#cb40-51" aria-hidden="true" tabindex="-1"></a>    fig.colorbar(pt, cax <span class="op">=</span> ax_cbar).set_label(label <span class="op">=</span> <span class="st">'$xG_{x, y}$, probability of scoring'</span>, size<span class="op">=</span><span class="dv">10</span>)</span>
 <span id="cb40-52"><a href="#cb40-52" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-53"><a href="#cb40-53" aria-hidden="true" tabindex="-1"></a>    <span class="co">#</span></span>
-<span id="cb40-54"><a href="#cb40-54" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb40-54"><a href="#cb40-54" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
 <section id="a5.5-xt-values-for-bundesliga-players" class="level4">
 <h4 class="anchored" data-anchor-id="a5.5-xt-values-for-bundesliga-players">A5.5 xT values for Bundesliga Players</h4>
-<div class="cell" data-execution_count="586">
-<details>
+<div id="3d90e11e" class="cell" data-execution_count="586">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_bundesliga():</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_bundesliga():</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># import Bundesliga xT results</span></span>
 <span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    bl10 <span class="op">=</span> pd.read_csv(<span class="st">"bundesliga/top10_players.csv"</span>).sort_values(by <span class="op">=</span> <span class="st">'xt_per_90'</span>, ascending <span class="op">=</span> <span class="va">True</span>)</span>
@@ -1479,16 +1561,16 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <span id="cb41-72"><a href="#cb41-72" aria-hidden="true" tabindex="-1"></a>    fig.text(x <span class="op">=</span> <span class="fl">1.55</span>, y <span class="op">=</span> <span class="fl">1.12</span>, s <span class="op">=</span> <span class="st">"All players played at least 900 minutes."</span>, fontdict <span class="op">=</span> font4)</span>
 <span id="cb41-73"><a href="#cb41-73" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-74"><a href="#cb41-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-75"><a href="#cb41-75" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb41-75"><a href="#cb41-75" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
 <section id="a5.6-xt-values-for-epl-players" class="level4">
 <h4 class="anchored" data-anchor-id="a5.6-xt-values-for-epl-players">A5.6 xT values for EPL Players</h4>
-<div class="cell" data-execution_count="595">
-<details>
+<div id="0f428edb" class="cell" data-execution_count="595">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_epl():</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_epl():</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># import EPL xT results</span></span>
 <span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>    epl10 <span class="op">=</span> pd.read_csv(<span class="st">"epl/top10_players.csv"</span>).sort_values(by <span class="op">=</span> <span class="st">'xt_per_90'</span>, ascending <span class="op">=</span> <span class="va">True</span>)</span>
@@ -1562,16 +1644,16 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <span id="cb42-72"><a href="#cb42-72" aria-hidden="true" tabindex="-1"></a>    fig.text(x <span class="op">=</span> <span class="fl">1.6</span>, y <span class="op">=</span> <span class="fl">1.12</span>, s <span class="op">=</span> <span class="st">"All players played at least 900 minutes."</span>, fontdict <span class="op">=</span> font4)</span>
 <span id="cb42-73"><a href="#cb42-73" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb42-74"><a href="#cb42-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-75"><a href="#cb42-75" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb42-75"><a href="#cb42-75" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
 <section id="a5.7-xt-values-for-laliga-players" class="level4">
 <h4 class="anchored" data-anchor-id="a5.7-xt-values-for-laliga-players">A5.7 xT values for LaLiga Players</h4>
-<div class="cell" data-execution_count="596">
-<details>
+<div id="8de2782f" class="cell" data-execution_count="596">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_laliga():</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_laliga():</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># import LaLiga xT results</span></span>
 <span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    ll10 <span class="op">=</span> pd.read_csv(<span class="st">"laliga/top10_players.csv"</span>).sort_values(by <span class="op">=</span> <span class="st">'xt_per_90'</span>, ascending <span class="op">=</span> <span class="va">True</span>)</span>
@@ -1642,16 +1724,16 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <span id="cb43-69"><a href="#cb43-69" aria-hidden="true" tabindex="-1"></a>    fig.text(x <span class="op">=</span> <span class="fl">1.55</span>, y <span class="op">=</span> <span class="fl">1.12</span>, s <span class="op">=</span> <span class="st">"All players played at least 900 minutes."</span>, fontdict <span class="op">=</span> font4)</span>
 <span id="cb43-70"><a href="#cb43-70" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-71"><a href="#cb43-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-72"><a href="#cb43-72" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb43-72"><a href="#cb43-72" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
 <section id="a5.8-xt-values-for-ligue-1-players" class="level4">
 <h4 class="anchored" data-anchor-id="a5.8-xt-values-for-ligue-1-players">A5.8 xT values for Ligue 1 Players</h4>
-<div class="cell" data-execution_count="598">
-<details>
+<div id="816c02e5" class="cell" data-execution_count="598">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_ligue1():</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_ligue1():</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># import Ligue 1 xT results</span></span>
 <span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    l10 <span class="op">=</span> pd.read_csv(<span class="st">"ligue1/top10_players.csv"</span>).sort_values(by <span class="op">=</span> <span class="st">'xt_per_90'</span>, ascending <span class="op">=</span> <span class="va">True</span>)</span>
@@ -1722,7 +1804,7 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 <span id="cb44-69"><a href="#cb44-69" aria-hidden="true" tabindex="-1"></a>    fig.text(x <span class="op">=</span> <span class="fl">1.6</span>, y <span class="op">=</span> <span class="fl">1.12</span>, s <span class="op">=</span> <span class="st">"All players played at least 900 minutes."</span>, fontdict <span class="op">=</span> font4)</span>
 <span id="cb44-70"><a href="#cb44-70" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-71"><a href="#cb44-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-72"><a href="#cb44-72" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb44-72"><a href="#cb44-72" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 
@@ -1733,43 +1815,58 @@ See Appendix section <strong>A2. Event Data Preprocessing</strong> for full code
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
       }
+      return false;
     }
-    return false;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
@@ -1777,246 +1874,399 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
       return codeEl.innerText;
     }
-  });
-  clipboard.on('success', function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  });
-  const viewSource = window.document.getElementById('quarto-view-source') ||
-                     window.document.getElementById('quarto-code-tools-source');
-  if (viewSource) {
-    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-    viewSource.addEventListener("click", function(e) {
-      if (sourceUrl) {
-        // rstudio viewer pane
-        if (/\bcapabilities=\b/.test(window.location)) {
-          window.open(sourceUrl);
-        } else {
-          window.location.href = sourceUrl;
-        }
-      } else {
-        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-        modal.show();
-      }
-      return false;
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
     });
-  }
-  function toggleCodeHandler(show) {
-    return function(e) {
-      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-      for (let i=0; i<detailsSrc.length; i++) {
-        const details = detailsSrc[i].parentElement;
-        if (show) {
-          details.open = true;
-        } else {
-          details.removeAttribute("open");
-        }
-      }
-      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-      const fromCls = show ? "hidden" : "unhidden";
-      const toCls = show ? "unhidden" : "hidden";
-      for (let i=0; i<cellCodeDivs.length; i++) {
-        const codeDiv = cellCodeDivs[i];
-        if (codeDiv.classList.contains(fromCls)) {
-          codeDiv.classList.remove(fromCls);
-          codeDiv.classList.add(toCls);
-        } 
-      }
-      return false;
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
     }
-  }
-  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-  if (hideAllCode) {
-    hideAllCode.addEventListener("click", toggleCodeHandler(false));
-  }
-  const showAllCode = window.document.getElementById("quarto-show-all-code");
-  if (showAllCode) {
-    showAllCode.addEventListener("click", toggleCodeHandler(true));
-  }
-  function tippyHover(el, contentFn) {
-    const config = {
-      allowHTML: true,
-      content: contentFn,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start'
-    };
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      return note.innerHTML;
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
           } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
+            window.location.href = sourceUrl;
           }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
       });
     }
-  }
-});
-</script>
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/faridmusayev\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 </div> <!-- /content -->
+
 
 
 
