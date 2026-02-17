@@ -72,6 +72,13 @@ hr {
   text-shadow: none;
 }
 
+.navbar > .container-fluid {
+  max-width: 750px;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 /* Remove default Quarto margins */
 .quarto-title-block {
   margin-bottom: 0;
@@ -128,12 +135,11 @@ table tbody tr {
   justify-content: space-between;
   align-items: baseline;
   margin-bottom: 0.5rem;
-}
-
-.pub-header strong {
   font-size: 1.1rem;
   color: #222;
 }
+
+
 
 .conference {
   color: #999;
