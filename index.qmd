@@ -37,4 +37,4 @@ I'm Farid, a PhD student in Computer Science at Linköping University. I do rese
 
 ## Contact
 
-[<i class="bi bi-google"></i> scholar](https://scholar.google.com/citations?user=eZLJvuYAAAAJ&hl=en) - [<i class="bi bi-github"></i> github](https://github.com/faridmusayev) - [<i class="bi bi-linkedin"></i> linkedin](https://www.linkedin.com/in/farid-musayev-5934b514b/)
+[<i class="bi bi-envelope"></i> email](mailto:farid.musayev@liu.se) - [<i class="bi bi-google"></i> scholar](https://scholar.google.com/citations?user=eZLJvuYAAAAJ&hl=en) - [<i class="bi bi-github"></i> github](https://github.com/faridmusayev) - [<i class="bi bi-linkedin"></i> linkedin](https://www.linkedin.com/in/farid-musayev-5934b514b/)
