@@ -1,0 +1,40 @@
+---
+title: ""
+format:
+  html:
+    toc: false
+---
+
+# About Me
+
+I'm Farid, a PhD student in Computer Science at Linköping University. I do research at the intersection of machine learning and symbolic reasoning.
+
+
+
+---
+
+## Publications
+
+<div class="publication">
+<div class="pub-header">A Comparison of Sampling Strategies for Learning Policies<span class="conference">ICAPS'26 RIPL</span></div>
+<div class="pub-desc">Evaluating different sampling strategies for learning policies in classical planning, analyzing their effect on policy quality and generalization.</div>
+<div class="pub-links">[[paper]](papers/musayev-et-al-icaps2026wsripl.pdf)</div>
+</div>
+
+<div class="publication">
+<div class="pub-header">Combining Heuristics and Transition Classifiers in Classical Planning<span class="conference">ECAI'25</span></div>
+<div class="pub-desc">Integrating learned transition classifiers with search heuristics to improve the efficiency of classical planning algorithms.</div>
+<div class="pub-links">[[paper]](papers/musayev-et-al-ecai2025.pdf) [[slides]](papers/musayev-et-al-ecai2025-slides.pdf)</div>
+</div>
+
+<div class="publication">
+<div class="pub-header">Federated Learning for Power Consumption Forecasting in Radio Base Stations<span class="conference">MSc Thesis '23</span></div>
+<div class="pub-desc">Applying federated learning to forecast power consumption across radio base stations while preserving data privacy.</div>
+<div class="pub-links">[[thesis]](papers/musayev-msc-thesis.pdf) [[slides]](papers/musayev-msc-thesis-slides.pdf)</div>
+</div>
+
+---
+
+## Contact
+
+[<i class="bi bi-google"></i> scholar](https://scholar.google.com/citations?user=eZLJvuYAAAAJ&hl=en) - [<i class="bi bi-github"></i> github](https://github.com/faridmusayev) - [<i class="bi bi-linkedin"></i> linkedin](https://www.linkedin.com/in/farid-musayev-5934b514b/)
