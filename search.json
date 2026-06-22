@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "About Me",
     "section": "",
-    "text": "I’m Farid, a PhD student in Computer Science at Linköping University. I do research at the intersection of machine learning and symbolic reasoning.\n\n\n\n\n\nA Comparison of Sampling Strategies for Learning PoliciesICAPS’26 RIPL\n\n\nEvaluating different sampling strategies for learning policies in classical planning, analyzing their effect on policy quality and generalization.\n\n\n[paper]\n\n\n\n\nCombining Heuristics and Transition Classifiers in Classical PlanningECAI’25\n\n\nIntegrating learned transition classifiers with search heuristics to improve the efficiency of classical planning algorithms.\n\n\n[paper] [slides]\n\n\n\n\nFederated Learning for Power Consumption Forecasting in Radio Base StationsMSc Thesis ’23\n\n\nApplying federated learning to forecast power consumption across radio base stations while preserving data privacy.\n\n\n[thesis] [slides]\n\n\n\n\n\n\n scholar -  github -  linkedin"
+    "text": "I’m Farid, a PhD student in Computer Science at Linköping University. I do research at the intersection of machine learning and symbolic reasoning.\n\n\n\n\n\nA Comparison of Sampling Strategies for Learning PoliciesICAPS’26 RIPL\n\n\nEvaluating different sampling strategies for learning policies in classical planning, analyzing their effect on policy quality and generalization.\n\n\n[paper]\n\n\n\n\nCombining Heuristics and Transition Classifiers in Classical PlanningECAI’25\n\n\nIntegrating learned transition classifiers with search heuristics to improve the efficiency of classical planning algorithms.\n\n\n[paper] [slides]\n\n\n\n\nFederated Learning for Power Consumption Forecasting in Radio Base StationsMSc Thesis ’23\n\n\nApplying federated learning to forecast power consumption across radio base stations while preserving data privacy.\n\n\n[thesis] [slides]\n\n\n\n\n\n\n email -  scholar -  github -  linkedin"
   },
   {
     "objectID": "index.html#publications",
@@ -18,6 +18,6 @@
     "href": "index.html#contact",
     "title": "About Me",
     "section": "",
-    "text": "scholar -  github -  linkedin"
+    "text": "email -  scholar -  github -  linkedin"
   }
 ]
