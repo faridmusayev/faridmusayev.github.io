@@ -7,7 +7,7 @@ format:
 
 # About Me
 
-I'm Farid, a PhD student in Computer Science at Linköping University. I do research at the intersection of machine learning and symbolic reasoning.
+I'm Farid, a PhD student in computer science at Linköping University. I do research at the intersection of machine learning and symbolic reasoning.
 
 
 
