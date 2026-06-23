@@ -16,6 +16,12 @@ I'm Farid, a PhD student in computer science at Linköping University. I do rese
 ## Publications
 
 <div class="publication">
+<div class="pub-header">Prompt, Prove, Patch: The Neuro-Symbolic Loop for General Policy Synthesis<span class="conference">ICAPS'26 RIPL</span></div>
+<div class="pub-desc">A neuro-symbolic framework that iterates between policy synthesis, formal verification, and patching to produce general, provably correct policies.</div>
+<div class="pub-links">[[paper]](papers/drexler-et-al-icaps2026wsripl.pdf)</div>
+</div>
+
+<div class="publication">
 <div class="pub-header">A Comparison of Sampling Strategies for Learning Policies<span class="conference">ICAPS'26 RIPL</span></div>
 <div class="pub-desc">Evaluating different sampling strategies for learning policies in classical planning, analyzing their effect on policy quality and generalization.</div>
 <div class="pub-links">[[paper]](papers/musayev-et-al-icaps2026wsripl.pdf)</div>
