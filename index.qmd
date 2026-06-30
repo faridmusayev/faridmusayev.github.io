@@ -24,7 +24,7 @@ I'm Farid, a PhD student in computer science at Linköping University. I do rese
 <div class="publication">
 <div class="pub-header">A Comparison of Sampling Strategies for Learning Policies<span class="conference">ICAPS'26 RIPL</span></div>
 <div class="pub-desc">Evaluating different sampling strategies for learning policies in classical planning, analyzing their effect on policy quality and generalization.</div>
-<div class="pub-links">[[paper]](papers/musayev-et-al-icaps2026wsripl.pdf)</div>
+<div class="pub-links">[[paper]](papers/musayev-et-al-icaps2026wsripl.pdf) [[slides]](papers/musayev-et-al-icaps2026wsripl-slides.pdf)</div>
 </div>
 
 <div class="publication">
